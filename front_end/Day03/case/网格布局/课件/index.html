@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>grid布局</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				padding: 30px;
+				padding-top: 10px;
+				line-height: 35px;
+				font-family: "微软雅黑";
+			}
+			h1,h2 {
+				padding: 20px 0;
+			}
+			h3 {
+				background: #00AA88;
+				color: #FFFCF4;
+				font-size: 20px;
+				font-weight: 700;
+				margin: 10px 0;
+				border-radius: 4px;
+				padding: 5px 0px 5px 15px;
+			}
+			p {
+				line-height: 40px;
+			}
+			ul li {
+				list-style: none;
+				line-height: 40px;
+			}
+			span {
+				color: #199475;
+				font-weight: 700;
+				font-size: 18px;
+				display: block;
+				border-radius: 4px;
+				padding: 10px;
+				font-size: 18px;
+				padding-left: 0px;
+			}
+			em {
+				font-style: normal;
+				color: red;
+			}
+			/* 代码块样式 */
+			.kuai{
+				width:500px;padding:10px 20px;background-color: #ccc;border:1px solid gray;border-radius:5px
+			}
+		</style>
+	</head>
+	<body>
+	<h1>Grid网格布局</h1>
+	<ul>
+		<li>今日学习目标：</li>
+		<li>1、网格布局概念，和flex布局区别</li>
+		<li>2、概念：容器，项目，行，列，单元格，网格线</li>
+		<li>3、网格布局中的属性</li>
+		<li></li>
+		<li></li>
+	</ul>
+	<h3>一、网格布局的概念，和flex布局的区别</h3>
+	<p><mark style="font-weight: bold;">含义：</mark>它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局</p>
+	<p><mark style="font-weight: bold;">区别：</mark>Grid 布局与 Flex 布局有一定的相似性，都可以指定容器内部多个项目的位置。但是，它们也存在重大区别。<br>
+Flex 布局是轴线布局，只能指定"项目"针对轴线的位置，可以看作是一维布局。<br>
+Grid 布局则是将容器划分成"行"和"列"，产生单元格，然后指定"项目所在"的单元格，可以看作是二维布局。<br></p>
+	<p>网格布局案例：不规则布局页面(win窗口)</p>
+	<p><img src="img/1.png" alt="" width="600px"></p>
+	<h3>二、概念：容器，项目，行，列，单元格，网格线</h3>
+	<p style="font-size:20px;font-weight: bold;">1、容器和项目</p>
+	<p>容器：一个案例中最大的盒子，可以理解成父元素</p>
+	<p>项目：一个案例中的，最大盒子里面的内容，可以理解成子元素</p>
+	<p><img src="./img/行泪.png" ></p>
+	<p style="font-size:20px;font-weight: bold;">2、行和列</p>
+	<p>行和列：容器里面的水平区域称为"行"，垂直区域称为"列"。</p>
+	<p><img src="img/2.png" ></p>
+	<p style="font-size:20px;font-weight: bold;">3、单元格</p>
+	<p>单元格：行和列的交叉区域，称为"单元格"。</p>
+	<p><img src="img/3.png" alt=""></p>
+	<p style="font-size:20px;font-weight: bold;">4、网格线</p>
+	<p>网格线：划分网格的线，称为"网格线"。水平网格线划分出行，垂直网格线划分出列。</p>
+	<p><img src="img/4.png" alt=""></p>
+	<p>注意：组成一个网格：需要5条线，2条横线，2条总线</p>
+	<p>注意：组成一个1行2列的网格，需要5条线，2条横线，3条总线</p>
+	<p>注意：组成一个2行1列的网格，需要5条线，3条横线，2条总线</p>
+	<p>结论：如果一个m行n列的网格，需要m+1+n+1条线，m+1条横线，n+1条总线</p>
+	<h3>三、网格布局中的属性</h3>
+	<p>含义：网格布局中的属性和flex中的布局属性类似，分为了两类，一类容器属性；一类是项目属性</p>
+	<h3 style="width:50%">1、容器属性</h3>
+	<p style="font-size:20px;font-weight:bold">1、触发网格布局</p>
+	<p>给父元素添加display:grid</p>
+	<p>display关于网格的取值分为两个，grid(块网格)和inline-grid(行内网格，行内块)</p>
+	<p>grid===容器从上向下排列<br>inline-grid===容器从左向右排列</p>
+	<p style="font-size:20px;font-weight:bold">2、行列划分</p>
+	<p><mark><b>规定行属性：</b></mark>grid-template-row:</p>
+	<p><mark><b>固定列属性：</b></mark>grid-template-column:</p>
+	<p>后面的取值数量代表的是多少行，多少列</p>
+	<p style="text-indent: 2em;font-size:18px;font-weight: bold;">1)绝对大小(根据列数或者行数确定值的个数) 例：200px  200px  200px </p>
+	<p><img src="img/绝对大小.png" alt=""></p>
+	<p style="padding-left:40px"><img src="img/5.png" ></p>
+	<p style="text-indent: 2em;font-size:18px;font-weight: bold;">2)百分比（根据列数或者行数确定值的个数） 例：33.33% 33.33%  33.33%</p>
+	<p><img src="img/百分比.png" alt=""></p>
+	<p style="padding-left:40px"><img src="img/6.png" ></p>
+	<p style="text-indent: 2em;font-size:18px;font-weight: bold;">3)功能函数：repeat() </p>
+	<p><img src="img/功能函数.png" ></p>
+	
+	<p style="text-indent: 2em;font-size:18px;font-weight: bold;">4)auto-fill关键字( 自动填充 )配合功能函数使用 </p>
+	<p><img src="img/auto.png" ></p>
+	<p style="padding-left:40px"><img src="img/7.png" ></p>
+	<p style="text-indent: 2em;font-size:18px;font-weight: bold;">5)fr关键字(列宽片段) </p>
+	<p><img src="img/fr.png" alt=""></p>
+	<p style="padding-left: 40px;"><img src="img/8.png" ></p>
+	<p style="text-indent: 2em;font-size:18px;font-weight: bold;">6)minmax() 功能函数 </p>
+	<p><img src="img/minmax.png" ></p>
+	<p style="text-indent: 2em;font-size:18px;font-weight: bold;">7)auto 关键字  自动填充 </p>
+	<p><img src="img/auto2.png" ></p>
+	<p style="padding-left:40px"><img src="img/9.png" ></p>
+	<p style="text-indent: 2em;font-size:18px;font-weight: bold;">8)网格线名称 </p>
+	<p style="text-indent: 3rem;">网格线命名的时候时候[]在每一个单元格的左右</p>
+	<p><img src="img/grid-name.png" ></p>
+	
+	<p style="font-size:20px;font-weight:bold">3、列间距（重点：复合属性）</p>
+	<p><img src="img/grid-gap.png" alt=""></p>
+	<p style="padding-left: 40px;"><img src="./img/10.png" alt=""></p>
+	<p style="font-size:20px;font-weight:bold">4、指定区域</p>
+	<p  style="padding-left: 40px;"><img src="img/grid-area.png" alt=""></p>
+	<p style="padding-left:40px">合并的时候使用grid-area:网格名字；进行合并</p>
+	<p style="padding-left:40px">例如上图案例：.box{grid-area:a}</p>
+	<p  style="padding-left: 40px;"><img src="img/14.png" ></p>
+	<p style="font-size:20px;font-weight:bold">5、项目排列顺序</p>
+	<p ><img src="img/shunxu.png" alt=""></p>
+	<p style="font-size:20px;font-weight:bold">6、单元格内容对其（重点：复合属性）</p>
+	<p style="margin-left:-10px"><img src="img/单元格内容.png" ></p>
+	<p style="padding-left:40px"><img src="img/12.png" ></p>
+	<p style="font-size:20px;font-weight:bold">7、单元格项目对其（重点：复合属性）</p>
+	<p style="margin-left:-10px"><img src="img/网格.png" alt=""></p>
+	<p style="padding-left:40px"><img src="img/13.png" alt=""></p>
+		
+	<h3 style="width:50%">2、项目属性</h3>
+	<p style="font-size:20px;font-weight:bold">1、网格线合并(单一属性)</p>
+	<p><img src="img/合并.png" alt=""></p>
+	<p style="padding-left:40px"><img src="img/15.png" alt=""></p>
+	<p style="font-size:20px;font-weight:bold">2、grid-column ， grid-row (重点，重点，重点)</p>
+	<p><img src="img/复合属性.png" alt=""></p>
+	</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 500px;
+            height: 300px;
+            position: relative;
+            left: 0;
+            right: 0;
+            top: 0;
+            /* bottom: 0; */
+            margin: auto;
+            border-bottom: 3px solid #000;
+        }
+
+        .flabellum{
+            position: absolute;
+            top: 60px;
+            left: 220px;
+            height: 200px;
+            width: 60px;
+            box-shadow: 3px 3px 5px #333;
+            transform-origin: center bottom;
+            transition: all 1s linear;
+        }
+
+        .flabellum:nth-child(1){
+            background-color: red;
+        }
+        .flabellum:nth-child(2), .flabellum:nth-child(8){
+            background-color: #ffa500;
+        }
+        .flabellum:nth-child(3), .flabellum:nth-child(9){
+            background-color: #ffff00;
+        }
+        .flabellum:nth-child(4), .flabellum:nth-child(10){
+            background-color: #008000;
+        }
+        .flabellum:nth-child(5), .flabellum:nth-child(11){
+            background-color: blue;
+        }
+        .flabellum:nth-child(6), .flabellum:nth-child(12){
+            background-color: #0ff;
+        }
+        .flabellum:nth-child(7), .flabellum:nth-child(13){
+            background-color: #800080;
+        }
+
+        .container:hover .flabellum:nth-child(2){
+            transform: rotate(15deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(3){
+            transform: rotate(30deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(4){
+            transform: rotate(45deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(5){
+            transform: rotate(60deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(6){
+            transform: rotate(75deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(7){
+            transform: rotate(90deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(8){
+            transform: rotate(-15deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(9){
+            transform: rotate(-30deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(10){
+            transform: rotate(-45deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(11){
+            transform: rotate(-60deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(12){
+            transform: rotate(-75deg);
+            opacity: .8;
+        }
+        .container:hover .flabellum:nth-child(13){
+            transform: rotate(-90deg);
+            opacity: .8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flabellum">1</div>
+        <div class="flabellum">2</div>
+        <div class="flabellum">3</div>
+        <div class="flabellum">4</div>
+        <div class="flabellum">5</div>
+        <div class="flabellum">6</div>
+        <div class="flabellum">7</div>
+        <div class="flabellum">2</div>
+        <div class="flabellum">3</div>
+        <div class="flabellum">4</div>
+        <div class="flabellum">5</div>
+        <div class="flabellum">6</div>
+        <div class="flabellum">7</div>
+    </div>
+</body>
+</html>
