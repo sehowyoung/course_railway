@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            position: relative;
+            background-color: #000;
+            height: 434px;
+            width: 1000px;
+            padding: 0 10px;
+        }
+        .box{
+            width: 192px;
+            height: 96px;
+            background-color: aquamarine;
+            margin-left: 10px;
+            float: left;
+            margin-top: 10px;
+        }
+        .clml{
+            margin-left: 0;
+        }
+        .pox{
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- continer应该放在文档流之中 
+        position : relative 
+    -->
+    <div class="container">
+        <div class="box clml"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+
+        <div class="box clml"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+
+        <div class="box clml"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+
+        <div class="box clml"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+
+        <div class="pox"></div>
+    </div>
+</body>
+</html>

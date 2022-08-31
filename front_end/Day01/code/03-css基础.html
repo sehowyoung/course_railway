@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 通配选择 : 
+            选择所有标签的选择器 , 而且这个选择无论你的标签是否显示都会添加css样式; 
+            使用通配选择器一定要谨慎; 
+        */
+        /* *{
+            background-color: #ddd;
+        } */
+
+        /* 
+            通配选择器野路子用法 :  清除页面上的默认样式; 
+        */ 
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+
+        /* 后代选择器  
+            在html结构之中, 包裹关系即为父子级关系; 
+
+            后代选择器的目标就是更精准的选择元素; 
+
+            选择器 选择器 选择器 {
+                
+            }
+        */
+        /* span{
+           color: #fff;
+        } */
+
+        /* .box span{
+            color: #fff;
+        } */
+
+        /* 通配选择器 和 后代选择器搭配起来才可以完成正确方便的的元素选择 */
+
+        /* .box *{
+            color: #fff;
+        } */
+
+        /* 群组选择器 
+        
+            选择器 , 选择器2 , 选择器3 {}
+        */
+        /* .box span , .box em {
+            color: #fff;
+        }
+        .box strong {
+            color: yellowgreen;
+        } */
+
+        
+
+        .box strong {
+            color: yellowgreen;
+        }
+        .box strong {
+            color: blue;
+        }
+
+        .pox{
+            color: skyblue;
+        }
+        h2{
+            color: yellowgreen;
+        }
+
+        .pox{
+            margin-left: 20px;
+        }
+
+        /* 计算权重哪里需要注意 : 
+           一组选择器计算完整的权重 ; 
+              - 如果想要覆盖某些样式， 但是结果没有完成覆盖， 我们可以考虑增加选择器权重; 
+
+           同等权重的条件下， 需要执行的代码放在后方; 
+        */
+    </style>
+    <!-- 
+        <link rel="stylesheet" href="框架1">
+        <link rel="stylesheet" href="框架2">
+        <link rel="stylesheet" href="自己代码"> 
+    -->
+</head>
+<body>
+    <div class="box"></div>
+
+    <div class="box">
+        <span>hello world</span>
+        <strong>hello world</strong>
+        <em>hello world</em>
+    </div>
+
+    <p><span>hello world</span></p>
+
+    <div class="pox">
+        hello world
+        <h2>你好世界</h2>
+    </div>
+</body>
+</html>

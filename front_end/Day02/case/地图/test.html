@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0; padding: 0;
+		}
+		body {
+			text-align: center;
+		}
+		.container {
+			display: inline-block;
+			width: 1200px;
+			position: relative;
+		}
+		.point-area {
+			position: absolute;
+			width: 80px;
+			height: 80px;
+		}
+		.point-area .point {
+			width: 10px; height: 10px;
+			background: #6AD7E9; border: 1px solid rgba(0, 205, 236, 0.37);
+			border-radius: 50%;
+			position: absolute; left:0; right:0; top: 0; bottom: 0; margin: auto;
+		}
+		.point-area .point-name {
+			font-size: 12px;
+			position: absolute;
+			left:50px; top: 31px; margin: auto;
+		} 
+		.point-area .point-225 {
+			animation: ripple 4500ms ease-out 225ms infinite;
+		}
+		.point-area .point-700 {
+			animation: ripple 4500ms ease-out 700ms infinite;
+		}
+		.point-area .point-900 {
+			animation: ripple 4500ms ease-out 900ms infinite;
+		}
+		.point-area .point-1575 {
+			animation: ripple 4500ms ease-out 1575ms infinite;
+		}
+		.point-area .point-1800 {
+			animation: ripple 4500ms ease-out 1800ms infinite;
+		}
+		
+		.point-ripple {
+			position: absolute; left:0; right:0; top: 0; bottom: 0; margin: auto;
+			border: 2px solid #00cdec;
+			border-radius: 50%;
+			opacity: 0;
+		}
+		@keyframes ripple{
+			0% 	 { opacity: 0; transform: scale(0.1); }
+			5% 	 { opacity: 1; }
+			100% { opacity: 0; transform: scale(1); }
+		}
+	</style>
+	<body>
+		<p style="text-align: center;">阿里云全球服务器分布</p>
+		<div class="container">
+			<img src="aliyun/TB1EBxZrwoQMeJjy0FoXXcShVXa-1127-508.png" style="width: 100%;">
+			<div class="point-area" style="top: 120px; left: 140px;">
+				<a href="xxxxxxxx" class="point"></a>
+				<span class="point-name">美西</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-1575"></div>
+			</div>
+			<div class="point-area" style="top: 140px; left: 220px;">
+				<a href="xxxxxxxx" class="point"></a>
+				<span class="point-name">美东</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 85px; left: 542px;">
+				<a href="xxxxxxxx" class="point"></a>
+				<span class="point-name">欧洲</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-1575"></div>
+			</div>
+			<div class="point-area" style="width: 110px; height: 110px; top: 158px; left: 661px;">
+				<a href="xxxxxxxx" class="point"></a>
+				<span class="point-name" style="left: 62px; top: 46px;">中东</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="width: 150px; height: 150px; top: 185px; left: 733px;">
+				<a href="xxxxxxxx" class="point"></a>
+				<span class="point-name" style="left: 43px; top: 66px;">印度</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 125px; left: 820px; width: 200px; height: 200px;">
+				<a class="point"></a>
+				<span class="point-name" style="top: 91px; left: 65px;">华南</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 195px; left: 900px; ">
+				<a class="point"></a>
+				<span class="point-name" style="top: 31px; left: 50px;">香港</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 286px; left: 870px; width: 120px; height: 120px;">
+				<a class="point"></a>
+				<span class="point-name" style="top: 51px; left: 69px;">印尼</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 355px; left: 958px; width: 150px; height: 150px;">
+				<a class="point"></a>
+				<span class="point-name" style="top: 66px; left: 85px;">澳大利亚</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-700"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 223px; left: 826px; width: 150px; height: 150px;">
+				<a class="point"></a>
+				<span class="point-name" style="top: 66px; left: 85px;">马来西亚</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 250px; left: 840px; width: 140px; height: 140px;">
+				<a class="point"></a>
+				<span class="point-name" style="top: 61px; left: 80px;">新加坡</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 140px; left: 973px; width: 80px; height: 80px;">
+				<a class="point"></a>
+				<span class="point-name" style="top: 31px; left: 50px;">日本</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-1575"></div>
+			</div>
+			<div class="point-area" style="top: 140px; left: 860px; width: 110px; height: 110px; ">
+				<a class="point"></a>
+				<span class="point-name" style="top: 46px; left: 22px;">华北</span>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-900"></div>
+				<div class="point-ripple point-1800"></div>
+			</div>
+			<div class="point-area" style="top: 165px; left: 900px; width: 80px; height: 80px;">
+				<span class="point-name" style="top: 31px; left: 50px;">华东</span>
+				<a class="point"></a>
+				<div class="point-ripple point-225"></div>
+				<div class="point-ripple point-1575"></div>
+			</div>
+		</div>
+	</body>
+</html>

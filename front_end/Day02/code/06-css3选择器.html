@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+        }
+
+        /* .box[data-a="hello"]{
+            background-color: skyblue;
+        }
+
+        包含
+        .box[data-a~="hello"]{
+            background-color: skyblue;
+        } */
+
+        /* 
+            开头 
+        .box[data-a^="hello"]{
+            background-color: skyblue;
+        }
+        .box[data-a$="d"]{
+            background-color: skyblue;
+        }
+        */
+
+        /* 伪类选择器的条件是 : 位置 ! */
+
+        /* 
+        .box:first-child{
+            background-color: yellowgreen;
+        }
+        .box:last-child{
+            background-color: yellowgreen;
+        }
+        */
+
+        /* .box:nth-child(2n){
+            background-color: yellowgreen;
+        } */
+
+        /* 我们选中的元素被父级元素包裹了那么我们的选择下标则不能正确的选择我们需要的元素 */
+        /* .box:nth-child(1){
+            background-color: yellowgreen;
+        } */
+
+        /* .box:nth-of-type(1){
+            background-color: yellowgreen;
+        }
+
+        :root{
+            background-color: #ddd;
+        } */
+
+        .box:empty{
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="pox">
+        <div class="box"></div>
+    </div>
+    <div class="pox">
+        <div class="box"></div>
+    </div>
+    <div class="pox">
+        <div class="box"></div>
+    </div>
+    <div class="box" data-a="hello world">123</div>
+    <div class="box" data-a="hello1 world"></div>
+    <div class="box" data-a="world"></div>
+    <div class="box"></div>
+</body>
+</html>

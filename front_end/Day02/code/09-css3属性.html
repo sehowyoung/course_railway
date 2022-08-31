@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            text-shadow: 1px 2px 1px #000;
+            width: 200px;
+            /* word-wrap: break-word; */
+            word-break: keep-all;
+        }
+        body{
+            background-color: yellowgreen;
+        }
+        @font-face {
+            font-family: "iconfont";
+            src: url(./iconfont.ttf) format('truetype');
+        }
+        .iconfont{
+            font-family: "iconfont"!important;
+            font-style: normal;
+            font-size: 20px;
+            
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .xiezi{
+            transition: all .5s;
+        }
+        .xiezi:hover{
+            color: yellowgreen;
+            text-shadow: 1px 2px 1px green;
+        }
+        /* 
+            颜色透明 : 
+            1. 给元素设置透明属性; 
+            2. 元素背景透明 ; rgb(); => rgba();
+        */
+        .box{
+            width: 100px;
+            height: 100px;
+            opacity: .5;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            color: #fff;
+        }
+        .pox{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255 , 255, 255 , 0.3);
+            position: absolute;
+            left: 200px;
+        }   
+
+        .bg{
+            width: 510px;
+            height: 340px;
+            padding: 50px;
+            border: 40px solid #000;
+            background-image: url(./images/1.jpg);
+            background-origin: content-box;
+            background-repeat: no-repeat;
+
+            border-image:url(./images/1.jpg);
+
+            /* background-size : 200px 100px; */
+            /* background-size : 510px 340px; */
+            /* background-size: contain; */
+        }      
+        .raidus{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }  
+    </style>
+</head>
+<body>
+    <p>
+        <span class="iconfont xiezi">&#xf0093;</span>
+    </p>
+    <div class="box">
+        hello world
+    </div>
+    <div class="pox">
+        你好世界
+    </div>
+
+    <div class="bg"></div>
+    <p>hello world</p>
+    <p>hello worldworldworldworldworldworldworldworldworldworldworldworldworldworldworldworldworldworldworldworldworldworldworld hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world  hello world </p>
+</body>
+</html>

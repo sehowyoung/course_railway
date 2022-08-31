@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>fixed</title>
+<style type="text/css">
+*{margin:0;padding:0;}
+.con1{
+    width:500px;
+    height:400px;
+    background:url(images/bg.jpg);
+    position: relative;
+    overflow: hidden;
+}
+
+.con1 img{
+    width: 400px;
+    height: 320px;
+    position: absolute;
+    transition: all 1s;
+}
+.con1 img:nth-child(1){
+    left: 50px;
+    top: 40px;
+}
+
+
+.con1 img:nth-child(2){
+    width: 120px;
+    height: 96px;
+    left: 500px;
+    top: 40px;;
+}
+
+.con1:hover img:nth-child(1){
+    width: 300px;
+    height: 200px;
+}
+
+.con1:hover img:nth-child(2){
+    left: 380px;
+}
+
+
+</style>
+</head>
+<body>
+	<div class="con1 con">
+    	<img src="images/con1-1.jpg" alt="" />
+        <img src="images/con1-2.jpg" alt="" />
+    </div>
+</body>
+</html>

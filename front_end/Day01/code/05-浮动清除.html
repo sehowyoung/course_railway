@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: aqua;
+            border: 2px solid #ddd;
+            float: left;
+        }
+        /* box2不想受到box1的浮动影响怎么办 ?  
+            : 方案 : 清除浮动; 
+        */
+        .box2{
+            float: none;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>    
+    <div class="box box2"></div>
+</body>
+</html>

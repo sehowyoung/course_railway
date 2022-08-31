@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            margin-top: 10px;
+        }
+        .box3{
+            position: absolute;
+            /* absolute : 会把元素直接抽离文档流 */
+            top: 0;
+        }
+
+        .box2{
+            /* relative : 相对定位 
+               relative 会让元素保持原有位置, 但是此时激活了left,top,right ,bottom 属性; 
+            */
+            position: relative;
+            left: 100px;
+            top: 20px;
+        }
+
+        .pox{
+            padding: 20px;
+            width: 300px;
+            border: 5px solid #000;
+        }
+        /*  position: absolute; 
+
+            绝对定位 , 这个定位是有参照物可选的! 
+            参照物的选择有两种情况 : 
+            - 父级之中设置了relative 的元素; 
+            - 父级之中如果没有relative属性的元素，当前元素就根据body定位; 
+        */
+        .pox1{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .pox2{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">1</div>
+    <div class="box box2">2</div>
+    <div class="box box3">3</div>
+
+    <div class="pox pox2">
+        <div class="pox" >
+            <div class="pox" >
+                <div class="pox pox1"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

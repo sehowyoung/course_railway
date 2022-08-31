@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: aqua;
+            /* height: 200px; */
+            /* 如果我们直接给父级设置了高度，那么会导致父级没有自适应高度了 */
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: bisque;
+            float: left;
+        }
+        /* .cb{
+            clear: both;
+        } */
+
+        /* 伪类元素 
+           背一下这段代码， 哪里高度塌陷了就直接使用这个代码解决即可; 
+        */
+        .container::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- 元素的默认高度是来自于子集元素的高度 -->
+    <!-- 父级元素之中的所有子集元素都发生浮动了，那么父级的高度会变成0，这种情况我们称之为高度塌陷; 
+    -->
+    <div class="container">
+        <div class="box">浮动的元素</div>
+        <div class="box">浮动的元素</div>
+        <div class="box">浮动的元素</div>
+    </div>
+</body>
+</html>

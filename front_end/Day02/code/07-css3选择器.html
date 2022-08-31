@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        #box:target{
+            background-color: yellowgreen;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            background-color: aqua;
+        }
+        .box .pox{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+        /* 直接子集选择器 */
+        .box > .pox{
+            background-color: blueviolet;
+        }
+        /* 兄弟关系 
+            + 
+            ~ 
+        */
+        .target-p{
+            color: pink;
+        }
+        .target-p~p{
+            color: yellowgreen;
+        }
+
+        .target-p+p{
+            color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <a href="#box">点击按钮</a>
+
+    <div class="box">
+        <div class="pox">hello world
+            <div class="pox">
+                <div class="pox"></div>
+            </div>
+        </div>
+    </div>
+
+    <p>hello world</p>
+    <p>hello world</p>
+    <p class="target-p">hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+</body>
+</html>

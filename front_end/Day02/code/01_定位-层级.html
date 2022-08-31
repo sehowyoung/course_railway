@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            /* 定位元素越靠后越优先显示 */
+        }
+        .active{
+            z-index: 1;
+        }
+        /* 
+            层级是跟着父级元素走的, 子集元素层级再高 , 父级层级低元素依旧无法显示
+        */
+        .pox{
+            width: 50px;
+            height: 50px;
+            background-color: hotpink;
+            position: absolute;
+            z-index: 999;
+        }
+        /* 子集元素突破父级元素层级? */
+    </style>
+</head>
+<body>
+    <div class="box active">box1</div>
+    <div class="box">box2</div>
+    <div class="box">
+        box3
+        <div class="pox">子集元素</div>
+    </div>
+</body>
+</html>

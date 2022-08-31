@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* li的点去掉 */
+        ul li{
+            list-style: none;
+        }
+        .nav::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .nav li{
+            float: left;
+            line-height: 40px;
+            padding-left: 20px;
+        }
+        .nav li span:nth-child(1){
+            display: inline-block;
+            
+        }
+        .bg-home{
+            width: 16px;
+            height: 16px;
+            background-image: url(./images/360bg.png);
+            background-size: 100%;
+            background-position-y: 535px;
+        }
+        .nav li:hover .bg-home{
+            background-position-y: 509px;
+        }
+        .nav li:hover span:nth-child(2){
+            color: rgb(63, 175, 15);
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li>
+            <span class="bg-home"></span>
+            <span>我的主页</span>
+        </li>
+        <li>
+            <span class="bg-tt"></span>
+            <span>新闻头条</span>
+        </li>
+    </ul>
+</body>
+</html>

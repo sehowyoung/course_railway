@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1. 写一个style标签 -->
+    <style>
+        /* 这里的语法规则就变成css语法规则 */
+        /* 元素选择 : body  */
+        /* body{
+            background-color: yellowgreen;
+        } */
+        h3{
+            color: #000;
+        }
+    </style>
+    <!-- 2. 我们可以外链一个css样式表 -->
+    <link rel="stylesheet" href="./02-css基础.css">
+
+    <style>
+        /* 
+            CSS基本选择符：类型选择符、id选择符、class选择符(类选择符)
+            - 类型 : 标签是什么就是什么 span  div body h3 
+
+            - id 选择符 : #+id名称 (100) 
+            - class 选择符 : . + class名(10)
+
+            - 伪类选择器 : 根据元素不同状态选择元素的; 
+
+            - 鼠标移入状态 :  
+               - :hover
+
+            
+        */
+
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            /* 上间距 */
+            margin-top: 10px;
+        }
+        /* 当有box类名的元素被鼠标移入的时候, 添加后方样式 */
+        /* hover 标记尽量不要添加元素大小改变 */
+        .box:hover{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+
+        /* 
+            a:link {color: red;}                    未访问的链接状态
+            a:visited {color: green;}				已访问的链接状态 
+            a:hover {color: blue;}                  鼠标滑过链接状态 
+            a:active {color: yellow;}               鼠标按下去时的状态
+        */
+
+        a:link{color: red;}       
+        a:visited {color: green;}	
+        a:hover {color: blue;}     
+        a:active {color: yellow;}  
+    </style>
+</head>
+<body>
+    <h2>你好css样式表</h2>
+    <!-- 3. 行内的css样式 , 把样式写到了html标签之中 -->
+    <h3 style="color: #fff;">这是不建议直接使用的行内样式</h3>
+    <!-- html标签之中的id 
+        规范 :  
+        一个页面之中同名id只能存在一个!
+        ID通常不作为样式添加的选择符; 
+    -->
+    <div id="box"></div>
+    <!-- html标签之中的class
+        写样式的时候标签尽量用 class 标记
+    -->
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <!-- 
+        总结 : 想要给元素添加样式应该怎么办 ? 
+        - 建立结构 
+        - 标记元素(使用class标记)
+        - 元素样式添加 
+     -->
+     <a href="https://www.ssssss.com">这是一个a标签</a>
+</body>
+</html>

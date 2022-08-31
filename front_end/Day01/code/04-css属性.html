@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        .box p{
+            font-size: 20px;
+            /* 
+                px 
+                pt 
+                rem 
+            */
+
+            /* color: #ffffff; */
+            color: rgb(100, 100, 100);
+            /* 字体 */
+            font-family : Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            /* 字体加粗 */
+            font-weight : bolder;
+            /* 文字样式 */
+            font-style: italic;
+            /* 行高 : 文字的垂直摆放位置 */
+            line-height: 200px;
+            /* 文字的水平居中样式 */
+            text-align: center;
+            /* 文字的划线 */
+            /* 小任务 : 费曼学习法使用 text-decoration 重构划线部分 */
+            text-decoration: line-through;
+
+        }
+
+        .pox p{
+            /* 首行缩进 */
+            text-indent: 20px;
+            /* 中英文都可以 */
+            letter-spacing: 10px;
+            /* 仅限于英文单词 */
+            word-spacing: 40px;
+            /* 首字母大写 */
+            text-transform:capitalize;
+        }
+        .container p {
+            /* font : font-style font-weight font-size / line-height font-family */
+            font: italic bold 12px/30px "黑体";
+        }
+        .container{
+            border: 2px dashed #ddd;
+        }
+        .container:hover{
+            border-width: 10px;
+        }
+
+        /* 给border设置具体的方向 */
+        
+        .pox{
+            width: 600px;
+            border-bottom: 2px solid #000;
+            /* border- top 
+                     - left
+                     - bottom
+                     - right
+            */
+        }
+
+        .container{
+            width: 200px;
+            height: 200px;
+            /* 背景图片 */
+            background-image: url(./images/1.jpg);
+            /* 使用背景图片大小限制 */
+            background-size: 100%;
+            /* 背景图片不重复 */
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <p>hello world</p>
+    </div>
+
+    <div class="pox">
+        <p>hello world</p>
+    </div>
+
+    <div class="container">
+        <p>hello world</p>
+    </div>
+</body>
+</html>

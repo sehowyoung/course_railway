@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            width  : 100%;
+            height : 62px;
+            background-color: rgb(35, 35, 35);
+        }
+        .nav .content{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .nav img{
+            float: left;
+        }
+        .nav .nav-list{
+            float: left;
+            margin-left: 178px;
+            color: rgb(255, 255, 255);
+        }
+        .nav .nav-list div{
+            float: left;
+            padding: 0 7px;
+            border-right: 2px solid rgb(68, 68, 68);
+            text-align: center;
+            height: 17px;
+            margin-top: 23px;
+            line-height: 17px;
+        }
+        /* div 标签之中带有 类名last的元素 */
+        .nav .nav-list div.last{
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 设置通栏属性 -->
+    <div class="nav">
+            <!-- 设置设计稿内容部分宽度 -->
+            <div class="content">
+                <img src="./images/qflogo.jpg" alt="">
+
+                <div class="nav-list">
+                    <div>首页</div>
+                    <div>课程</div>
+                    <div class="last">走进千锋</div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

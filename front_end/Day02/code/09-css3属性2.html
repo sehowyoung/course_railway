@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 这种写法不可取 : 
+            我们发生浮动的元素应该是子集元素而不是只被body包裹的元素;
+        */
+        div{
+            float: left;
+        }
+        .radius{
+            width: 400px;
+            height: 200px;
+            background-color: aqua;
+            /* border-radius: 5px 10px 20px 40px; */
+            /* border-radius: 5px 20px 40px; */
+            border-radius: 5px 40px;
+        }  
+        .radius2{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            border-radius: 100px;
+        }  
+        .shadow{
+            width: 100px;
+            height: 100px;
+            transition: all .5s;
+            background-color: rgba(0, 0, 0, .3);
+            border-radius: 12px;
+        }
+        .shadow:hover{
+            box-shadow: 2px 2px 5px #000;
+        }
+
+        .box{
+            /* width: calc(5rem + 100px + 50vw); */
+            width: calc( 20px * 2 );
+            height: 100px;
+            background-color: orange;
+        }
+    </style>    
+</head>
+<body>
+   <div class="radius"></div>
+   <div class="radius2"></div>
+   <div class="shadow"></div>
+   <div class="box"></div>
+</body>
+</html>

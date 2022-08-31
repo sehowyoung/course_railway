@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            /* 设置四个方向的padding值 */
+            /* padding: 20px; */
+            /* padding可以左上右下独立设置 */
+            /* 
+            padding-left: 10px;
+            padding-right: 30px;
+            padding-top: 15px;
+            padding-bottom: 60px; */
+
+            /* 四个方向的简写  */
+
+            /* 上右下左 */
+            /* padding:10px 20px 30px 40px; */
+            /* 上 (左右) 下 */
+            /* padding:10px 20px 30px; */
+            /* (上下) (左右) */
+            /* padding: 10px 20px; */
+
+            /* 问题 : 不想要设置 上下paddig，只想要设置左右padding  */
+            /* padding:0 20px; */
+
+            /* margin: 20px; */
+            /* margin重合问题怎么解决 : BFC */
+
+            /* margin:auto; */
+            /* 居中效果主要作用在左右margin设置上 */
+            /* margin : 10px auto; */
+            /* 我们设置margin的时候习惯设置一个方向的margin */
+            /* margin: 10px 20px 30px 40px ; */
+            padding-left: 20px;
+
+        }
+
+        .container{
+            /* 创建bfc的属性 */
+            /* 溢出隐藏 */
+            overflow: hidden;
+        }
+
+        .box{
+            overflow: hidden;
+            /* overflow: scroll; */
+        }
+        .pox{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        p{
+            width: 100px;
+            /* 三条属性同时存在才能显示省略号 */
+            white-space : nowrap;
+            overflow: hidden;
+            text-overflow : ellipsis; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+    <div class="box">
+        <div class="pox"></div>
+    </div>
+    
+    <p>这是一个里面有很                  长文本的p标签，这个文本真长啊</p>
+</body>
+</html>

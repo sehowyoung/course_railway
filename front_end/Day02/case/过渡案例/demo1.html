@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>fixed</title>
+<style type="text/css">
+*{margin:0;padding:0;}
+.box{width:1020px;height:800px;margin:0 auto;}
+.box .con{width:500px;height:394px;background:url(images/bg.jpg);float:left;margin:0 10px 6px 0;position:relative;overflow:hidden;}
+.con img{position:absolute;transition:all 1s;}
+.con1 img:nth-child(1){left:31px;top:32px;width:437px;height:317px;}
+.con1:hover img:nth-child(1){width:285px;height:203px;}
+
+.con1 img:nth-child(2){left:340px;top:-92px;}
+.con1:hover img:nth-child(2){top:32px;}
+
+.con1 img:nth-child(3){left:100%;top:143px;}
+.con1:hover img:nth-child(3){left:340px;}
+
+.con1 img:nth-child(4){left:340px;top:100%;transition-delay:0.1s}
+.con1:hover img:nth-child(4){top:258px;}
+
+.con1 img:nth-child(5){left:184px;top:100%;transition-delay:0.3s}
+.con1:hover img:nth-child(5){top:258px;}
+
+.con1 img:nth-child(6){left:31px;top:100%;transition-delay:0.5s}
+.con1:hover img:nth-child(6){top:258px;}
+
+.con4 img:nth-child(1){left:118px;top:29px;}
+.con4:hover img:nth-child(1){left:23px;}
+
+.con4 img:nth-child(2){left:100%;bottom:100%;}
+.con4:hover img:nth-child(2){left:335px;bottom:198px;}
+
+.con4 img:nth-child(3){left:100%;top:100%;}
+.con4:hover img:nth-child(3){left:335px;top:207px;}
+</style>
+</head>
+<body>
+<div class="box">
+	<div class="con1 con">
+    	<img src="images/con1-1.jpg" alt="" />
+        <img src="images/con1-2.jpg" alt="" />
+        <img src="images/con1-3.jpg" alt="" />
+        <img src="images/con1-4.jpg" alt="" />
+        <img src="images/con1-5.jpg" alt="" />
+        <img src="images/con1-6.jpg" alt="" />
+    </div>
+    <div class="con1 con">
+    	<img src="images/con2-1.jpg" alt="" />
+        <img src="images/con2-2.jpg" alt="" />
+        <img src="images/con2-3.jpg" alt="" />
+        <img src="images/con2-4.jpg" alt="" />
+        <img src="images/con2-5.jpg" alt="" />
+        <img src="images/con2-6.jpg" alt="" />
+    </div>
+    <div class="con1 con">
+    	<img src="images/con3-1.jpg" alt="" />
+        <img src="images/con3-2.jpg" alt="" />
+        <img src="images/con3-3.jpg" alt="" />
+        <img src="images/con3-4.jpg" alt="" />
+        <img src="images/con3-5.jpg" alt="" />
+        <img src="images/con3-6.jpg" alt="" />
+    </div>
+    <div class="con4 con">
+    	<img src="images/con4-1.jpg" alt="" />
+        <img src="images/con4-2.jpg" alt="" />
+        <img src="images/con4-3.jpg" alt="" />
+    </div>
+</div>
+</body>
+</html>

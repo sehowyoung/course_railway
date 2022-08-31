@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            text-align: center;
+            line-height: 100px;
+            font-size: 50px;
+            transition: all .5s;
+
+            transform: skew(10deg , 30deg);
+        }
+        .box:hover{
+            /* scale 放大的起始点是元素的圆心 */
+            transform: translate( 50px , 50px) scale(1.2) rotate(720deg) ;
+        }
+        .scale{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            margin-left: 200px;
+            transform-origin: bottom;
+        }
+        .scale:hover{
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+
+    <div class="scale"></div>
+</body>
+</html>
