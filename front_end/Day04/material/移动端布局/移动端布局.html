@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vw-rem单位转换-rem布局</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				padding: 30px;
+				padding-top: 10px;
+				line-height: 35px;
+				font-family: "微软雅黑";
+			}
+
+			h1,
+			h2 {
+				padding: 20px 0;
+			}
+
+			h3 {
+				background: #00AA88;
+				color: #FFFCF4;
+				font-size: 20px;
+				font-weight: 700;
+				margin: 10px 0;
+				border-radius: 4px;
+				padding: 5px 0px 5px 15px;
+			}
+
+			p {
+				line-height: 40px;
+			}
+
+			ul li {
+				list-style: none;
+				line-height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>移动端页面布局</h1>
+		<ul>
+			<li>今日重点：</li>
+			<li>1、移动端布局的概念</li>
+			<li>2、移动端布局的方法</li>
+			<li>3、弹性布局的特点</li>
+			<li>4、等比缩放布局（rem布局）</li>
+			<li>5、vw和vh</li>
+			<li>6、Rem配合VW做等比缩放布局</li>
+		</ul>
+		<h3>一、移动端布局</h3>
+		<p>移动端布局，目前主要是针对于手机端上面的页面布局开发</p>
+		<h3>二、移动端布局的方法</h3>
+		<p>弹性布局(100%布局)——拉勾网、天猫首页<br>
+			等比缩放布局(rem布局)—网易、淘宝首页
+		</p>
+		<p style="font-size: 20px;font-weight: bold;line-height: 60px;">弹性布局（100%布局）案例</p>
+		<img src="弹性布局.png" alt="">
+		<p style="font-size: 20px;font-weight: bold;line-height: 60px;">等比缩放布局（rem布局）</p>
+		<img src="等比缩放.png">
+		<p style="font-size: 20px;font-weight: bold;line-height: 60px;">混合布局案例</p>
+		<img src="混合布局.png">
+		<h3>三、弹性布局的特点</h3>
+		<p>
+			不管分辨率怎么变顶部与底部的bar，它的高度度和位置都不变； <br>
+			中间每条招聘信息不管分辨率怎么变，招聘公司的图标等信息 都位于条目的左边，薪资都位于右边. <br>
+			<b>特点：</b>关键元素高宽和位置都不变，只有容器元素在做伸缩变换。对于这类app，记住一个开发原则就好：文字流式，控件弹性，图片等比缩放
+			<img src="图片1.png" alt="">
+		</p>
+		<h3>四、等比缩放布局（rem布局）</h3>
+		<p>
+			等比缩放布局的特点：页面里边的元素会根据分辨率等比例放大或缩小. <br>
+			1.rem是什么? <br>
+			rem(font size of the root element)是指相对于<mark>根元素</mark>的字体大小的倍数。<br>
+		</p>
+		<p>
+			2.为什么web app要使用rem？<br>
+			实现强大的屏幕适配布局(淘宝,腾讯,网易等网站都是rem布局适配)rem能等比例适配所有屏幕,根据变化html的字体大小来控制rem的大小。<br>
+			<b>3.rem是根元素（html）的font-size的倍数。</b><br>
+		</p>
+		<h3>五、vw和vh</h3>
+		<p>
+			<b>vw：</b>viewport width，视窗宽度，1vw等于视窗宽度的1%。<br>
+			<b>vh：</b>viewport height，视窗高度，1vh等于视窗高度的1%。
+		</p>
+		<p><b>问题1：如何实现页面中出现一个正方形</b></p>
+		<p style="text-indent: 2em;">回答：width:10vw;height:10vw;（提示：宽度高度使用同样的单位即可）</p>
+		<p><b>问题1：元素:width:100%和元素：width:100vw实现效果是否一致</b></p>
+		<p style="text-indent: 2em;">回答：不一致；如果页面没有纵向滚动条的话，二者是西安效果一致；如果有纵向滚动条的话则有区别了因为width:100vw带有滚动条；宽度100%则不带有</p>
+		<h3>六、Rem配合VW做等比缩放布局</h3>
+		<p>
+			<b>1.rem</b><br>
+			&emsp;&emsp;rem是指相对于根元素的字体大小的单位。
+		</p>
+		<p>
+			<b>2.根元素</b><br>
+			&emsp;&emsp;如果根元素是相对设备尺寸自动变换。
+		</p>
+		<p>
+			<b>3.VW</b><br>
+			&emsp;&emsp;视窗宽度，1vw等于视窗宽度的1%。
+		</p>
+		<p>
+			<b>4.VW转换成PX赋值给font-size</b><br>
+			&emsp;&emsp;例：设备的分辨率为640*1136，逻辑像素为320*568&emsp;&emsp; 1VW=3.2px <br>
+			&emsp;&emsp;Font-size:100px;转换成VW&emsp;&emsp; font-size:31.25vw; <br>
+			&emsp;&emsp;1rem=31.25vw可一起结合写等比例缩放布局。
+		</p>
+		<p style="font-size:25px;font-weight: bold;">
+			扩展
+		</p>
+		<p>
+			<b>100%布局（弹性布局）</b>
+			实现方案：采用PX方式，借助弹性盒实现。<br>
+
+			<b>等比例缩放布局（rem布局）</b><br>
+			1,&lt;!-- <br>
+			html{font-size:31.25vw（可变:设计稿）;} <br>
+			31.25vw=100px(50px或100px为基准单位（好算）)/3.2px <br>
+			3.2px=320(视口宽度）/100(1vw等于视窗宽度的1%。) <br>
+			元素大小（rem）=原图量尺寸/dpr/100（50px、100px为基准单位（好算））
+			--&gt;
+			<br>
+			2,用媒体查询设置html的font-size配合rem（设置判断条件的节点）<br>
+
+			3, 通过JS动态设置html的font-size同样元素单位也要配合rem实现等比例缩放布局。
+
+		</p>
+	</body>
+</html>

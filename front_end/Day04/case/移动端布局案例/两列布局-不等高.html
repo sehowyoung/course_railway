@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="js/flexble.js"></script>
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0}
+        ul{
+            list-style:none
+        }
+        a{
+            text-decoration: none;
+        }
+        img{
+            vertical-align: middle;
+        }
+        html,body{
+            height:100%;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        header{
+            height:0.9rem;
+            background-color: pink;
+            text-align: center;
+            line-height: 0.9rem;
+            font-size:0.3rem;
+            position: fixed;
+            width:100%;
+        }
+        footer{
+            height:0.9rem;
+            background-color: yellow;
+            text-align: center;
+            line-height: 0.9rem;
+            font-size:0.3rem;
+            position: fixed;
+            bottom: 0px;
+            width:100%
+        }
+        section{
+            flex:1;
+            /* background-color: aqua; */
+            /* 划分多列 */
+            column-count: 2;
+            /* 滚动 */
+            /* overflow: auto; */
+            padding:0.9rem 0px;
+            background-image: url(img/a.png);
+            
+        }
+        section>div{
+            border:2px solid gray;
+            /* 不折列 */
+            break-inside: avoid;
+            padding:0.1rem;
+            margin-bottom: 0.2rem;
+        }
+        section>div>img{
+            width:100%;
+        }
+        section>div>p{
+            line-height: 0.4rem;
+            font-size:0.25rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>头部</header>
+    <section>
+        <!-- 多列 -->
+        <div>
+            <img src="img/1.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/2.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/3.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/4.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/5.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/6.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/7.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/8.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/9.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/10.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/11.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/12.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/6.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/7.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/8.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/9.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/10.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/11.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+        <div>
+            <img src="img/12.jpg" alt="">
+            <p>往后余生，啥都是你</p>
+        </div>
+    </section>
+    <footer>尾部</footer>
+</body>
+</html>

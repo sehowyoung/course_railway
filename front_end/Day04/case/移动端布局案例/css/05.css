@@ -1,0 +1,94 @@
+*{margin:0;padding:0}
+ul{list-style:none}
+img{
+    vertical-align: middle;
+}
+input{
+    outline: none;
+}
+a{
+ text-decoration: none;
+}
+html,body{
+    height:100%
+}
+/* 弹性盒子布局 */
+body{
+    display: flex;
+    flex-direction: column;
+}
+/* 头部设置 */
+header{
+    /* height:0.84rem; */
+    /* background-color: pink; */
+    line-height: 0.84rem;
+    font-size:0.4rem;
+    /* 变成弹性盒子 */
+    display: flex;
+    /* 主轴上面对其方式 */
+    justify-content: space-between;
+}
+header>span:nth-child(2){
+    font-size:0.3rem
+}
+header>span:not(:nth-child(2)){
+    padding: 0px 0.3rem;
+}
+/* 导航区域 */
+nav{
+    /* height:0.82rem; */
+    /* background-color: yellow; */
+    line-height: 0.82rem;
+    display: flex;
+    justify-content: space-around;
+    font-size:0.26rem;
+}
+nav>span:hover{
+    color:orangered
+}
+
+/* 主体区域 */
+section{
+    flex:1;
+    background-color: #f6f6f6;
+    /* 添加滚动条 */
+    overflow: auto;
+    display: flex;
+    /* 折行 */
+    flex-wrap: wrap;
+    /* 主轴上卖弄对其方式 */
+    justify-content: space-between;
+}
+section>div{
+    width:49%;
+    /* height:5.8rem; */
+    border:1px solid gray;
+    background-color: white;
+    margin-bottom: 0.1rem;
+}
+section>div>img{
+    width:100%;
+}
+section>div>.p1{
+    padding:0.15rem;
+    font-size:0.24rem
+}
+section>div>.p1>span{
+    background-color: orangered;
+    border-radius:5px;
+    padding:0.02rem 0.1rem;
+    color:white;
+}
+section>div>.p2{
+    color:gray;
+    font-size:0.2rem;
+    padding:0px 0.15rem;
+    display: flex;
+    justify-content: space-between;
+}
+section>div>.p3{
+    font-size:0.22rem;
+    padding:0.2rem 0.15rem;
+    display: flex;
+    justify-content: space-between;
+}
