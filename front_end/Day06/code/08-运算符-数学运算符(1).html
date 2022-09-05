@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // + - * / % 
+        // 等式进行加减乘除计算的时候，没有什么太复杂的数学规则， 主要是计算顺序问题; 
+
+        // 判定运算符的运算顺序 : 
+        // - 左到右 ; 常规;  
+        // - 右到左 ;
+        
+
+        // = 优先级是 : 2 
+        // +-  : 13 
+        // */% : 14
+
+        // - 查看完整的优先级 : 百度搜索 :  javascript 运算优先级 MDN 
+
+
+        // JavaScript在进行等式执行的时候只会查看两个运算符，比对运算哪一个是优先的; 
+        // - 同级别的运算那么我们就从左到右进行计算; 
+
+        // let res = 1 + 2 * 3 - 10 / 5 ; 
+        // console.log( res );
+
+
+        // let res = "hello world" / 30 + 20 - 5 * 3; 
+        // 任务 : 
+        let res = parseInt( "15px" ) + 22 / 30 % 5 - 33;
+        console.log(res);
+    </script>
+</body>
+</html>

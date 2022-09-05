@@ -1,0 +1,1 @@
+alert("你好我是外面的JavaScript");

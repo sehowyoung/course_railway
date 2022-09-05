@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 行内JavaScript代码编写 -->
+    <button onclick="alert('hello world')">这是一个按钮</button>
+
+    <!-- 2. 内嵌（javascript）编写代码-->
+    <script>
+        // 在script之中编写的代码会在页面打开的时候立即执行; 
+        // 在这里我们编写的语法就必须是JavaScript语法了, html , css 语法在这里直接使用会报错;
+        // alert("你好世界");
+        // javascript : api 调用 : 单词(系统定义好的)  单词后面加上 () ：调用运算 让api正常执行, 实现功能  ; 
+        // 小括号里面 : 数据 "你好世界"; 参数 , 给函数提供不同的数据， 给我们返回(计算出)不同的结果; 
+
+        // - 输出API : document.write() 直接把数据放到html结构之中; 
+        // -         : console.log() 直接把数据放入到控制台之中打印; 
+
+        document.write("你好世界")
+        console.log("你好世界") // √ 
+        
+        // 多行注释 
+        /* 
+            可以有换行符 ; 
+        */
+    </script>
+    <!-- 3.外联式 JavaScript代码编写
+        
+        这里的代码也是立即执行的!
+    -->
+    <script src="./03-test.js"></script>
+</body>
+</html>

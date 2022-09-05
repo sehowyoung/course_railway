@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 非纯字符串如何正确转换为数字类型; 
+        // 2. NaN 的判定; 
+
+        // API : 
+        // parse : 解析 (转换)
+        //  Int  : 整数 ; 
+        // Float : 小数类型; 
+
+        //  - parseInt 
+        // 1. 取整 ;
+        // 2. 删除字符串单位; 
+
+        //  - parseFloat 
+        // 1. 删除字符串单位同时保留小数; 
+
+
+        // - parseInt 应用
+        // let str = "123.345px";
+        // let res = parseInt( str ); 
+        // - 开头第一个字符是非数字的字符串转换结果为NaN ; 
+
+        // console.log( res );
+        // - parseFloat 应用; 
+        // let str = "123.345px";
+        // let res = parseFloat( str ); 
+        // console.log( res );
+
+        // 有一个数字 : 保留三位小数 ?
+        let num = 1.23456789; 
+        console.log( parseInt(num * 1000) / 1000 );
+
+
+        // 2. isNaN() 计算结果是布尔值 ; 
+        // - true : 是NaN 
+        // - false : 不是NaN 
+
+        // 为啥要用 isNaN : 就是因为 NaN 不能等于自己; 
+        // console.log( isNaN( 123 ) );
+
+        // MDN 我们在搜索API的时候可以是直接在API之后加上 空格 MDN 来进行MDN文档的查询; 
+
+        // isNaN 传入的参数会按照数字转换规则优先转换为 数字然后再判断这个数据是不是NaN ; 
+
+        // console.log("hello world");
+        // "hello world" => Number("hello world") => NaN => true
+
+        // 需求 : 
+        // - 判定一个字符串是不是纯数字字符串 ! 
+
+        let str = prompt("请输入任意字符串");
+
+        // 判定 str 是不是纯数字字符串 !; 
+        console.log( !isNaN( str ) );
+
+
+
+    </script>
+</body>
+</html>

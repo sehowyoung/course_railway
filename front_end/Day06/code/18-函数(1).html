@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数就是代码的容器, 函数可以让代码的复用性增强; 
+        // - 我们可以使用函数对代码进行封装， 如果有部分数据需要改变那么我们可以把这部分数据提取出来作为参数进行使用; 
+        // - 函数可以控制代码的执行时机; 
+
+        // 理解函数 : 
+        // - 使用函数的时候把函数理解位一个黑盒; 
+
+
+        // -1. 函数如何创建和调用; 
+
+        /*
+            function 函数名(){
+                // 代码块; 
+
+            }
+        */
+
+        function writeStar() {
+            for (let i = 1; i <= 10; i++) {
+                // 内层循环 : 
+                for (let k = 0; k < 2 * i - 1; k++) {
+                    // 这里的代码执行次数是外层循环执行次数 * 内层循环执行次数; 
+                    if (k === 0 || k === 2 * i - 2) {
+                        document.write("⭐")
+                    } else {
+                        document.write("&nbsp;&nbsp;")
+                    }
+                }
+                // 需要在外层循环打印换行; 
+                document.write("</br>");
+            }
+
+            for (let i = 10; i >= 1; i--) {
+                // 内层循环 : 
+                for (let k = 0; k < 2 * i - 1; k++) {
+                    // 这里的代码执行次数是外层循环执行次数 * 内层循环执行次数; 
+                    if (k === 0 || k === 2 * i - 2) {
+                        document.write("⭐")
+                    } else {
+                        document.write("&nbsp;&nbsp;")
+                    }
+                }
+                // 需要在外层循环打印换行; 
+                document.write("</br>");
+            }
+
+        }
+
+        // -2 函数如果不调用不会有任何的代码执行效果，内部代码需要函数才能执行!; 
+
+        // 函数调用语法 : 函数名 + () 
+        // (): 调用运算,表示调用对应函数名的函数; 
+        writeStar();
+        writeStar();
+    </script>
+</body>
+
+</html>

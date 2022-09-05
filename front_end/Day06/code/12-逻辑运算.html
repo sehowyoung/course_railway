@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // && || ! 
+        // && 多个条件同时成立则计算结果为true; 
+        // || 多个条件之中有一个条件成立则计算结果为true; 
+        // ! 取反; 
+
+        // 短路运算 : 
+        // 条件1 && 条件2 
+        // - 如果条件1 转换的结果是布尔值 false，那么条件2代码不会执行; 
+        // - 计算结果不是转换之后的布尔值 , 计算结果实际为 条件1 或者条件2 ; 
+
+        // let res = 0 && 10;
+        // console.log( res ); // 0 
+
+        // let res2 = "hello world" && "你好世界";
+        // console.log( res2 ); // "你好世界"
+
+        // // 练习 : 
+        // let res3 = "" && 0 ; 
+        // // res3 ? "";
+        // let res4 = 18 && 19 ; 
+        // res4 ? 19
+
+
+        // 条件1 || 条件2  
+        // 左侧条件1 成立 那么右侧的条件2代码不会执行; 
+        // 左侧条件1 转换成布尔值false 那么计算结果即为右侧条件2 ; 
+
+        // let res = 0 || 10;
+        // console.log( res ); // 10 
+
+        // let res2 = "hello world" || "你好世界";
+        // console.log( res2 ); // "hello world"
+
+        // // 练习 : 
+        // let res3 = "" || 0 ; 
+        // // res3 ? 0;
+        // let res4 = 18 || 19 ; 
+        // // res4 ? 18 
+
+        // 短路运算应用 : 
+        
+        // 输入一个数字如果这个数字小于60那么则执行后方的alert() 警告弹窗代码; 
+
+        let num = prompt("请输入您的考试分数!");
+
+        // num < 60 && alert("那么就要加油学习了!");
+
+        // 用 || 运算短路完成这个逻辑 ; 
+        num >= 60 || alert("那么就要加油学习了!");
+
+        // 判定变量 num 是否是大于20 小于 30的? 
+    </script>
+</body>
+</html>

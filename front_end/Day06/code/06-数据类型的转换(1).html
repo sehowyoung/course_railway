@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 转换目标为数字类型 : 
+        //  - 字符串转换成数字 : 纯数字字符串才能转换成数字，否则会转换成 特殊的数字类型  NaN ; 
+        //   - API Number();
+        //   - 关键字 : typeof 判断数据类型， 并返回数据类型信息; 
+        // let str = "hello world";
+        // let res = Number(str);
+        // console.log( res , typeof res );
+
+        // let str2 = "123456";
+        // let res2 = Number(str2);
+        // console.log( res2 , typeof res2 );
+
+        // let str3 = "123456abcd";
+        // let res3 = Number(str3);
+        // console.log( res3 , typeof res3 );
+
+        // - 布尔值转换成数字 : 
+        //    true | false 
+        //    - true : 1 
+        //    - false : 0 
+
+        // - undefined转换成数字 : NaN 
+        // - null 转换成数字 : 0 
+        
+        //- 隐式数据类型转换 : JavaScript为了能正常的完成代码执行， 自动参与运算的数据进行转换的机制; 
+
+        let num1 = 123456;
+        let bool = true;
+        console.log( num1 + bool );
+
+        // - 什么情况下会触发数字类型的隐式数据类型转换 : 
+        //   - 进行数学计算的时候 : + - * / % 
+        //   - + 在遇到字符串的时候除外! 
+        //      - 只要参与计算的数据左右两侧有一个是字符串，那么我们使用 + 运算就会最优先把数据转换为字符串， 然后进行拼接; 
+
+        // let num2 = 123456;
+        // let str  = "hello world";
+        // console.log( num2 + str );
+
+        // - 错误的不可能得到结果的计算 ; 
+        // - NaN 和任意数据进行计算的时候得到的结果都是 NaN 
+        // console.log( NaN * true );
+
+        // 转换目标为字符串类型 : 
+        // - 任何类型转换成字符串其实都是外部加上一个""
+        // let num = 1234567; 
+        // "1234567"
+        // - JavaScript之中单引号和双引号是没有区别的; 
+        // - 如果我们想用到 " 或者 ' 字符的时候我们在创建字符串的时候外部会使用另一个引号类型; 
+        // - 如果我们想要统一字符串类型, 我们也可以在字符之前加上 \ 进行字符串转义 ; 
+
+        // let str = "i'm gongyangwuyi";
+        // let str2 = 'i\'m gongyangwuyi';
+
+        // console.log( str , str2 );
+        // let res = undefined + "" + true;
+        // console.log( res);
+
+        // let num = 3;
+        // let res1 = null + 1; 
+        // let res2 = num * 5 + typeof true;
+
+        // console.log( res1 , res2 );
+
+        // - 字符串转换的API : String  | data.toString
+        
+        // let data = String(123);
+        // console.log( data );
+        // // data.toString 
+        // // data 必须是变量 ! 不能直接是其他类型; 
+        // let num33 = 123;
+        // let res = num33.toString();
+        // console.log( res );
+
+        // 转换目标为布尔值类型 : 
+        // 写优雅的代码需要这个知识; 
+
+        // - 字符串  
+        //   - "" => false
+        //   - 其他转换为 => true 
+
+        // - 数字类型  
+        //   - 0 | NaN => false 
+        //   - 其他 => true 
+        
+        // - undefined  => false 
+        // - null => false
+
+        // - 转换布尔值的API : Boolean();
+        // // - 我们一般情况下使用 !! 两个非! 进行布尔值转换 ; 
+ 
+        // let bool1 = !123; // 反向布尔值; 
+        // // console.log( bool1 );
+
+        // let bool2 = !!123;
+        // console.log( bool2 );
+
+        let res = !123 + !!123 + !"hello world" - !false ; 
+        //  !123 => false => 0 
+        //  !!123 => 1
+        //  !"hello world" => false => 0 
+        //  !false => true => 1
+        console.log( res );
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 逻辑的核心是逻辑语句 : 
+        // if else 语句 : 
+        // 语句构成 : 关键字(){} 
+        // if 语句结构 : 
+        //  - if( 表达式 ){ 代码 }
+        //    - 表达式是根据需求列出的 
+        //    - 表达式的计算结果无论是什么类型最终都会被转换为布尔值类型去参与逻辑语句; 
+        //    - 小括号里面的转换结果 : 
+        //      - true  : 执行表达式后方大括号之中的代码; 
+        //      - false : 如果没有else代码块则什么都不执行; 
+
+        // let score = prompt("请输入你的考试成绩");
+        // if( score >= 60 ){
+        //     alert("你靠的挺中啊!");
+        // }
+
+        // - if(){}else{}
+        //   - 前方的条件都相同 ; 
+        //    - 小括号里面的转换结果 : 
+        //      - true  : 相同; 
+        //      - false : 执行else代码块之中的内容; 
+        
+        // let score = prompt("请输入你的考试成绩");
+        // if( score >= 60 ){
+        //     alert("你考的挺中啊!");
+        // }else{
+        //     alert("你考的真中啊!!!");
+        // }
+
+        // - 多种情况的判断逻辑尽量不要用if else 
+        // - 我们应该是 if else if 语句进行多分支判断 ; 
+
+        /*
+
+        // - 我们现在要对成绩进行分级 : 
+        //  - 90 - 100 分 A 级 ; 
+        //  - 80 - 90  分 B 级
+        //  - 60 - 80  分 C 级
+        //  - < 60     分 D 级 
+
+        if(){
+
+        }else if(){
+
+        }else if(){
+
+        }else{
+
+        }
+        */
+        // var score = prompt("请输入成绩");
+        // if(score >= 90 && score <= 100){
+        //     alert("A")
+        // }else if( score >= 80 && score < 90 ){
+        //     alert("B")
+        // }else if( score >= 60 && score < 80 ){
+        //     alert("C")
+        // }else if( score >= 0 && score < 60 ){
+        //     alert("D")
+        // }
+        // else{
+        //     // 一般做错误处理不在逻辑之内; 
+        //     alert("您输入的数据有误，请输入正确考试成绩!");
+        // }
+
+        // 逻辑任务 : 
+        // - 输入一个年份信息 (四位数的数字), 判定这个年份是不是闰年; 
+        // - 四年一闰年，百年不润年 。 
+        // - 四百年一闰年; 
+        
+        // 每隔四年是一年闰年 ? - 闰年是4的倍数! 判断是n的倍数就用 x % n 结果为0 则表示x是n的倍数，如果不为0则表示x不是n的倍数; 
+
+        // var year = prompt("请输入年份信息");
+        // if( year % 4 === 0 && year % 100 !== 0 || year % 400 === 0 ){
+        //     alert(year + "年，是闰年")
+        // }
+            
+        // 输入身高体重信息 , 根据BMI标准体重计算体重是否在标准阶段 ; 
+        // （身高-108）*2=标准体重体重 
+        // - 标准体重是允许10斤左右浮动的; 
+        // 极值 : 最小值或这最大值的判断; 
+
+        // var weight = prompt("体重");
+        // var height = prompt("身高");
+
+        // var stand_weight = (height - 108) * 2;
+        
+        // // - 我们需要计算最大值和最小值 : 
+        
+        // var max_weight = stand_weight + 10;
+        // var min_weight = stand_weight - 10;
+
+        // - 范围判断的原则就是 大于等于最小值，小于等于最大值; 
+        // ? 
+        // if( min_weight >= weight && max_weight <= weight){
+        //     alert("体重标准");
+        // }else{
+        //     alert("体重不标准");
+        // }
+        // - 需求 : 根据我们的体重进行提示， 超重应该减肥，过轻应该多吃点饭!
+        
+        // switch  语句 
+        // switch : 转换! 
+        //  - 条件是和数据一一对应的; 
+        //  - 在进行数据转换的时候很好用 ; 
+        //  - 数字转换成中文! 
+
+        /*
+        // 传入数据和case数据进行比较的时候是绝对等于比较; 
+        // 我们在传入数据的时候一定提前确认数据类型! 
+
+        switch( 数据 ){
+            case 数据1 : 
+                代码块1 
+                break;
+            case 数据2 : 
+                代码块2 
+                break;
+            ...
+            default : 
+                代码块 n 
+        }
+        */
+
+        // var data = Number(prompt("写入数字"));
+        // console.log( data );
+        // switch( data ){
+        //     case 1 : 
+        //         alert("壹");
+        //         break;
+        //     case 2 : 
+        //         alert("贰");
+        //         break;
+        // }
+        // 注意switch的穿透特性 , 这个特性可以使用 break 来进行阻止; 
+
+        // 如果条件允许的情况下尽量写switch ; 
+
+        // 作业任务 : 用switch 判断某年某月共有多少天! 
+
+        
+    </script>
+</body>
+</html>
