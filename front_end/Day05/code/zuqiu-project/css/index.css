@@ -1,0 +1,153 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header{
+    background-color: rgb(13, 196, 65);
+    height: 1.375rem;
+}
+
+/* 热点布局 */
+.container-hot{
+    flex: 1;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.hot-tab{
+    height: 1.0938rem;
+    background-color: #fff;
+}
+.hot-box-wrapper{
+    flex:1;
+    column-count: 2;
+    overflow: auto;
+}
+.hot-box{
+    background-color: bisque;
+    border: .0156rem solid #000;
+    box-sizing: border-box;
+}
+.hot-box img{
+    width: 100%;
+}
+/* 关注布局 */
+.container-point{
+    flex: 1;
+    background-color: rgb(241, 241, 241);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-point{
+    display: none;
+}
+.container-point .box{
+    background-color: #fff;
+    /* height: 12.1094rem; */
+    margin-top: .1719rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-point .box .box-header{
+    height: 2.2031rem;
+    background-color: aqua;
+}
+.container-point .box .box-img{
+    background-color: violet;
+    overflow: hidden;
+    flex: 1;
+}
+
+.container-point .box .box-img img{
+    display: block;
+    width: 100%;
+}
+
+.container-point .box .box-title{
+    height: 1rem;
+    background-color: skyblue;
+}
+
+.container-point .box:first-child{
+    margin-top: 0;
+}
+/* 头部布局  */
+
+header .header-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+header .header-btn span{
+    display: inline-block;
+    width: 1.8906rem;
+    height: .75rem;
+    text-align: center;
+    line-height: .75rem;
+    background-color: rgb(100, 217, 133);
+    color: #fff;
+    border-radius: 0 .75rem .75rem 0;
+    font-size: .3906rem;
+    opacity: .6;
+}
+header .header-btn span:nth-child(1){
+    border-radius:.75rem 0 0 .75rem ;
+}
+/* 表示span之中带有active的类名的筛选 */
+header .header-btn span.active{
+    opacity: 1;
+}   
+footer{
+    display: flex;
+    height: 1.375rem;
+    border-top: .0313rem solid rgb(214, 214, 214);
+}
+
+footer .btn{
+    width: 1.7188rem;
+    height: 1.375rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(214, 214, 214);
+    font-size: .4063rem;
+}
+footer .btn:nth-child(3){
+    position: relative;
+}
+
+footer .btn .camera-wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.6406rem;
+    height: 1.6406rem;
+    border: .0313rem solid rgb(214, 214, 214);
+    border-radius: 50%;
+    margin-top: -0.3125rem;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+footer .btn .camera-wrapper span{
+    font-size: .9375rem;
+    line-height: 1.6406rem;
+}
+
+footer .btn span{
+    font-size: .4063rem;
+}
+footer .btn.active{
+    color: rgb(13, 196, 65);
+}

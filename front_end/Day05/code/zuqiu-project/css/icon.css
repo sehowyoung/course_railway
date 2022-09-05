@@ -1,0 +1,11 @@
+@font-face {
+    /* 我们自己定义的字体名称 */
+    font-family: "iconfont";
+    src: url(../icon/iconfont.ttf) format("truetype");
+}
+/* 给所有的字体图标定义一个专用的类名 */
+.iconfont{
+    font-family: "iconfont";
+    font-size: 16px;
+    font-weight: normal;
+}

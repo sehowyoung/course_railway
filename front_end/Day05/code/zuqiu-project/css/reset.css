@@ -1,0 +1,12 @@
+html,body,div,header,footer,p, ul,ol,li{
+    margin: 0;
+    padding: 0;
+}
+a:link,
+a:visited,
+a:hover,
+a:active{
+    color: #000;
+    text-decoration: none;
+}
+/* 这里只用标签选择器 ， 对标签进行清零操作 */
