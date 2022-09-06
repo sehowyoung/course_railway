@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        // JavaScript是一个解释性语言 ; 
+        // 我们浏览器读取到script标签的时候，解释器开始准备解释代码; 
+        // - 解释代码|执行功能之前会发生两件事 ; 
+        // 1. 语法检查!  
+        //    - 如果存在语法错误， 所有代码直接不解释! 
+        // 2. 声明提升 ! 
+        //    - 把声明行为提升到作用域的最前列! 
+        //    - 使用 var 声明变量的时候会有问题，但是使用let则不会; 
+
+        // let a = 10； 
+        // function (){
+
+        // }
+        // console.log(a + 10);
+        // var a = 10;
+
+        // let 为啥不受影响 : 因为let有TDZ; 
+        // TDZ : 暂时性死区(在一定区域内锁死变量的应用)!
+
+        // console.log( a );
+        // let a = 10;
+
+        // - 重点 : 一定要在变量声明之后再使用变量! 
+        
+
+        // 对函数也有影响 , 函数是整体提升!
+        // - 因为这个机制的存在我们可以在任意位置调用声明好的函数! 
+
+        // console.log( foo );
+        // foo();
+        // function foo(){
+        //     console.log("hello world");
+        // }
+        
+        // 函数也有赋值式声明 : 
+        // - 赋值式声明的函数所有特征和变量一样 ; 
+        // let foo = function(){
+        // }
+
+    </script>
+</body>
+</html>

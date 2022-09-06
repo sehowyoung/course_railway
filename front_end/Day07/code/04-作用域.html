@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 变量的声明和使用会收到作用域机制的影响 : 
+
+        // ES5 : 只有函数作用域(只有函数大括号创建的作用域才是局部作用域)
+        // ES6 : 只要使用了大括号都是独立作用域
+
+        // 区分 : var 声明的变量归ES5管， 用 let声明的变量归ES6管; 
+
+
+        // 作用域 : 
+        // 1. 局部作用域 ; 
+        //    - 局部作用域仅在局部范围有效; 
+        // 2. 全局作用域 ; 
+        //    - 全局作用域在任意范围有效; 
+
+        // ES5 : ES5之中只有函数的大括号可以创建独立作用域其他的语句都不是独立作用域; 
+
+        // if( true ){
+        //     var a = 10;
+        // }
+        // console.log( a );
+        
+        // function foo(){
+        //     var a = 10;
+        //     console.log( a );
+        // }
+        // foo();
+        // console.log( a );
+
+        // ES6 : 所有的大括号都是作用域,使用let声明的变量很容易变成据变量，所以使用的时候我们需要注意作用域问题; 
+
+        // if( true ){
+        //     let a = 10;
+        // }
+        // console.log( a );
+
+        // 局部变量和全局变量的区别 : 
+        // 1. 所有的全局变量公用一个命名空间;  
+        // 局部变量在一个作用域之中有一套命名空间; 
+        // let a = 10;
+        // 2. 全局变量会一直存在于程序运行的内存之中; 
+        // 局部变量是作用域之中的代码执行结束之后就立即删除; 
+
+        // function foo(){
+        //     let num = 10;
+        // }
+        // function poo(){
+        //     let num = 20;
+        // }
+        
+    </script>
+</body>
+</html>

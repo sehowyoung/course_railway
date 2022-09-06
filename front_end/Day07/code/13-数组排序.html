@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // - API 工具排序; 
+        //   - sort();
+        
+        // - 算法排序 :  冒泡 √, 选择排序√ , 快排√ , 归并 , 插入 , 希尔 , 堆排序
+
+        // let arr = [ 20,3000,100,555,423 ];
+        // arr.sort();
+        // console.log( arr );
+
+        // sort : 进行准确排序; 
+        // - sort可以接受一个函数作为参数 ; 
+
+        // let arr = [ 20,3000,100,555,423 ];
+        
+        // function handlerSort( a , b ){
+        //     // 这个函数会被多次调用 ! 
+        //     // 我们会根据这个函数返回值进行数据排列; 
+        //     // console.log( a , b );
+        //     // - 我们在函数内部规定计算规则 
+        //     return a - b; // 表示从小到大排列; 
+        //     // return b - b; // 表示从大到小排列; 
+        // }
+        // arr.sort( handlerSort );
+
+        // console.log( arr );
+        // let arr = [ 20,3000,100,555,423 ];
+        // let arr = [ 
+        //     {
+        //         title : "iphone 13 pro max",
+        //         price : 9999,
+        //         sale : 9999,
+        //         hot : 4
+        //     },
+        //     {
+        //         title : "iphone 13",
+        //         price : 6999,
+        //         sale : 12000,
+        //         hot : 6
+
+        //     },
+        //     {
+        //         title : "iphone 13 pro",
+        //         price : 7999,
+        //         sale : 99999,
+        //         hot : 5
+        //     }
+        // ];
+        
+        // function handlerSort( a , b ){
+        //     // 对象在进行取出运算的时候可以把 [] 简写成. 
+        //     // 注意 : . 后面的属性名必须符合变量命名规则; 
+        //     // return a["price"] - b["price"];
+        //     // return a.price - b.price; 
+        //     return a.sale - b.sale;
+        // }
+        // arr.sort( handlerSort );
+
+        // console.log( arr );
+
+        // 排序封装 : 
+        let arr = [ 
+            {
+                title : "iphone 13 pro max",
+                price : 9999,
+                sale : 9999,
+                hot : 4
+            },
+            {
+                title : "iphone 13",
+                price : 6999,
+                sale : 12000,
+                hot : 6
+
+            },
+            {
+                title : "iphone 13 pro",
+                price : 7999,
+                sale : 99999,
+                hot : 5
+            }
+        ];
+
+        function sortList( arr , type , options ){
+            // 对于高级的封装而言我们可以设置默认参数; 
+            type = type || "price";
+            options = options || 1;
+            arr.sort( function( a , b ){
+                return options === 1 ? a[type] - b[type] : b[type] - a[type];
+            });
+        }
+        // sortList( arr , "sale" , 1 );
+        sortList( arr , "sale" , 2 );
+        console.log( arr );
+
+
+    </script>
+</body>
+</html>

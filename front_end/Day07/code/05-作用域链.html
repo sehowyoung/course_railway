@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 作用域链就是变量访问的查找规则 ! 
+        // 从内向外查找!
+
+        // - 1. 变量访问; 
+        // - 2. 变量赋值;
+
+        // - 作用域链是有就近原则的; 
+        // - 作用域链是从内向外访问的到全局作用域为止; 
+
+        // let a = 10;
+        // function foo(){
+        //     let a = 20;
+        //     function poo(){
+        //         console.log( a );
+        //     }
+        //     poo();
+        // }
+        // foo();
+
+        // - 变量赋值之前会先进行变量访问, 再进行赋值; 
+        // let a = 10;
+        // function foo(){
+        //     let a = 20;
+        //     function poo(){
+        //        a = 30;
+        //     }
+        //     poo();
+        // }
+        // foo();
+        // console.log( a );
+
+
+        // - 特殊的情况一定要避免! 
+        // 在函数之中声明变量时不使用关键字，直接赋值,这种操作产生的变量是一个全局变量; 
+
+        // function foo(){
+        //     c = 20;
+        // }
+        // foo();
+
+        // 参数也是变量, 参数是局部变量; 
+
+        // let a = 10;
+        // function foo(){
+        //     a = 20;
+        // }
+        // foo();
+        // console.log( a );
+
+        // let a = 10;
+        // function foo( a ){
+        //     a = 20;
+        // }
+        // foo();
+        // console.log( a );
+    </script>
+</body>
+</html>

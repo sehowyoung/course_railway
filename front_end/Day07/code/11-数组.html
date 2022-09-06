@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组 : 一组数据! 
+        // 数组的存储格式也是 key : value 
+        // 但是数组的key值我们通常叫做索引值(index) 
+        // - 从 0 开始逐个递增的数字; 
+        // 数组存储数据的时候是不需要我们写索引值的; 
+
+        let arr = ["hello world" , {} , 123 , "你好世界"];
+        // 数组之中下标就代表数据，下标代表什么数据是我们来决定! 
+        // 对象是多条数据共同描述一个事物， 数组一组同类型的数据; 
+
+
+        // 1. 创建数组 
+        // - 字面量创建 ; 
+        let arr1 = [];
+        // - 构造函数形式创建数组; 
+        let arr2 = [];
+
+        // 数组的增删改查 : 
+
+        // - 增 : 
+        //   - 1. 前增, 后增 
+        //   - 2. 固定位置增!
+
+        // push() : 后增; 
+        // unshift() : 前增; 
+
+        // let arr3 = ["hello world"];
+        // arr3.push("你好世界");
+        // let res = arr3.unshift("你好彭于晏" , "你好马尔扎哈");
+        // console.log( arr3 );
+
+        // API : push , unshift 返回值为数组的新长度  arr.length 
+        // console.log( res );
+        // arr3.length = 2;
+
+        // console.log( arr3 );
+
+        // 任意位置增 : 
+        // let arr3 = ["hello world","你好世界"];
+        // // splice( 起始点 [, 删除几项数据 [, 新增数据1 , 新增数据2 ... , 新增数据n]])
+        // arr3.splice( 1 , 0 , "彭于晏");
+        // console.log( arr3 );
+
+        // 数组也是可以使用 [] 取出运算进行数据新增 ; 
+
+        // let arr3 = ["hello world","你好世界"];
+
+        // arr3[2] = "你好彭于晏";
+        // arr3[3] = "你好彭于晏";
+        // arr3[arr3.length] = "你好彭于晏";
+        // arr3[arr3.length] = "你好吴彦祖";
+        // arr3[arr3.length] = "你好王宝强";
+
+        // console.log( arr3 );
+
+        // arr3[ 100 ] = "我离得有点远";
+
+        // console.log( arr3 );
+        
+    </script>
+</body>
+</html>

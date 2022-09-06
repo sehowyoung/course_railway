@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.time("all")
+        // 递归 : 
+        // - 1. 找到计算的起始点!  
+        // - 2. 明确计算规则; 
+        // - 3. 一定要把每次的计算结果传递出去完成归行为 ! 
+
+        // 递归的基本语法 : 
+        // function foo(){
+        //     foo();
+        // }
+        // foo();
+        // RangeError
+
+        // 递归完成累加行为 : 
+
+        // - 这个递归函数的作用是用来计算累加结果的; 
+        // function sum( n ){
+        //     // 1. 找到终止条件 ; 
+        //     // - 累加的起始点是 1 ; 
+        //     if( n === 1 ){
+        //         return 1 
+        //     }
+        //     // 2. 找到计算规则; 
+        //     // - 前一个数的累加结果 + 当前数值; 
+        //     // 3. 我们应该把计算结果回归出去; 
+        //     return sum( n - 1 ) + n ; 
+        // } 
+        // let res = sum( 10 );
+        // console.log( res );
+
+        // - 计算任意数值的阶乘结果 : 
+        // function fac( n ){
+        //     // 1. 找到终止条件 ; 
+        //     // - 累加的起始点是 1 ; 
+        //     if( n === 1 ){
+        //         return 1 
+        //     }
+        //     // 2. 找到计算规则; 
+        //     // - 前一个数的累加结果 + 当前数值; 
+        //     // 3. 我们应该把计算结果回归出去; 
+        //     return fac( n - 1 ) * n ; 
+        // } 
+        // let res = fac( 10 );
+        // console.log( res );
+            
+        // 斐波那契数列 : 
+        // 1 1 2 3 5 8 13 21 34 55 89 ... 
+        // 前两项的和等于下一项; 
+        // - 传入n代表数列的第n项 , 计算第n项返回计算结果; 
+
+        // let count = 0 
+        // function fib( n ){
+        //     count ++;
+        //     if( n === 1 || n === 2 ){
+        //         return 1; 
+        //     }
+        //     return fib( n - 1 ) + fib( n - 2 );
+        // }
+        // console.time("a")
+        // let res = fib( 45 );
+        // console.timeEnd("a");
+        
+        // console.log( count );
+        // console.log( res );
+        
+        console.timeEnd("all");
+    </script>
+</body>
+</html>

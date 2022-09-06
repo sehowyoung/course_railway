@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="foo()">点击执行代码</button>
+    <script>
+        // 函数的主要作用就是封装代码  
+        // - 1. 函数体
+        // - 2. 函数调用 
+
+        // function foo(){
+        //     console.log("hello world");
+        // }
+        // foo();
+
+
+        // 我们现在想要把k作为函数的变量来使用 : 
+        // - 函数参数的使用 ; 
+        // 函数的参数就是函数在定义是确定的变量, 这个变量会在函数调用的时候赋值; 
+        // - 我们把函数定义是时的变量称之为形参; 
+        // - 把函数调用时传入的数据称之为实参 ; 
+
+        // 重要 : 形参就是变量! 
+        //      : 实参就是数据! 
+
+        /*
+            语法 : 
+
+            function foo( a,c,b ){}
+
+
+            foo( 1 , 2 , 3)
+        */  
+
+        // 参数的对应关系 : 
+        // - 从左向右一一对应关系，只和函数参数的位置有关; 
+        // 参数传递的时候有特殊情况 : 
+        // - 形参比实参多 
+        //   - 多出来的形参值位undefined ; 
+        //   - 我们可以根据这个特性来判断参数是否没有传递!
+
+        /*
+            function foo( a,b,c ){
+
+            }
+            foo( 1 , 2 );
+        */
+
+        // - 实参比形参多 
+        //   - 多出来的实参会被忽略; 
+        
+        /*
+            function foo( a,b,c ){
+
+            }
+            foo( 1 , 2 , 3, 4 , 5 , 6);
+        */
+
+        // 参数如何实际应用 : 
+        // - 最基础的封装就是把代码直接放入函数之中, 然后把改变的数据提取成形参，在函数调用的时候传入; 
+
+
+        // - 建立函数的时候一定要清除函数负责的功能时什么, 建立函数的目的时什么; 
+        //   - 参数就是要被判断的数字; 
+        function isSushu(k){
+            let i ;
+            for( i = 2; i < parseInt(k / 2) ; i ++ ){
+                if( k % i === 0 ){
+                    // 是不是素数 ? 
+                    break;
+                }
+            }
+            i === parseInt(k / 2) ?  console.log(k) : "";
+        }
+
+        // - 完成昨天的需求 : 100 - 200之间打印素数; 
+        for(let i = 100 ; i <= 200; i ++){
+            isSushu( i )
+        }
+
+        let res = isSushu(11);
+        // console.log( res );
+
+    </script>
+</body>
+</html>

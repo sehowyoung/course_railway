@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let list = [
+            {
+                title : "深耕房产O2O 美澳居成海外置业第一品牌",
+                src   : "./images/媒体报道_06.jpg",
+                tip   : "近年来，中国跨境房地产投资日益升温，越来越多的购房者将目光投向了海外。仲量联行近日发布的研究报告显示，2014年上半年，中国海外房地产投资总额较2013..",
+                date  : "02-06 12:45"
+            },
+            {},
+            {},
+            {}
+        ];
+        
+        // 删 : 
+        // - pop() 后删 
+        // - shift() 前删; 
+        // - splice() 任意删; 
+
+        // let arr = [ 1,2,3,4,5 ];
+        // let res = arr.pop();
+        // console.log( arr , res );
+        // pop 返回值 : 删除的数据; 
+
+        // let arr = [ 1,2,3,4,5 ];
+
+        // let res = arr.splice( 1 , 3 )
+        // console.log( arr , res  );
+
+        // 改 
+        // - 改某一项数据; 
+        // let arr = [ 1,2,3,4,5 ];
+        // arr[1] = arr[2] = "hello world";
+        // console.log( arr );
+        // - 数组换位 ; 
+        // let arr = [1,2,3,4,5];
+        // 制造一个缓存把被覆盖的数据进行保存; 
+        // let temp = arr[0];
+        // arr[0] = arr[2];
+        // arr[2] = temp;
+
+        // 查 
+        // 1. 单个查; 
+        let arr = [1,2,3,4,5];
+        // console.log( arr[2] );
+        // 2. 遍历 : 
+        // - for 循环遍历 ; 
+        // for(let i = 0 ; i < arr.length ; i++){
+        //     console.log( arr[i] );
+        // }
+        
+        // - for in 遍历 ; 
+        for(let index in arr ){
+            // - 此时的下标是字符串! 
+            console.log( index , arr[index]);
+        }
+
+    </script>
+</body>
+</html>

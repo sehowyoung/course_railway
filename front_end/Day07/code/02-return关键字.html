@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // return 是在函数体之中的关键字 ; 
+        // - 1. 终止函数执行 ; 
+        //     - 在函数体内不要再return后面写任何代码，因为无效! 
+        // - 2. 给函数添加一个调用结果 
+        //     - 这个调用结果只能有一个
+        //     - 这个调用结果只能是数据 ( 写表达式之后, 会在计算完成后再进行返回)
+
+        // function foo( a , b){
+        //     return a + b; 
+        // }
+        // let res = foo( 10 , 20 )
+        // console.log( res );
+
+        // - 如果函数只应用在一个地方那么爱怎么写就怎么写! 
+        // - 如果函数需要复用那么最好把函数设计成有返回值的函数! 
+
+        // 对素数判断进行改版; 
+
+        function isSushu(k) {
+            let i;
+            for (i = 2; i < parseInt(k / 2); i++) {
+                if (k % i === 0) {
+                    // 是不是素数 ? 
+                    break;
+                }
+            }
+            // 三目运算的三个部分之中都不能写return! 
+            // 我们只能返回三目运算的结果; 
+            return i === parseInt(k / 2);
+        }
+
+
+        // 设计一个函数 : 函数可以计算任意两个数的加减乘除!并把计算结果返回; 
+
+        // 数据 : 
+        // 两个参与运算的数字; 
+        // 一个运算符!  
+        //  - 运算符是数据么 ?  不是 ! 使用数据表达运算符, 运算符的规则你自己定! 
+
+        function calculator(a, b, options) {
+            switch (options) {
+                case "+":
+                    return a + b;
+                case "-":
+                    return a - b;
+                case "*":
+                    return a * b;
+                case "/":
+                    return a / b;
+            }
+        }
+
+        // 编写函数，判断一个字符串的内容是不是纯数字
+
+        function isNumber( str ){
+            return !isNaN( str );
+        }   
+        console.log( isNumber("123") );
+        console.log( isNumber("123abc") );
+
+
+    </script>
+</body>
+
+</html>
