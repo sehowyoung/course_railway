@@ -10,12 +10,10 @@
 
 <body>
     <script>
-        if (year % 400 === 0) {
-            alert('yes')
-        } else if (year % 4 === 0 && year % 100 != 0) {
-            alert('yes')
-        } else {
-            alert('no')
+        for (let index = 100; index <= 200; index++) {
+            if (index % 3 === 0 || index % 7 === 0) {
+                console.log(index);
+            }
         }
     </script>
 </body>
