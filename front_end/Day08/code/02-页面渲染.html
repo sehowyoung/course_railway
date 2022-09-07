@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- <div class="container">
+        <div class="box">
+            <img src="./images/new1.png" alt="">
+            <h2>xxxx</h2>
+        </div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div> -->
+    <script src="./data.js"></script>
+    <script>
+        // 把对象数组转换成html结构 ! 
+        // 1. 要有数据; 
+        // 2. 拼接html结构的字符串! 
+        // 3. 把拼接好的html字符串放入到页面之中; 
+        // console.log( myList );
+
+        let html = "";
+        html += '<div class="container">';
+        // - 内部的box字符串拼接是用 数据拼接的, 数据有多少我就拼接多少个; 
+        for(let i = 0 ; i < myList.length ; i ++){
+            html += '<div class="box">' + 
+                        '<img src="'+ myList[i].src +'" alt="">' +
+                        '<h2>'+ myList[i].title +'</h2>' + 
+                    '</div>'
+        }
+        html += '</div>';
+        document.write( html )
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handlerClick()">点击跳转到其他页面</button>
+    <script>
+        // console.log( location );
+
+        // - 就前端而言我们需要使用的地址栏信息有 : 
+        // href : 
+        //  - 读写
+        //  - 语法 : 
+        //    - 取值语法 : location.href 
+        //    - 赋值语法 : location.href = "路径" 
+        
+        console.log( location.href, decodeURI(location.href) );
+
+        // 相对路径只会改变浏览器最后一段的路径信息;
+        // ./   : 当前文件夹; 
+        // ../  : 上级文件夹;  
+        // location.href = "./08-BOM.html";
+        function handlerClick(){
+            // location.href = "./08-BOM.html"
+            // location.href = "http://10.106.36.188";
+            // window.open("https://www.baidu.com");
+            // close();
+
+            location.href = "http://10.106.36.188#hello";
+        }
+        // 做一个跳转业务 : 
+        // - 第一次点击的时候打开百度, 第二次点击的时候在跳转到正确页面; 
+
+        // hash : 
+        //  - 唯一值，标记值 ; 
+        //  - 读写
+        //  - 哈希值在跳转页面的时候也可以保留; 
+        // 我们可以跨页面传递数据! 
+
+        // 在浏览器的路径上添加哈希值， 是不影响浏览器打开的页面结构的; 
+        // hash值都是传id的; 
+
+        // 小任务 : 在美奥居 页面上 头像位置添加带有哈希值的a标签, 跳转到详情页， 在详情页上打印点击的头像ID; 
+        // 所有没有的数据都自己编! 
+        
+    </script>
+</body>
+</html>

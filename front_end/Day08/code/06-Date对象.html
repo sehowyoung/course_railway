@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Date 对象表述的是日期信息; 
+        // - 表述时间的方式是时间戳! 
+        // - 1970,1,1 起始一直到Date对象表示时间的经过的毫秒数; 
+        
+        // 1. 设置一个有具体日期的日期对象; 
+        // 2. 获取日期对象里面的信息; 
+
+        // - 基于日期对象信息的实战应用; 
+
+
+        // 创建日期对象 : 
+        // - 1.  new Date(); 创建表达本地时间的日期对象; 
+
+        // let d1 = new Date();
+        // console.log( d1 , d1.toString() );
+        
+        // - 2. 创建目标时间的日期对象; 
+        // - 参数的类型都是数字; 
+        // new Date( year , month , date [, hour , minute , second]); 
+
+        // - 月份计数是从0开始的 
+        // let d2 = new Date( 2022 , 8 , 10 )
+        // console.log( d2 );
+
+        // - 3. 超限日期 (number类型)
+        // - 超出的日期部分会被日期对象自动计算为下个月的日期; 
+        // let d3 = new Date( 2022 , 8 , 40 )
+        // console.log( d3 );
+        // // - 少于正常日期的数值; 
+        // let d4 = new Date( 2022 , 8 , -1 );
+        // console.log( d4 );
+
+        // - 时间戳 : 
+        // - 1. 获取当前时间的时间戳; 
+        let t1 = Date.now();
+        // - 2. 获取日期对象之中的时间戳; 
+        let d2 = new Date( 2022 , 8 , 10 )
+        let t2 = d2.getTime();
+
+        // - 倒计时的案例 : 
+
+        let reduce = t2 - t1; 
+        // 逻辑 : 什么情况下不必要倒计时? 
+        // - reduce 值为负数时! 
+        // if( reduce <= 0 ){
+        //     throw "倒计时结束!"
+        // }
+        // console.log( t1 , t2 );
+
+        // if( reduce >= 0 ){
+        //     // console.log( reduce );
+        //     // 倒计时时间一定要格式化; 
+        //     let second = parseInt( reduce / 1000 ) % 60 ;
+        //     let min    = parseInt( reduce / 1000 / 60 ) % 60;
+        //     let hour   = parseInt( reduce / 1000 / 60 / 60 ) % 24 ;
+        //     let day    = parseInt( reduce / 1000 / 60 / 60 / 24 );
+
+        //     console.log( hour ,  min , second );
+        // }
+
+
+    </script>
+</body>
+</html>

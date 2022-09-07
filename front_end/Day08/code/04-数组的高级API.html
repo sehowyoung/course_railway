@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 主要使用来进行数组遍历的API ; 
+
+        // forEach() : 遍历数组， 没有返回值; 
+
+        // let arr = [ 1,2,3,4,5,6 ];
+
+        // function handlerForEach(  item , index , arr ){
+        //     // 数组有多少项咱们函数就被执行多少次; 
+        //     // - 遍历数组需要的数据 ， 都是以参数形式传递进来的; 
+        //     // console.log( index , item , arr );
+        //     console.log( item );
+        // }
+        // arr.forEach( handlerForEach ) 
+
+        // map :  修改数组项，返回修改之后的数组; 
+
+        // function handlerMap(  item , index , arr ){
+        //     // - 新数组的项就是函数的返回值; 
+        //     return item * 10000
+        // }
+        // let arr = [ 1,2,3,4,5,6 ];
+        // let res = arr.map( handlerMap ) 
+        // console.log( res );
+
+        // 数组有一个API : join(); 
+        // 把数组转换成字符串; 
+        // console.log( arr.join("~") );
+
+        // let arr = [ 1,2,3,4,5,6 ];
+        // function createHTML( item ){
+        //     return `<div>${item}</div>`
+        // }
+        // let html = arr.map( createHTML ).join(""); 
+        // document.write(html);
+        // 小任务 : 把页面渲染功能使用 map + join 重构; 
+
+        // filter :  过滤 : 
+        // 返回一个新数组, 新数组之中的数据全部来自于老数组, 老数组的项是否放入新数组取决于函数的返回值,函数的返回值为true则放入， 反之则忽略; 
+        // let arr = [ 1,2,3,4,5,6 ];
+        // function handlerFilter( item ){
+        //     // 写条件; 
+        //     // return item % 2 ; 
+
+        //     return item >= 3 && item <= 5
+        // }
+        // let res = arr.filter( handlerFilter )
+        // console.log( res );
+        // 适用的业务在于数组数据过滤， 价格区间选择，销量范围选择; 
+
+        // some / every 自行查阅文档;  
+
+        // reduce : 归并; 
+        // reduce( 函数 , 计算起始值 )
+        let arr = [ 1,2,3,4,5,6 ];
+        function handlerReduce( pre , item ){
+            // console.log( pre , item );
+            // pre 第一次执行的时候是reduce的第二个参数; 
+            // pre 其他时候的执行都是函数的返回值; 
+            return pre + item;
+        }
+        let res = arr.reduce( handlerReduce , 0 )
+        console.log( res );
+
+        let list = [
+            { title : "iphone13" , count : 18 , price : 5999},
+            { title : "华为 mate 50 pro" , count : 998 , price : 6799 },
+            { title : "iphone14" , count : 5 , price : 6999 },
+        ];
+        // 需求 : 完成购物内容的总价计算! 使用reduce; 
+        
+    </script>
+</body>
+</html>

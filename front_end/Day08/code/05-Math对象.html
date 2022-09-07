@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log( Math );
+
+        // - 1. 随机数 : 
+        // let r = Math.random()
+        // // 范围值 : 0 - 1 范围 ,  大于等于0 , 小于1;
+        // console.log( r );
+        // - 需求 :范围随机数 ; 
+        // - 基本随机数 
+        // let r = Math.round(Math.random() * 10) ; 
+        // console.log( r );
+        // - 范围随机数 : 10 - 20 ; 
+        // 0 - 10 + 10
+        // min + ( max - min 之间的随机数 )
+        function getRandomInt( min , max ){
+            return min + Math.round(( max - min ) * Math.random())
+        }
+        let r_int = getRandomInt( 10 , 20 );
+        console.log( r_int );
+
+        // 需求： 创建一个随机点名程序; 
+        // 1. 数组 : 名单; 
+        // 2. 随机下标 : 获取数组之中的对应项； 
+        // 3. 打印对应的随机结果; 
+
+        let arr = [ "吴彦祖" , "彭于晏" , "胡歌" ]; 
+        let r_index = getRandomInt( 0 , 2 );
+        // alert( arr[r_index] );
+
+        // 小任务 : 创建一个随机点菜程序; 
+
+        // 取整 : 
+        // - 1. 向上取整;  Math.ceil() ; 
+        // - 2. 向下取整;  Math.floor(); 
+        // - 3. 四舍五入;  Math.round(); 
+
+
+        // 绝对值API : 
+        // Math.abs()
+
+        // 乘方运算 
+        // Math.pow( 数值 , 乘方 ) 
+        // Math.pow( 10 , 2 ) 
+        // - 小任务 : 重新完成水仙花数! 
+
+        // 三角函数 : 
+        // - JS是没有角度单位 ; JS的角度使用弧度来表达的! 
+        // 2 * PI = 360° 
+        // Math.PI / 180 * 30 
+        // Math.sin();  
+        // Math.cos();
+
+        // let res = Math.sin( Math.PI / 6 ) ;
+        // console.log( res );
+
+        // 随机颜色 : 
+
+        // #ffffff 
+        // rgb( 0-255 , 0-255 , 0-255 );
+
+        // 1. 完成十六进制随机颜色封装 : 
+        // num.toString( 16 ) 十进制的num转换成十六进制字符串的方式; 
+        // let random_color = "#";
+        // for(let i = 0 ; i < 6 ; i ++){
+        //     random_color += Math.round(Math.random()*15).toString(16);
+        // }
+        // console.log( random_color );
+
+
+        // 小任务 : 
+        // 2. rgba( 0-255,0-255,0-255,0-1)
+        // 直接进行字符串拼接
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // BOM : 浏览器对象模型; 
+        // 对象模型就是遥控器, 前提是我们在操作的时候浏览器是具备这个功能的! 
+        // BOM - 在浏览器之中通过window对象进行访问的; 
+        // console.log( window );
+        // 所有的全局变量之前都有window
+
+        var a = 10;
+        // - 在对象之中取出数据 : window.a 
+        // console.log( a , window.a );
+        // 因为所有的全局工具都需要通过window.来访问所以JavaScript就把window. 这个东西给省略了; 
+
+        // window.parseInt()
+        // window.alert();
+
+        // - 在script标签之中的代码所有的window.都是可以省略的, 如果添加了window.只是为了强调数据来源于BOM对象; 
+
+        // BOM学习路线 : 
+        // 1. API  : alert() prompt() confirm() 
+        // 2. 属性 : innerWidth , innerHeight; 
+        // console.log( innerWidth , innerHeight);
+        // - 元素的绝对居中为止计算; 
+        // - 元素的宽度占比计算 ... 
+        // 3. 子集对象 : 
+        //   - document : DOM对象 ; 后面再说; 
+        //   - location : 操作地址栏的对象;  * 
+        //   - history  : 历史记录对象 ; 
+        //   - navigator : 浏览器嗅探对象; 
+        
+    </script>
+</body>
+</html>

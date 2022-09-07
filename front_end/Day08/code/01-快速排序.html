@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 找中点，分左右; 
+        // 快速排序 ; 
+        // - 递归; 
+        function quickSort( arr ){
+            // 1. 设置终止条件: 数组项小于等于1 我们就直接返回这个数组; 
+            if( arr.length <= 1 ){
+                return arr
+            }
+            // 2. 找中点; 
+            // - 中间下标
+            let m =  parseInt(arr.length / 2) 
+            // - 中间的数据; 
+            let m_d = arr[m];
+
+            // 3. 分左右 : 
+            // - 左侧容器和右侧容器; 
+            let r = [], l = [];
+
+            for(let i = 0 ; i < arr.length ; i ++){
+                if( i === m ) continue; 
+                // 较小数据放入到左侧数组之中; 
+                // 较大数据放入到右侧数组之中; 
+                if( arr[i] > m_d  ){
+                    r.push( arr[i] ); 
+                }else{
+                    l.push( arr[i] );
+                }
+            }
+            // 4. 数组的拼接 ; 
+            return quickSort( l ).concat( [m_d] , quickSort(r) ); 
+        }
+
+        let arr = [3,2,5,1,4];
+        console.log( quickSort(arr) );
+
+    </script>
+</body>
+</html>
