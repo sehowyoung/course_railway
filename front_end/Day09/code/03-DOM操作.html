@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            background-color: yellowgreen;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/new1.png" alt="">
+    <div class="a" data-id="0">hello world</div>
+    <div class="a" data-id="1">hello world</div>
+    <div class="a" data-id="2">hello world</div>
+    <div class="a" data-id="3">hello world</div>
+    <div class="a" data-id="4">hello world</div>
+    <script>
+        // 标签我们需要操作哪些内容 ？ 
+        // - 1. 标签属性 !
+        // - 2. 标签样式 ! 
+        // - 3. 标签内容 ! 
+
+        // 操作过程就是两个行为 : 1. 取值 2. 赋值 
+
+        // 标签的属性操作 : 
+        //  - 为啥要操作属性 : 
+        //    1. 更改类名，让元素样式发生变更; 
+        //    2. 这三个API针对的是属性对应值的全部内容，类名往往包含很多信息，一次型获取我们还要操作字符串，比较麻烦; 
+
+        // - 万金油API : 
+        // dom.setAttribute( 属性名 , 属性值);
+        // dom.getAttribute( 属性名 );
+        // dom.removeAttribute( 属性名 );
+
+        // let a = document.querySelector(".a");
+
+        // setTimeout( function(){
+        //     a.setAttribute("class" , a.getAttribute("class") + " active")
+        // } , 3000)  
+        
+
+        // - class类名专用操作工具 : 
+        // dom.classList.add();
+        // dom.classList.remove();
+        // let a = document.querySelector(".a");
+        // setTimeout( function(){
+        //     a.classList.add("active");
+        //     console.log( a.classList );
+        // } , 3000)  
+
+        // - data专用的操作工具; 
+        
+        // 语法 : dom.dataset
+        // 可以获取到元素之中所有的data-后面的属性。 
+        // - 读写; 
+        let a = document.querySelector(".a");
+        // a.dataset.id = 30;
+        // console.log( a.dataset.id );
+        
+
+        // 简写属性 : 
+        // src : 图片的链接; 
+        // href : link的css链接; 
+        // id : id值取值赋值; 
+        // className : 类名的取值赋值; 
+        // ...
+        // - 这些所有的属性都是读写权限; 
+        // a.id = "box";
+
+        let img = document.querySelector("img")
+        let count = 1;
+        setInterval( function(){
+            if( count == 4 ){
+                count = 1;
+            }else{
+                count ++;
+            }
+            img.src = "./images/new" + count + ".png";
+        } , 100 )
+
+        // 把图片改成几个毫无关联的图片名, new-lingdao new-shanshui ....
+        // 实现上面的功能
+
+    </script>
+</body>
+</html>

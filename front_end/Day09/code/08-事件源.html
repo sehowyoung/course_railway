@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button>这是一个按钮</button>
+
+    <ul>
+        <li>这是段标题 1<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 2<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 3<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 4<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 5<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 6<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 7<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 8<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 9<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+        <li>这是段标题 0<button data-type="delete">删除</button> <button data-type="random">随机颜色</button> </li>
+    </ul>
+    <script>
+        // 无论事件绑定到了哪个元素上, 触发事件时距离鼠标最近的元素我们称之为事件源; 
+
+        // let btn = document.querySelector("button");
+        // document.addEventListener("click" , function( e ){
+        //     e = e || event;
+        //     let target = e.target || e.srcElement;
+        //     // console.log( target );
+        //     if( target === btn){
+        //         alert("按钮被点击了")
+        //     }
+        // })
+
+        // 事件委托 : 
+        // 
+
+        // 常规事件添加 : 
+
+        // let btns = document.querySelectorAll("button");
+            
+        // function removeLi(){
+        //     console.log("删除按钮");
+        // }
+        // btns.forEach( function( ele ){
+        //     ele.addEventListener("click" , removeLi )
+        // })
+        // 委托行为: 把事件添加给button的公用父级! 
+        // - ul : 把事件添加给ul; 
+        
+        let ul = document.querySelector("ul");
+        let btns = document.querySelectorAll("button");
+        btns = Array.from( btns );
+
+        // ul.addEventListener("click" , function( e ){
+        //     //1. 数据比对; 
+        //     // - 事件源是不是我们的目标元素; 
+        //     e = e || event;
+        //     let target = e.target || e.srcElement;
+
+        //     if( btns.indexOf( target) !== -1 ){
+        //         alert("按钮事件执行");
+        //     }
+        //     //2. 事件业务; 
+        // })
+
+        // 功能拆分 : 
+
+        // 比对 : 
+        function deleagation( e ){
+            //1. 数据比对; 
+            // - 事件源是不是我们的目标元素; 
+            e = e || event;
+            let target = e.target || e.srcElement;
+
+            if( btns.indexOf( target) !== -1 ){
+                /*
+                 switch( attribute ){
+                    case "delete" : 
+                            deleteLi(target);
+                            break;
+                    case  "random" : 
+                            xxx();
+                 }
+                */
+                deleteLi( target );
+            }
+        }
+        function deleteLi( target ){
+            // JavaScript DOM可以通过结构关系查找父子级元素 : 
+            // dom.parentNode 查找父级元素;      一个dom对象; 
+            // dom.children   查找所有子集元素;  一组元素; 
+            // console.log(target.parentNode );
+            target.parentNode.remove();
+        }       
+        ul.addEventListener("click" , deleagation )
+
+    </script>
+</body>
+</html>

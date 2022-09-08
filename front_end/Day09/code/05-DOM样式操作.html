@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head id="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pox{
+            padding-left: 200px;
+            position: relative;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="box"></div>
+    <div id="pox">
+        <div id="box" style="color:yellowgreen">hello world</div>
+    </div>
+    <script>
+        // 在JavaScript之中我们只能操作标签的行内样式 ; 
+        // let head = document.getElementById("head");
+        // console.log(head.innerHTML )
+        // head.innerHTML += "<style>body{background-color:yellowgreen;}</style>"
+        
+        // 操作元素的行内样式
+        // dom.style 
+        // - dom.style.属性名 = 属性值;  
+        //    - 如果设置了多条属性是可以累加的; 
+        // - dom.style.cssText = "行内样式字符串";
+        //    - 这个设置是覆盖型设置; 
+        // let box = document.getElementById("box");
+        // // - 所有的带有-的css属性都变成驼峰命名; 
+        // // - 所有的样式设置都要符合css规则! 
+        // box.style.backgroundColor = "#000";
+        // box.style.fontSize = "30px";
+
+        // // 设置整个style字符串; 
+        // box.style.cssText = "background-color:pink;"
+
+        // - 我们对DOM对象的操作起始就是 dom的操作方式 + 字符串; 
+        // 字符串操作相当重要; 
+
+        // - 我们可以获取到元素的css属性值么? 
+        // - 虽然style这种行内样式设置的属性也是读写权限, 但是这个读写有问题; 
+        // - 我们通常是不会写行内样式的; 
+
+
+        // - 我们通过JavaScript提供的两套工具来获取元素的css属性值 : 
+        // - offset 家族 : 
+        // offsetWidth , offsetHeight , offsetLeft , offsetTop , offsetParent ;
+        // dom.offset家族即可直接测量; 
+
+
+        // - 测量结果是 : content + padding + border的元素占位值; 
+        // console.log( box.offsetWidth );
+        // 这个测量属性性能很差， 尽量不要放在高频执行的函数之中使用; 
+        
+        // offsetLeft offsetTop 
+        // 这两个属性测量的是与参照物之间的偏移距离; 
+
+        // - 参照物 : 从当前元素向外查找找到的第一个具有定位属性的元素就是这个元素偏移的参照物 ; 
+        // - 找到body为止还没有参照物就以body为参照物; 
+        // console.log( box.offsetLeft );
+        // console.log(box.offsetParent);
+
+        // - 封装插件 : 测量一个元素距离body的偏移值;  
+        // - 递归! 
+
+
+        // 让任意box高度翻倍，并且让box之中的文字垂直居中; 
+        // - 设置元素的height 属性; 
+        // - 设置元素的line-height 属性; 
+
+        // 先获取到这个标签的dom对象; 
+        let box = document.querySelector("#box");
+        // 给box赋值 : 
+        // 高度 ，行高; 
+        let height = box.offsetHeight ; 
+        box.style.height = height * 2 + "px";
+        box.style.lineHeight = height * 2  + "px";
+
+        // setInterval( 函数 , 时间 )
+
+        // - 让一个有定位属性的box元素，每间隔50ms 向右侧移动5px; 移动距离总共为300px的时候停止运动; 
+
+        // 核心就是让box元素的left值一直改变! 
+        
+        let my_box = document.querySelector(".box");
+        let left = my_box.offsetLeft ;
+        // 停止的left值; 
+        let max_left = left + 300;
+
+        function move(){
+            left += 5;
+            my_box.style.left = left + 'px';
+
+            if( left >= max_left ){
+                clearInterval( t )
+            }
+        }   
+        let t = setInterval( move , 50 );
+        // 让元素的top值也跟着运动
+
+    </script>
+</body>
+</html>

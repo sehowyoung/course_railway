@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        #pox{
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+ 
+    <button id="btn">这是一个按钮</button>
+    <input type="text" id="ipt">
+    <input type="file">
+    <input type="checkbox">
+    <form action="">
+        <button>提交</button>
+        <input type="submit" value="submit提交">
+    </form>
+    <div id="box">
+        <div id="pox"></div>
+    </div>
+
+    <script>
+        // javascript 事件驱动的语言; 
+        // - 用户点击; 
+        // - 鼠标移入某个元素; 
+        // - 键盘按下，键盘抬起 ...
+        // - 滚轮滚动; 
+        // - 鼠标移动
+        // - 元素失去焦点获取焦点，改变内容 
+        // ....
+
+        // 用户操作了浏览器，浏览器捕获到了这些操作行为， 调用我们提前定义好的事件处理函数; 
+
+        // JavaScript定义事件的语法是 : 
+        // dom.事件名 = 事件处理函数! (DOM level 0 事件)
+
+        // 事件可以不被删除; 
+
+        // dom.addEventListener( 事件名 , 事件处理函数 , 是否开启事件捕获* )
+        // dom.removeEventListener( 事件名 , 事件处理函数 );
+
+        // 事件分类 : 
+        // - 鼠标事件; 
+        //   - 点击 : click 
+        //   - 双击 : dblclick 
+        //   - 鼠标移入 : mouseover 
+        //   - 鼠标移出 : mouseout 
+        //   - 鼠标按键按下 : mousedown 
+        //   - 鼠标按键抬起 : mouseup 
+        //   - 鼠标移动事件 : mousemove  
+        //   - 小作业 : 百度鼠标转轮滚动事件兼容; 
+
+        // 添加事件的时候 : 
+        // 1. 找到目标元素的dom对象; 
+        // 2. 准备好事件处理函数! 
+        // 3. 根据语法添加事件; 
+
+        // let btn = document.getElementById("btn");
+        // // handler: 处理 ; 
+        // function handlerClick(){
+        //     console.log("事件触发!");
+        // }  
+        // function handlerClick2(){
+        //     console.log("事件触发2!");
+        // }    
+        // btn.addEventListener("click" , handlerClick )
+        // btn.addEventListener("click" , handlerClick2 )
+
+        // btn.addEventListener("mouseover" , function(){
+        //     console.log("事件触发");
+        // })
+        // - mouseenter / mouseleave 
+        // let box = document.getElementById("box");
+        // box.addEventListener("mouseover" , function(){
+        //     console.log("over事件触发")
+        // })
+        // box.addEventListener("mouseenter" , function(){
+        //     console.log("over事件触发")
+        // })
+
+        // - 键盘事件; 
+        //   - keydown 
+        //   - keyup 
+        
+        // - 绑定键盘事件的元素必须是可以获取焦点的元素; 
+        // let box = document.getElementById("box");
+
+        // box.addEventListener("keydown" , function(){
+        //     console.log("事件触发");
+        // })
+
+        // let ipt = document.getElementById("ipt");
+        // ipt.addEventListener("keydown" , function(){
+        //     console.log("事件触发")
+        // })
+
+        // - 元素事件; 
+
+        // - 表单元素的事件 : 
+        // form : submit 事件; 
+
+        // let form = document.querySelector("form");
+        // form.addEventListener("submit" , function(){
+        //     alert("表单提交")
+        // })
+
+        // input : 
+        // 1. 输入事件 input 
+        // 2. 获取焦点 focus 
+        // 3. 失去焦点 blur 
+        let ipt = document.getElementById("ipt");
+
+        // 延时器的高级应用 : 
+        // - 只关注最后一次操作的延时 ; 
+        let timeout = null;
+        ipt.addEventListener( "input" , function(){
+            // console.log("正在输入");
+            // 改变title就可以实现显示窗口的内容改变; 
+            document.title = "正在输入..."
+
+            // 开启延时器之前先关闭延时器; 
+            clearTimeout( timeout )
+            timeout = setTimeout( function(){
+                document.title = "页面信息"
+            } , 1000)
+        })
+        // 4. 改变事件 change 
+        // - 1. input:file 
+        // - 2. input:checkbox 
+        // ipt.addEventListener("change" , function(){
+        //     console.log("change事件触发");
+        // })
+
+        let file = document.querySelector("input[type=file]")
+        let checkbox = document.querySelector("input[type=checkbox]")
+        
+        file.addEventListener("change" , function(){
+            console.log("事件触发!");
+        })
+        checkbox.addEventListener("change" , function(){
+            console.log("事件触发");
+        })
+        
+        // - 窗口事件; 
+
+    </script>
+</body>
+</html>

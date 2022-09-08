@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./common.js"></script>
+    <script>
+        // 定时器 : 
+        // - setInterval(); 定时器 
+        // - setTimeout();  延时器 
+
+        // setInterval( 函数 , 间隔时间: ms)
+
+        // function interval(){
+        //     console.log( "hello 定时器");
+        // }
+        // let res1 = setInterval( interval , 1000 );
+        // 1 
+        // let res2 = setInterval( interval , 1000 );
+        // 2 
+        // ...
+
+        // 可以停的! 
+        // - 如果想要终止定时器，我们就要关注定时器的返回值; 
+        // 每个定时器再被调用的时候都会返回一个值， 这个值再当前页面是独一无二的; 
+
+        // - API : clearInterval( 定时器的返回值 )
+        // function interval(){
+        //     console.log( "hello 定时器");
+        //     clearInterval( res1 )
+        // }
+        // let res1 = setInterval( interval , 1000 );
+
+        function renderCountDown(){
+            let count_down = countDown("2022-9-10");
+            console.log( count_down );
+        }
+        let t = setInterval( renderCountDown , 1000 )
+
+        // 让倒计时可以很好的显示在页面上; (BOM知识!);
+
+        // - 延时器 : 
+        // 在规定的时间之后，执行一次;
+
+        setTimeout( function(){
+            alert("不要九九八只要68，买了带回家!");
+            // 这个广告要优化一下变成标签结构显示! 
+        } ,  80000 )
+
+    </script>
+</body>
+</html>

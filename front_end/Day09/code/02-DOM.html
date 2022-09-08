@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box">hello box</div>
+
+    <div class="box">hello classBox</div>
+    <div class="box">hello classBox</div>
+    <div class="box">hello classBox</div>
+    <div class="box">hello classBox</div>
+    <div class="box">hello classBox</div>
+
+    <script>
+        // DOM : 文档对象模型; 
+        // - 文档的遥控器 ; 
+        // 给每一个标签都创建了一个专门的操作对象，如果我们要操作某个标签那么我们需要使用到这个对象进行操作，这个对象我们统称为DOM; 
+
+        // - DOM是有结构关系的 : 
+        // 父子兄弟 !
+        // 父子关系 : 包裹关系; 
+        // 兄弟关系 : 相邻关系; 
+
+        // dom : 的最大的元素是document，但是document不显示在页面上， 在页面上没有对应的标签; 
+        // 页面上显示的根节点是html : document.documentElment 表示html的dom对象; 
+        // 页面上的body对象 : document.body 表示body的dom对象; 
+        console.log(document.documentElement , document.body);
+
+        // 如果我们想要操作标签那么我们就需要使用JavaScript选择器选中对应标签的dom然后通过dom对象的操作实现标签的样式，内容，属性.. 改变; 
+
+        // - 1. id 选择器 : document.getElementById(); 性能好; 
+        
+        // - 选择方便 : 
+        // 所有的css选择符在qs选择器里面都可以直接使用! 
+        // #box 
+        // .box 
+        // div 
+        // ...
+        // - 2. qs 选择器  : document.querySelector() ; 
+        // - 3. qsa 选择器 : document.querySelectorAll(); 
+
+        let box = document.getElementById("box");
+        // qs 选择器 : 
+        let box2 = document.querySelector("#box");
+        // console.log( box2 === box );
+
+        // - qsa会选中所有符合规则的元素的DOM对象; 
+        let boxs = document.querySelectorAll(".box");   
+        // console.log( boxs );
+
+        // - 如果想要取出里面的所有元素，那么我们就需要遍历这个为伪数组; 
+        for(let i = 0 ; i < boxs.length ; i ++){
+            console.log(boxs[i]);
+        }
+
+        // 小技巧 : 
+        // 把假的变成真的! 
+        // - JS给我们提供了一个专门的API可以把伪数组变成真数组; 
+        boxs = Array.from( boxs );
+        console.log( boxs );
+
+    </script>
+</body>
+</html>
