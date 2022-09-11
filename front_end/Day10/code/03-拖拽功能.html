@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .drag-container{
+            width: 300px;
+            height: 200px;
+            background-color: #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .drag-bar{
+            height: 30px;
+            width: 100%;
+            background-color: #ddd;
+            text-align: right ;
+            padding-right: 20px;
+            box-sizing: border-box;
+            color: #fff;
+            line-height: 30px;
+        }   
+        .drag-bar span{
+            cursor: pointer;
+        }
+
+        .progress-container{
+            width: 300px;
+            height: 4px;
+            position: relative;
+            background:linear-gradient(to right ,  #ddd , #000);
+            left: 500px;
+            top:  100px;
+            border-radius: 4px;
+        }
+        .progress-bar {
+            width: 20px;
+            height: 8px;
+            background-color: rgba(0, 0, 0, .8);
+            position: absolute;
+            top: -2px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="drag-container">
+        <div class="drag-bar"><span>匚</span> <span>X</span></div>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+    <script>
+        // 拖拽行为应该是有3个事件构成的: 
+        // - 鼠标按下;  拖拽开始
+        // - 鼠标移动;  元素跟随
+        // - 鼠标抬起;  拖拽结束 
+
+        // - 事件结构 : 
+
+        // let drag_container = document.querySelector(".drag-container");
+        // let darg_bar = document.querySelector(".drag-bar");
+        // // 在全局声明变量 : 
+        // // offsetX , offsetY 
+        // // - 在start之中赋值 ， 在dragMove之中使用! 
+        // let offsetX = null, offsetY = null;
+        // // 拖拽开始 : 
+        // function dragStart( e ){
+        //     // console.log("拖拽开启");
+        //     e = e || event;
+
+        //     offsetX = e.offsetX; 
+        //     offsetY = e.offsetY; 
+        //     document.addEventListener("mousemove" , dragMove);
+        // }
+
+        // function dragMove( e ){
+        //     // console.log("拖拽进行中");
+        //     e = e || event;
+        //     drag_container.style.left = e.pageX - offsetX + "px";
+        //     drag_container.style.top  = e.pageY - offsetY  + "px";
+        // }
+
+        // function progressEnd(){
+        //     // console.log("拖拽结束");
+        //     document.removeEventListener("mousemove" , dragMove);
+        // }
+
+        // darg_bar.addEventListener("mousedown" , dragStart)
+        // document.addEventListener("mouseup" , dragEnd)
+
+        // 拖拽的元素上增加 x删除按钮和 方块 全屏按钮; 
+
+
+
+        let progress_bar = document.querySelector(".progress-bar");
+        let progress_container = document.querySelector(".progress-container");
+        // 在全局声明变量 : 
+        // offsetX , offsetY 
+        // - 在start之中赋值 ， 在dragMove之中使用! 
+        // 拖拽开始 : 
+        function progressStart( e ){
+            // console.log("拖拽开启");
+            e = e || event;
+
+            offsetX = e.offsetX; 
+            offsetY = e.offsetY; 
+            document.addEventListener("mousemove" , progressMove);
+        }
+
+        // - 获取元素和页面的绝对定位; 
+        let progress_offsetLeft = progress_container.offsetLeft ; 
+        let progress_offsetTop = progress_container.offsetTop ; 
+        function progressMove( e ){
+            // console.log("拖拽进行中");
+            e = e || event;
+
+            let left = e.pageX - offsetX - progress_offsetLeft ;
+            // 限制left值的最大值和最小值; 
+            left = left < 0 ? 0 : left;
+            left = left > 280 ? 280 : left;
+
+            progress_bar.style.left = left + "px"
+
+            // 获取进度信息，并调用进度处理函数; 
+            handlerProgress( parseInt((left / 280) * 100)/100 );
+        }
+
+        function progressEnd(){
+            // console.log("拖拽结束");
+            document.removeEventListener("mousemove" , progressMove);
+        }
+        function handlerProgress( percent ){
+            // console.log( percent );
+            let c = parseInt( (1 -  percent) * 255);
+            console.log( c );
+            document.body.style.backgroundColor = "rgb( "+c+" , "+c+", "+c+" )"
+        }
+
+        progress_bar.addEventListener("mousedown" , progressStart)
+        document.addEventListener("mouseup" , progressEnd)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style:none;
+        }
+        #list{
+            width: 200px;
+            height: 90px;
+            box-shadow: -2px 2px 5px #000;
+            position: absolute;
+            display: none;
+        }
+        #list li{
+            box-sizing: border-box;
+            border-bottom: 1px solid #ddd;
+            line-height: 30px;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <ul id="list">
+        <li>自定义菜单功能1</li>
+        <li>自定义菜单功能2</li>
+        <li>自定义菜单功能3</li>
+    </ul>
+    <input type="text">
+    <p>hello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello world</p>
+    <a href="http://www.baidu.com">123</a>
+    <script>
+        // 浏览器为了方便我们的开发给元素提供的默认行为 : 
+        //  - a标签的跳转; 
+        //  - form表单的跳转
+        //  ...
+
+        let list = document.getElementById("list");
+        function positionMenu(e){
+            e = e || event;
+
+            list.style.display = "block";
+            list.style.left = e.pageX + "px";
+            list.style.top  = e.pageY + "px";
+            // 我们可以阻止默认事件; 
+            e.preventDefault();
+        }
+        document.addEventListener("contextmenu" , positionMenu )
+        // 练习 : 禁用f12 功能; 
+        // - 1. 事件 keydown
+        // - 2. 通过键盘码判定是否应该阻止默认行为; 
+
+        document.addEventListener("keydown" , function( e ){
+            e = e || event;
+            let code = e.keyCode || e.which;
+            switch( code ){
+                case 123 : 
+                    e.preventDefault();
+            }
+        })
+
+        document.addEventListener("mousedown" , function( e ){
+            e = e || event;
+        
+            let target = e.target || e.srcElement;
+
+            if( target.nodeName !== "INPUT"){
+                e.preventDefault();
+            }
+        })
+    </script>
+</body>
+</html>

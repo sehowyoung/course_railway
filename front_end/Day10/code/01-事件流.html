@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            padding: 10px;
+            border: 10px solid #ddd;
+        }
+        .box{
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <button>这是一个按钮</button>
+
+    <div>
+        <div>
+            <div>
+                <div class="box">
+                    <button class="btn">这是一个按钮</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 事件的传播方式 :
+        // 现在的事件规范是一个事件触发必然经过三个阶段; 
+        //  1. 事件捕获 : 从外向内的事件触发信息传播; 
+        //  2. 目标阶段 : 事件传播到触发事件元素上的阶段;  √ 
+        //  3. 事件冒泡 : 由内向外传递事件信息;  √ 
+
+        let btn = document.querySelector(".btn");
+        let box = document.querySelector(".box");
+
+
+        // 我们是否可以解决事件逐级触发的问题! 
+        // - 阻止事件冒泡;
+        
+        btn.addEventListener("click" , function( e ){
+            e = e || event;
+            alert("btn事件执行")
+            // e.stopPropagation();
+        })
+
+        box.addEventListener("click" , function( e ){
+            e = e || event;
+            alert("box事件执行")
+            e.stopPropagation();
+        })
+
+        // document.addEventListener("click" , function(){
+        //     alert("document事件触发")
+        // })
+
+        // addEventListener 是可以关注事件捕获阶段的; 
+        document.addEventListener("click" , function(){
+            alert("document事件触发")
+        })
+
+    </script>
+</body>
+</html>
