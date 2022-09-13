@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            transform: rotate(100deg);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <button id="btn">点击开始运动</button>
+    <div id="box"></div>
+    <script>
+        // 可以实现一个元素多个动画同时执行; 
+        // - 传入多个属性名和目标点值; 
+        //   - 我们需要把参数修改为对象; 
+
+        let box = document.getElementById("box");
+
+        function handlerClick() {
+            // animate( box , "width" , 200 );
+            animate(box, { "width": 200, height: 300 , transform : "rotate(360)"});
+        }
+        function animate(dom, options, callback) {
+            // 1. 获取对应属性的当前值 ; 
+            // - { key : value } => { key => { target : value , enow : enow }}
+            // 元素运动 : 
+            // 1. 获取元素当前属性的属性值! => dom , attr , 
+            // - API : getComputedStyle( dom ); 获取元素的样式表样式 ; 
+            // 通过正确的css属性名获取到css属性值; 
+            for (let attr in options) {
+                switch( attr ){
+                    case "transform" : 
+                        options[attr] = {
+                            target: Number(options[attr].match(/\d+/g).join("")),
+                            // 没有办法准确获取到csstransform 里面的属性值; 
+                            enow: 0 
+                        }
+                    break;
+                    default : 
+                    options[attr] = {
+                        target: options[attr],
+                        enow: parseInt(getComputedStyle(dom)[attr])
+                    }
+                }
+            }
+
+            // 定时器里面的代码怎么执行 : 
+            // - 定时器内部套上一个循环就可以了; 
+
+            // 2. 根据运动的目标点计算速度! ( 让速度每次变为剩余距离的 1/10 )
+            // 我们得开启定时器 : 
+            // 我们让每个元素的运动都有一个独立的定时器负责; 
+            clearInterval(dom.t)
+            dom.t = setInterval(function () {
+                for (let attr in options) {
+                    // 1. 计算速度; 
+                    let speed = (options[attr].target - options[attr].enow) / 10;
+                    // - 速度在计算的时候需要进行取整; 
+                    //   - 速度大于0 ; 向上取整; 
+                    //   - 速度小于0 ; 向下取整; 
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                    // 判定终止条件; 
+                    if (options[attr].enow === options[attr].target) {
+                        // 更新定时器关闭条件; 
+                        // - 如果到达目标点我们就删除掉这条属性; 
+                        delete options[attr];   
+                        // options里面是否还存在多余的属性值，如果存在我们就继续执行，如果不存在我们就清空定时器; 
+                        for(let a in options ){ return false }
+
+                        clearInterval(dom.t);
+                        typeof callback === "function" ? callback() : "";
+                    } else {
+                        // 2. 根据速度改变enow 变量里面的值; 
+                        options[attr].enow += speed;
+
+                        switch( attr ){
+                            case "transform" :
+                                dom.style[attr] = "rotate("+options[attr].enow+"deg )" 
+                                break;
+                            default : 
+                                dom.style[attr] = options[attr].enow + "px";
+
+                        }
+                    
+                    }
+                }
+            }, 30)
+            // 3. 判定终止条件 : 当前属性值到达目标点的时候; 
+            // 4. 让元素发生属性值的改变; 
+
+        }
+        document.getElementById("btn").addEventListener("click", handlerClick);
+
+
+        // 小任务 : 
+        // 让一个长条元素放在父级容器之中，每次点击left值都发生一定的改变; 
+
+    </script>
+</body>
+
+</html>

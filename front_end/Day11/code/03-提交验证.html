@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .login{
+            width: 30vw;
+        }
+        .login p{
+            display: flex;
+            flex-direction: column;
+        }
+        .login p span{
+            line-height: 25px;
+            color: #333;
+            /* 元素的隐藏方式是display:none 那么一定要让这个元素脱离文档流! position:absolute */
+            visibility:hidden;
+            white-space : nowrap;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="https://www.baidu.com" class="login">
+        <h2>登录</h2>
+        <p>
+            <input id="email" type="text" placeholder="请输入邮箱" autocomplete="off">
+            <span>错误提示</span>
+        </p>
+        <p>
+            <input id="password" type="password" placeholder="请输入密码">
+            <span>错误提示</span>
+        </p>
+
+        <button>登录</button>
+    </form>
+    <script>
+
+        // 所有的输入框都已经正确验证了; 我提交才应该执行对应的功能，否则不执行任何功能，同时把焦点放到未验证的输入框上; 
+
+        // - 我们通过验证之后给元素添加一个属性，属性上是验证通过属性; 
+
+        // dom关系查找 : 父子兄弟! 
+        // dom.nextElementSibling : 找到同级别的下一个元素; 
+        // 我们在使用test api的时候不要传递修饰符g ! 
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let form = document.querySelector(".login");
+
+        let ipt_array = [ email , password ];
+
+        function validateEmail(){
+            let qq_reg = /^[1-9]\d{5,10}@qq\.com$/;
+            // 从dom对象上获取用户输入内容; 
+            if( qq_reg.test( email.value ) ){
+                // console.log("验证通过");
+                // 给用户提示 : 
+                validateSuccess( email );
+            }else{
+                // console.log("验证不通过");
+                validateFailed("请输入正确的邮箱内容" , email , );
+            }
+        }
+        function validateSuccess(ipt){
+            // 让元素的border|背景变成绿色的; 
+            ipt.style.borderColor = "yellowgreen";
+            ipt.style.color = "yellowgreen"
+            // 让错误提示隐藏;             
+            let tip = ipt.nextElementSibling;
+            tip.style.visibility = "hidden";
+
+            // 给ipt元素添加验证通过属性; 
+            // ipt 此时被当做了纯对象使用; 
+            ipt.validate = true;
+        }
+        
+        function validateFailed(tip_value , ipt  ){
+            // 让元素的border|背景变成绿色的; 
+            ipt.style.borderColor = "orangered";
+            // 让错误提示隐藏;             
+            let tip = ipt.nextElementSibling;
+            tip.style.visibility = "visible";
+            tip.innerHTML = tip_value ;
+
+            document.body.style.backgroundColor = "red";
+
+            setTimeout( function(){
+                document.body.style.background = "none";
+            } , 100 )
+            ipt.validate = false;
+        }
+        // 密码验证 : 
+        function validatePassword(){
+            let score = 0;
+            let value = password.value;
+            let reg_symbol = /[!@#\$%\^&\*\(\)_]/
+            // 用以下任意一种去编写分值增加逻辑就可以了;
+            if( /\d/.test( value ) ){
+                score ++;
+            }
+            /[a-z]/i.test( value ) ? score ++ : "";
+            if( reg_symbol.test( value ) ){
+                score ++;
+            }
+
+            // 逻辑 : 
+            switch( score ){
+                case 0 : 
+                    validateFailed( "请输入正确的密码由数字，字母，特殊符号组成!" , password);
+                    break;
+                case 1 : 
+                case 2 : 
+                    validateFailed( "密码强度过低,请输入更高强度的代码" , password);
+                    break;
+                case 3 : 
+                    validateSuccess( password);
+                    break;
+            }
+        }
+        
+        password.addEventListener("blur" , validatePassword)
+        email.addEventListener("blur" , validateEmail )
+
+        // 小任务 : 验证成功之后让输入框的文字颜色变成绿色 ; 
+        // - dom操作 : 
+        // dom对象的样式操作 ; 
+        // css背景色设置; 
+
+        // 验证失败之后让页面的背景色变成红色一秒钟之后变回原来的颜色; 
+        // - dom操作; 
+        // - 延时器操作; 
+
+        // 当我们提交表单的时候可以对验证结果进行判断; 
+        // - 按钮的点击事件; 
+        // - 表单的submit事件; 
+
+        function validatePassInput( e ){
+            e = e || event;
+            for( let i = 0 ; i < ipt_array.length ; i ++){
+                if( !ipt_array[i].validate ){
+                    // 让当前的元素获取焦点; 
+                    // - focus() 表示获取焦点行为; 
+                    // - select() 获取焦点病选中文字行为; 
+                    // - blur() 失去焦点; 
+                    ipt_array[i].focus();
+                    // 阻止元素的默认事件; 
+                    e.preventDefault();
+                    // 终止程序执行; 
+                    return false;
+                }
+            }
+        }
+
+        form.addEventListener("submit" , validatePassInput )
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .login{
+            width: 30vw;
+        }
+        .login p{
+            display: flex;
+            flex-direction: column;
+        }
+        .login p span{
+            line-height: 25px;
+            color: #333;
+            /* 元素的隐藏方式是display:none 那么一定要让这个元素脱离文档流! position:absolute */
+            visibility:hidden;
+            white-space : nowrap;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="" class="login">
+        <h2>登录</h2>
+        <p>
+            <input id="email" type="text" placeholder="请输入邮箱" autocomplete="off">
+            <span>错误提示</span>
+        </p>
+        <p>
+            <input id="password" type="text" placeholder="请输入密码">
+            <span>错误提示</span>
+        </p>
+    </form>
+    <script>
+        // 表单验证 : 用户输入内容， 我们在用户输入结束之后验证输入内容的正确性; 
+        // - 我们通过正则表达式进行正确性验证; 
+        // - 正则表达式验证字符串的API : reg.test( string )
+
+        // reg.test( string ) : 应用 : 
+        // - 验证字符串是否符合正则规则, 返回值 true , false 
+
+        // 事件 : 用户输入内容结束时候的操作行为 ; 
+        // - 验证触发的事件是 blur 失去焦点;
+
+        // 编写验证规则 : 
+        // 必须了解输入规则才可以写正则， 否则的话正则是无法编写; 
+        
+        // qq邮箱  : 六位到十一位的数字 @qq.com 
+        // 163邮箱 : 六到二十位的数字字母下划线@163.com
+        // ...
+
+        // 一个规则重复出现的次数 : 量词 
+        // 1. { n } : 规则出现了n次; 
+        // 2. { n , m } : 规则出现了最少 n 次 最多 m 次; 
+        // 3. { n, } : 规则出现最少n次，最多不限次; 
+
+        // 量词限制的是前一个规则的出现次数! 
+        // 可以用小括号来确定量词限定的规则范围; 
+        // 默认就是前一个字符; 
+
+        // . : 在正则之中表示任意字符, 如果我们想要使用规则 . 那么我们需要对这样的特殊字符进行转义 ; 
+        // \ : 转义运算; 
+        // let qq_reg = /[1-9]\d{5,10}@qq\.com/;
+
+        // 注意test的特性 : 在验证字符串的时候只要字符串之中存在一个正确的规则那么整体的规则判断就位true; 
+
+        // 我们想要完整验证正则规则怎么办 ? 
+        // - ^ : 开头; 表示字符串必须以xxx规则开头; 
+        // - $ : 结尾; 表示字符串必须以xxx规则结尾; 
+        // - 如果在正则之中同时存在开头结尾，那么则表示字符串需要完整符合正则规则才可以判定为true; 
+        // ^ 必须在正则开头编写; 
+        // $ 必须在正则结尾编写; 
+        let qq_reg = /^[1-9]\d{5,10}@qq\.com$/;
+        let email = document.getElementById("email");
+        //  dom关系查找 : 父子兄弟! 
+        // dom.nextElementSibling : 找到同级别的下一个元素; 
+        let email_tip = email.nextElementSibling;
+
+        // 我们在使用test api的时候不要传递修饰符g ! 
+        function validateEmail(){
+            // 从dom对象上获取用户输入内容; 
+            if( qq_reg.test( email.value ) ){
+                // console.log("验证通过");
+                // 给用户提示 : 
+                validateSuccess();
+            }else{
+                // console.log("验证不通过");
+                validateFailed();
+            }
+        }
+        function validateSuccess(){
+            // 让元素的border|背景变成绿色的; 
+            email.style.borderColor = "yellowgreen";
+            // 让错误提示隐藏;             
+            email_tip.style.visibility = "hidden";
+        }
+        
+        function validateFailed(){
+            // 让元素的border|背景变成绿色的; 
+            email.style.borderColor = "orangered";
+            // 让错误提示隐藏;             
+            email_tip.style.visibility = "visible";
+            email_tip.innerHTML = "请输入正确的邮箱内容";
+        }
+        email.addEventListener("blur" , validateEmail )
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+
+    <button id="btn">点击开始运动</button>
+    <div id="box"></div>
+    <script>
+        // JavaScript动画其实就是实现了部分的css3的transition功能; 
+        // - 学习目标 : 
+        // - 1. 封装思想; 
+        // - 2. 应用在某些兼容型较差的项目之中; 
+        // - 3. 降低学习 jQuery 动画的成本; 
+
+        // JavaScript动画其实就是通过定时器不断改变元素属性值的一个功能封装; 
+        // - 60hz 
+        // - 浏览器的刷新率限制了我们的动画执行频率; 
+        // - 如果改变dom对象属性的时间间隔小于16.66ms 是没有意义的! 
+        // - 我们的动画都是 60 帧么? ; 
+        // - 综合性能考虑，我们做30帧的动画就可以了! 
+
+        // - 我们一般就是30ms执行一次动画效果即可; 
+
+        let box = document.getElementById("box");
+        
+        function handlerClick(){
+            // animate( box , "width" , 200 );
+            animate( box , "width" , 200  , function(){
+                alert("动画执行结束之后调用函数！")
+            });
+        }
+        function animate( dom , attr , target, callback ){
+            // 元素运动 : 
+            // 1. 获取元素当前属性的属性值! => dom , attr , 
+            // - API : getComputedStyle( dom ); 获取元素的样式表样式 ; 
+            // 通过正确的css属性名获取到css属性值; 
+            let enow = parseInt(getComputedStyle( dom )[attr])
+
+            // 2. 根据运动的目标点计算速度! ( 让速度每次变为剩余距离的 1/10 )
+            // 我们得开启定时器 : 
+            // 我们让每个元素的运动都有一个独立的定时器负责; 
+            clearInterval( dom.t )
+            dom.t = setInterval( function(){
+                // 1. 计算速度; 
+                let speed = (target - enow) / 10 ; 
+                // - 速度在计算的时候需要进行取整; 
+                //   - 速度大于0 ; 向上取整; 
+                //   - 速度小于0 ; 向下取整; 
+                speed = speed > 0 ? Math.ceil( speed ) : Math.floor( speed );
+                
+                // 判定终止条件; 
+                if( enow === target ){
+                    clearInterval( dom.t );
+                    typeof callback === "function" ? callback() : "";
+                }else{
+                    // 2. 根据速度改变enow 变量里面的值; 
+                    enow += speed;
+                    dom.style[attr] = enow + "px";
+                }
+            } ,  30 )
+            // 3. 判定终止条件 : 当前属性值到达目标点的时候; 
+            // 4. 让元素发生属性值的改变; 
+
+        }
+        document.getElementById("btn").addEventListener("click" , handlerClick);
+
+        // 小任务 : 点击按钮之后让元素的宽度变成200，然后left值变成100，然后宽度变成100 ，然后left值变成0; 
+
+    </script>
+</body>
+</html>
