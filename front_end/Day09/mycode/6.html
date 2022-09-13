@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    let my_box = document.querySelector(".box");
+    let left = my_box.offsetLeft
+    let up = my_box.offsetTop
+    // 停止的left值; 
+    let max_left = left + 300;
+    let max_top = up + 600
+
+    function move() {
+        left += 5;
+        up += 10
+        my_box.style.left = left + 'px';
+        my_box.style.top = up + 'px'
+
+        if (left >= max_left || up >= max_top) {
+            clearInterval(t)
+        }
+    }
+    let t = setInterval(move, 50);
+        // 让元素的top值也跟着运动FF
+</script>
+
+</html>

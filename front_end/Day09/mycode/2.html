@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ad{
+            width: 200px;
+            height: 300px;
+            position: relative;
+            top: 100px;
+            font-size: 32px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad" id="ad">不要九九八只要68，买了带回家!</div>
+</body>
+<script>
+    let index = 1
+    setTimeout(function () {
+        let ad = document.getElementById('ad')
+        console.log(ad.style);
+        if (index % 2 === 1){
+            ad.style.color = 'blue'
+        } else {
+            ad.style.color = 'red'
+        }
+        index++
+        console.log(index);
+    }, 1000)
+</script>
+
+</html>

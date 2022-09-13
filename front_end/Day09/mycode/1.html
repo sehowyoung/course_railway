@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time"></div>
+</body>
+<script>
+    let middle
+    function count_down(){
+        middle = new Date(2022, 8, 10, 8)
+        let today = new Date()
+        let second = parseInt((middle-today) / 1000) % 60
+        let minute = parseInt((middle-today) / 60000) % 60
+        let hour = parseInt((middle-today) / 3600000) % 24
+        let day = parseInt((middle-today) / 3600000 / 24)
+        let time = day + '天' + hour + '时' + minute + '分' + second + '秒'
+        let box = document.getElementById('time')
+        box.innerText = time
+        console.log(time);
+    }
+    let t = setInterval(count_down, 1000)
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            left: 100px;
+            top: 100px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #6e6e6e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container"></div>
+</body>
+<script>
+    document.addEventListener('keydown', function (e) {
+        e = e || event
+
+        let container = document.getElementById('container')
+        let r = parseInt(Math.random() * 256)
+        let g = parseInt(Math.random() * 256)
+        let b = parseInt(Math.random() * 256)
+
+        rgb = `rgb(${r},${g},${b})`
+        let text = document.createTextNode(e.key)
+        container.appendChild(text)
+        container.style.color = rgb
+    })
+</script>
+
+</html>
