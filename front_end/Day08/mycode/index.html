@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+<body>
+    <div class="time" id="time">
+
+    </div>
+</body>
+<script>
+    let date = new Date()
+    date.setFullYear(2023)
+    date.setMonth(15)
+    date.setDate(40)
+    date.setHours(25)
+    date.setMinutes(70)
+    date.setSeconds(70)
+    console.log('date\t' + date.getDate());
+    console.log('year\t' + date.getFullYear());
+    console.log('hour\t' + date.getHours());
+    console.log('month\t' + date.getMonth());
+    console.log('minutes\t' + date.getMinutes());
+    console.log('seconds\t' + date.getSeconds());
+    console.log('time\t' + date.getTime());
+    console.log('UTCdate\t' + date.getUTCDate());
+</script>
+</html>
