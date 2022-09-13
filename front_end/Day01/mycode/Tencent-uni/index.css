@@ -195,6 +195,7 @@ article .container .subtitle{
     background-color: #f3e1c9;
     height: 180px;
     display: flex;
+    margin-bottom: 0;
 }
 
 article .container .subtitle .text{
@@ -213,4 +214,17 @@ article .container .subtitle .icon{
     height: 110px;
     background-image: url(./images/subtitle_03.jpg);
     background-repeat: no-repeat;
+}
+
+article .container .item{
+    display: flex;
+    padding: 20px;
+}
+
+article .container .item .box{
+    padding: 0 20px;
+}
+
+article .container .item .head{
+    display: flex;
 }
