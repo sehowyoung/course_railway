@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            line-height: 25px;
+            color: #333;
+            /* 元素的隐藏方式是display:none 那么一定要让这个元素脱离文档流! position:absolute */
+            visibility:hidden;
+            white-space : nowrap;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" class="login">
+        <h2>登录</h2>
+        <p>
+            <input id="pwd" type="text" placeholder="请输入密码" autocomplete="off">
+            <span id="pwd_tip">错误提示</span>
+        </p>
+        <p>
+            <input id="pwd_again" type="text" placeholder="请输入密码">
+            <span id="pwd_again_tip">错误提示</span>
+        </p>
+    </form>
+</body>
+<script>
+    let pwd = document.getElementById('pwd')
+    pwd.addEventListener('blur', function(){
+        reg_len = /.{6,20}/
+        let value = pwd.value
+        if (reg_len.test(value)){
+            let score = 0;
+            let reg_symbol = /[\.!@#\$%\^&\*\(\)_]/
+            if( /\d/.test( value ) ){
+                score ++;
+            }
+            /[a-z]/i.test( value ) ? score ++ : "";
+            if( reg_symbol.test( value ) ){
+                score ++;
+            }
+            switch( score ){
+                case 0 : 
+                    validateFailed( "请输入正确的密码由数字，字母，特殊符号组成!" , pwd, "pwd_tip");
+                    break;
+                case 1 : 
+                case 2 : 
+                    validateFailed( "密码强度过低,请输入更高强度的代码" , pwd, "pwd_tip");
+                    break;
+                case 3 : 
+                    validateSuccess( pwd, "pwd_tip");
+                    break;
+            }
+        } else {
+            less( "请输入6-20位的密码" , pwd, "pwd_tip");
+        }
+        
+    })
+
+    function validateSuccess(ipt, id){
+            ipt.style.borderColor = "yellowgreen";
+            let tip = document.getElementById(id)
+            tip.style.visibility = "hidden";
+        }
+        
+        function validateFailed(tip_value , ipt, id ){
+            ipt.style.borderColor = "orangered";
+            let tip = document.getElementById(id)
+            tip.style.visibility = "visible";
+            tip.innerHTML = tip_value ;
+        }
+        function less(tip_value , ipt, id ){
+            ipt.style.borderColor = "red";
+            let tip = document.getElementById(id)
+            tip.style.visibility = "visible";
+            tip.innerHTML = tip_value ;
+        }
+
+    let pwd_again = document.getElementById('pwd_again')
+    pwd_again.addEventListener('blur', function(){
+        if (pwd.value === pwd_again.value){
+            validateSuccess(pwd_again, 'pwd_again_tip')
+        } else {
+            validateFailed("两次密码输入不一致", pwd_again, 'pwd_again_tip')
+        }
+    })
+</script>
+</html>
