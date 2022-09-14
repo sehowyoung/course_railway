@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn-all">使用all加载多个接口的数据</button>
+    <button id="btn-race">使用race加载多个接口的数据</button>
+    <script src="./xhr.js"></script>
+    <script>
+        // - 处理多个Promise对象的状态改变; 
+        // Promise.all( array ); 可以以数组的形式传入多个Proimse对象; 所有的Promise对象状态变为resolve之后才会继续向下执行;    
+        // Promise.all() 的返回值是一个新的Promise对象; 
+
+        // Promise.race( array ); 可以以数组的形式传入多个Proimse对象; 那个Promise对象状态先变为resolve 返回的Promise对象就改变状态 ;
+
+        function handlerClick() {
+
+            let r1 = xhr("http://localhost:8888/test/second", { dataType: "json" })
+            let r2 = xhr("http://localhost:8888/test/third", {
+                params: {
+                    age: 18,
+                    name: "彦祖"
+                },
+                dataType: "json"
+            })
+
+            let p = Promise.all([r1, r2]);
+
+            p.then(function (list) {
+                console.log(list);
+            })
+        }
+        document.getElementById("btn-all").addEventListener("click", handlerClick)
+
+
+        function handlerClick2() {
+
+            let r1 = xhr("http://localhost:8888/test/second", { dataType: "json" })
+            let r2 = xhr("http://localhost:8888/test/third", {
+                params: {
+                    age: 18,
+                    name: "彦祖"
+                },
+                dataType: "json"
+            })
+            let p = Promise.race([r1, r2]);
+            
+            p.then(function(res) {
+                console.log(res);
+            })
+        }
+        document.getElementById("btn-race").addEventListener("click", handlerClick2)
+    </script>
+</body>
+
+</html>

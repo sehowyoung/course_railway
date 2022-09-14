@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="btn">发送fetch请求</button>
+    <script>
+        // fetch 也是发送无刷新网络请求的工具, 返回值默认就是Promise; 
+
+        async function sendRequest(){
+            // let response = await fetch( "http://localhost:8888/test/third?name=hahah&age=18");
+            // let data = await response.json();
+
+            // console.log( data );
+            let response = await fetch( "http://localhost:8888/test/fourth" , { 
+                method : "POST" ,
+                headers : {
+                    "content-type" : "application/x-www-form-urlencoded"
+                },
+                body : "name=hahah&age=18"
+            });
+            let data = await response.json();
+
+            console.log( data );
+        }
+        document.getElementById("btn").addEventListener("click" , sendRequest );
+
+    </script>
+</body>
+</html>

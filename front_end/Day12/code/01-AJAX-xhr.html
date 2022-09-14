@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">发送请求</button>
+    <script>
+        // 目标 : 发起ajax请求 ; 
+        // - 1. 使用的技术是xhr技术 ; 
+        // let xhr = new XMLHttpRequest();
+        // // - 2. 配置xhr对象 
+        // // xhr.open( 请求方式 , 请求路径 , 是否开启异步 )
+        // // 请求方式 : 
+        // // GET | POST | PUT | PETACH | DELETE 
+        // // - 这些请求方式没有太大的区别， 只是在语义上存在一定的区别; 
+        // // 请求路径 :  
+        // //  - 相对路径 : 绝大多数情况不用! 
+        // //  - 绝对路径 : 
+        // //  1. 协议 : http://   https://   
+        // //  2. 域名 | ip 
+        // //     - 域名 : 会被域名解析器解析成ip地址的一个单词; 
+        // //     - localhost在本机会被转换为 : 127.0.0.1 
+        // //     - www. 
+        // //  3. 是否开启异步! 布尔值， 默认是不传递了; 
+        // xhr.open("GET" , "http://localhost:8888");
+        // // - 3. 发送请求 
+        // xhr.send();
+
+        // - 事件驱动请求发送 ; 
+        let btn = document.getElementById("btn");
+
+        function sendRequest(){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET" , "http://localhost:8888");
+            xhr.send();
+        }
+        btn.addEventListener("click" , sendRequest)
+        
+
+    </script>
+</body>
+</html>

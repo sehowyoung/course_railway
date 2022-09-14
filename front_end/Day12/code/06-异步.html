@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+    </ul>
+    <script>
+        // javascript 异步编程 : 
+        // - javascript 是一个单线程语言 ; 
+        // console.log(1);
+        // for(let i = 0 ; i < 10000000000000; i ++){
+        //     // 这里的代码无论执行了多长时间，JavaScript都会等待执行结束之后再继续执行后续的代码; 
+        // }
+        // console.log( 2 );
+
+        // - 因为JavaScript之中存在很多不确定执行时间的程序 !
+        // 定时器/延时器 ; 
+        // 事件 ;
+        // ajax ; 
+        
+        // 这三种情况的函数都被JavaScript用异步的机制处理了 ! 
+        // - 异步其实就是一个执行顺序问题! 
+        // - 异步程序一定会在同步程序之后执行! 
+
+        // 什么是异步程序 ! 
+        // - 异步程序其实就是 定时器/延时器/事件/ajax 的回调函数; 
+        // callback 
+        // let i
+        // for( i = 0 ; i < 10 ; i ++){
+        //     setTimeout( function(){
+        //         console.log( i );
+        //     } , 0 )
+        // }
+
+        // let lis = document.querySelectorAll("li");
+        // let i ; 
+        // for( i = 0 ; i < lis.length ; i ++){
+        //     lis[i].onclick = function(){
+        //         console.log( i );
+        //     }
+        // }
+
+        
+
+
+
+    </script>
+</body>
+</html>

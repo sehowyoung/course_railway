@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // - Promise : 承诺; 
+        // - 1. 创建; 
+        //   - resolver 机制 ; 
+        //   - 状态 : pending  fullfilled rejected 
+        //     - 状态是由 pending 起始改变为其余两个状态， 状态一旦改变，就不能再更改了! 
+        //   - resolver 工具函数 : 
+        //     - reoslve() : 状态变为 fullfilled 函数;  
+        //     - reject()  : 状态变为 rejected 函数; 
+
+
+        // 注意 : 创建promise对象的时候必须明确传入一个函数; 
+        // 这个函数是制定承诺规则的! 
+
+        // let p = new Promise(function( resolve , reject ){
+        //     // 我们通常把异步程序放在这里! 
+        //     setTimeout(function(){
+        //         // 这里是异步的! 
+        //         // resolve();
+        //         // reject();
+
+        //         if( Math.random() > 0.5 ){
+        //             resolve();
+        //         }else{
+        //             reject();
+        //         }
+        //         // - 注意 : 如果我们状态改变为失败，同时没有处理报错信息的函数，这个时候我们的promise对象就会报错; 
+
+        //     } , 1000 )
+        // }); 
+        // console.log( p );
+
+        // - 2. 使用;
+        // promise对象针对于状态改变提供了几个监听函数; 
+        // promsie.then( 成功状态调用的函数 , 失败状态调用的函数 )
+        // promise.catch( 失败状态调用的函数 )
+        // promise.finally( 回调函数 )  
+
+        // console.log( p );
+        
+        // p.then( function(){
+        //     alert("成功状态");
+        // } , function(){
+        //     alert("失败状态");
+        // })
+
+        // p
+        // .then(function(){
+        //     alert("成功状态");
+        // })
+        // .catch( function(){
+        //     alert("失败!")
+        // })
+        // .finally( function(){
+        //     // 动效处理函数; 
+        //     alert("状态改变")
+        // })
+
+
+        // Promise对象可以在resolver之中向 状态监听函数传递数据! 
+        // - 在resolve,reject调用的时候传入实参
+        // - 这个实参会给 then 和 catch 形参赋值; 
+        // let p = new Promise(function( resolve , reject ){
+        //     // 我们通常把异步程序放在这里! 
+        //     setTimeout(function(){
+        //         if( Math.random() > 0.5 ){
+        //             resolve("成功状态");
+        //         }else{
+        //             reject("失败状态");
+        //         }
+        //     } , 1000 )
+        // }); 
+
+        // p.then( function( res ){
+        //     console.log( res );
+        // })
+        // .catch( function( res ){
+        //     console.log( res );
+        // })
+
+    </script>
+</body>
+</html>

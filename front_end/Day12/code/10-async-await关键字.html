@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">发送请求</button>
+    <script src="./xhr.js"></script>
+    <script>
+        // async await 关键字是一定要配合promise对象使用的! 
+        // - 作用是省略掉promise对象的then状态监听函数! 
+
+        // 1. async : 专门用来定义异步函数的! 
+        // - await关键字只能在 aysnc定义的函数之中使用!
+
+        //- async 定义的函数返回值默认是一个promise对象; 
+        //   - 一旦函数执行到了结尾，这个返回的promise对象就会把状态改变为 fullfilled ; 
+        async function sendRequest(){
+            // 2. await 应用 : 等待promise对象状态改变为成功并返回 状态改变时传入的数据; 
+            // await 是一个语法糖 , 默认await后方的代码都为异步程序，但是我们是不需要再写一个函数嵌套这些代码; 
+
+            let data = await xhr("http://localhost:8888/test/second" ,  {dataType : "json"});
+            // console.log( data );
+            return data ; 
+        }
+
+        async function getRequestData(){
+            let res = await sendRequest();
+            console.log(res);
+        }
+        getRequestData();
+
+        document.getElementById("btn").addEventListener("click" , sendRequest) 
+    </script>
+</body>
+</html>

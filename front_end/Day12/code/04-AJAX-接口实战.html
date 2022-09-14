@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn-second">test/second</button>
+    <button id="btn-third">test/third (GET携带数据)</button>
+    <button id="btn-fourth">test/fourth (POST携带数据)</button>
+
+    <input type="text" placeholder="请输入姓名">
+    <input type="text" placeholder="请输入年龄">
+
+    <div id="container"></div>
+    <script>
+        // 1. JSON处理; 
+        // - JSON 是符合JavaScript对象数组规则的字符串; 
+        //  - 在使用JSON的过程之中字符串类型只能用 "" 来表示; 
+        //  - JSON里面value数据只支持基本类型; 
+
+        // - JSON的类型转换工具 
+        // - JSON.parse() : 把JSON字符串转换成JavaScript对象; 
+        // - JSON.stringify() : 把JavaScript对象转换成JSON格式的字符串; 
+
+        // let json = '{"key" :"value" , "key2" : 123 , "key3" : [] }';
+        // let obj = JSON.parse( json );
+        // console.log( obj );
+
+        let container = document.getElementById("container");
+
+        function sendSecondRequest(){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET" , "http://localhost:8888/test/second");
+            xhr.send();
+
+            xhr.onload = function(){
+                // console.log( xhr.responseText );
+                let data = JSON.parse(xhr.responseText);
+                // console.log( data );
+                container.innerHTML = `请求状态是 ${ data.code } , 请求的结果是 : ${ data.message } `;
+            }
+        }
+        document.getElementById("btn-second").addEventListener("click" , sendSecondRequest)
+
+        // 2. 参数传递; 
+        //   - GET 
+        //   - POST
+
+        // - GET  : 把参数放在了请求地址栏里; 
+        //  - 因为地址栏的长度有限制，所以我们不能通过GET传递较大的数据; 如果数据过大，可能会直接导致浏览器报错，请求失败; 
+        //  - 请求的信息本来就不多，如果你发现接口的请求信息很多，还用了get请求方式，那么接口设计就有问题! 
+        //  - GET请求最大可以发送4kb的数据; 
+
+        // 发送格式 : url?key=value&key2=value2 的形式拼接数据; 
+        // - 字符串拼接! 
+
+        // - POST 
+        //  - 把数据放在请求体之中携带的; 
+        //  - POST发送的数据尺寸大小是没有限制的; 
+        
+        // 发送数据 : 
+        // 1. 把数据放在send()的参数里! 
+        // 2. 格式和get格式大致相同  key=value&key2=value2
+        // 3. 我们在传递数据之前需要设置请求传递数据格式， 告知服务端解析数据的方法! 
+
+
+
+        function sendThirdRequest(){
+            let xhr = new XMLHttpRequest();
+            let url = `http://localhost:8888/test/third?name=wuyanzu&age=48`;
+
+            xhr.open("GET" , url );
+            xhr.send();
+
+            xhr.onload = function(){
+                let data = JSON.parse(xhr.responseText)
+                console.log( data );
+            }
+        }
+        document.getElementById("btn-third").addEventListener("click" , sendThirdRequest)
+
+
+
+        function sendFourthRequest(){
+            let xhr = new XMLHttpRequest();
+            let url = `http://localhost:8888/test/fourth`;
+
+            xhr.open("POST" , url );
+            // 请求头信息: 请求头主要的作用是说明请求来源,告知请求的格式...
+            xhr.setRequestHeader("content-type" , "application/x-www-form-urlencoded");
+            xhr.send("name=huangzitao&age=28");
+            xhr.onload = function(){
+                let data = JSON.parse(xhr.responseText)
+                console.log( data );
+            }
+        }
+        document.getElementById("btn-fourth").addEventListener("click" , sendFourthRequest)
+        // 需求 : 在发送请求的时候 ,name字段之中的数据 还有 age字段之中的数据，应该来自于结构之中的input。 
+
+
+    </script>
+</body>
+</html>

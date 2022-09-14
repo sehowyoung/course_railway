@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">发送请求</button>
+    <button id="btn-first">/test/first</button>
+    <button id="btn-first">/test/first</button>
+    <div id="container"></div>
+    <script>
+
+        let container = document.getElementById("container");
+        function sendRequest(){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET" , "http://localhost:8888" );
+            xhr.send();
+
+            // xhr对象接收响应式需要通过事件机制来完成的; 
+            // xhr会判定请求结果，如果获取到请求结果了那么这个onload事件就会被触发; 
+            xhr.onload = function(){
+                // - 响应信息会被放在xhr对象之中, 我们可以通过 xhr.responseText 信息直接读取到我们的响应结构; 
+                
+                console.log( xhr.responseText );
+
+                container.innerHTML = xhr.responseText
+            }
+        }
+        document.getElementById("btn").addEventListener("click" , sendRequest)
+
+        function sendFirstRequest(){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET" , "http://localhost:8888/test/first");
+            xhr.send();
+
+            xhr.onload = function(){
+                container.innerHTML = xhr.responseText;
+            }
+        }
+        document.getElementById("btn-first").addEventListener("click" , sendFirstRequest )
+    </script>
+</body>
+</html>
