@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <script src="./xhr.js"></script>
+    <script>
+        // cookie 是放在客户端的认证信息;  
+        let btn = document.getElementById("btn")
+        btn.addEventListener("click" , function(){
+            xhr("http://127.0.0.1:5501/01_代码/02-cookie.html")
+        });
+
+        // 浏览器只给我们提供了一个cookie的属性接口; 
+        // document.cookie = "viplevel=999"
+        // 在前端给浏览器设置cookie : 
+        // - 给document.cookie赋值符合规则的字符串即可! 
+
+        // "cookie名=cookie值;expires=拼接日期对象;path=/"
+        // path 后面的值是cookie可访问路径 : 协议域名端口号+ 路径拼接之后的路径，是可以访问路径; 
+        //  设置 / 就是全站可访问路径; 
+
+        let d = new Date();
+        d.setDate( d.getDate() + 10 );
+        let cookie_string = `vipL=1999;expires=${d};path=/`;
+        document.cookie = cookie_string
+
+        // 1. 删除cookie , 同名cookie可以覆盖，我们需要把cookie的过期时间给设置为昨天就可以了; 
+        // 2. cookie进行拆分， 分三段进行拼接 ; name=value 一段 , expires一段 , path 一段
+        
+    </script>
+</body>
+</html>

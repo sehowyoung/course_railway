@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        bind 创建一个性函数
+        function(){
+            // 这个函数负责调用原函数
+            // 想要改变原函数的 this 指向
+        }
+    */
+    function foo() {
+        console.log(this);
+    }
+
+    let obj = { name: "my this" }
+    let foo_caller = foo.bind(obj)
+</script>
+
+</html>

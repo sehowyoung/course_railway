@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JavaScript对象属性的访问机制! 
+        // - 原型指针 : 在任何对象上都有; 
+
+        // let obj = { a : 10 };
+        // 在浏览器上打印出来的对象之中[[Prototype]] 这个玩意就是原型指针,右侧的数据就是指针指向的原型; 
+
+        // 实例对象上的原型指针都指向当前构造函数的原型对象! 
+        // console.log( obj );
+        // - 如果原型链查找到了Object.prototype 对象上, 依旧没有找到符合规则的属性, 那么此时返回结果就是 undefined ; 
+
+        function Foo(){
+
+        }
+        Foo.prototype.sayHi = function(){
+
+        }
+        let f = new Foo();
+        console.log( f );
+    </script>
+</body>
+</html>

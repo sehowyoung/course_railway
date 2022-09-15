@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+    </ul>
+    <button>这是按钮</button>
+    <button>这是按钮</button>
+    <button>这是按钮</button>
+    <button>这是按钮</button>
+
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+
+    <script src="./XtQuery.js"></script>
+    <script>
+        // 通过构造函数去快速选择DOM对象， 所有DOM对象全部放入实例对象之中! 
+        // 在原型上添加 属性操作，样式操作，内容操作， 来简化原本复杂的DOM操作方式， 实现更简单的dom操作功能; 
+        let $lis = new $("li")
+
+        // $lis.css({
+        //     backgroundColor : "yellowgreen"
+        // });
+
+        // $lis.html("你好世界")
+
+        // 连缀 : 
+        $lis
+        .css({
+            backgroundColor : "yellowgreen"
+        })
+        // - css 这个原型方法的返回值是实例对象, 那么我们就可以实现连缀了! 
+        .html("你好世界")
+        
+
+        new $("button")
+        .css({
+            color : "skyblue",
+            width : 300,
+            height : 100
+        })
+        // 封装 val 功能 , 让val功能可以操作input元素的value; 
+
+        new $("input").val("hello world")
+
+        let $ipt = new $("input")
+
+        $ipt
+        .eq(2)
+        .css({
+            backgroundColor : "hotpink"
+        })
+        .end() 
+        .css({
+            fontSize : "20px"
+        })
+        // - 我们要做一个筛选器 : 
+        // eq() 挑选出我们需要操作的DOM对象，然后把这个对象放在实例对象之中; 
+
+
+       
+
+
+    </script>
+</body>
+</html>

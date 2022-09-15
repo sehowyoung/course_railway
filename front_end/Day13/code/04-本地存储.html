@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1100px;
+            margin: 50px auto 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .goods {
+            width: 200px;
+            box-sizing: border-box;
+            border: 2px solid #000;
+            margin-top: 20px;
+        }
+
+        .goods h2 {
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+            padding-top: 20px;
+            padding-left: 10px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .goods p {
+            padding: 20px 10px;
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .goods p del {
+            color: #ddd;
+        }
+
+        .goods p span {
+            font-size: 14px;
+            color: orangered;
+            font-weight: bold;
+        }
+
+        .goods .images {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .goods .images img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .pagination {
+            width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        .pagination span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            box-sizing: border-box;
+            border: 1px solid #000;
+        }
+        .cart-container{
+            position: fixed;
+            left: 0;
+            top:30px;
+            width: 200px;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+    </div>
+    <div class="pagination">
+
+    </div>
+
+    <div class="cart-container">
+        <ul>
+            <li><strong>商品编号0</strong> 商品数量: <span>10</span> </li>
+            <li><strong>商品编号0</strong> 商品数量: <span>10</span> </li>
+            <li><strong>商品编号0</strong> 商品数量: <span>10</span> </li>
+            <li><strong>商品编号0</strong> 商品数量: <span>10</span> </li>
+            <li><strong>商品编号0</strong> 商品数量: <span>10</span> </li>
+        </ul>
+    </div>
+    <button id="sum">计算总价</button>
+    <button id="clear">清空购物车</button>
+    <script>
+        function render() {
+            let html = ``;
+
+            for (let i = 0; i < 10; i++) {
+                html += `<div class="goods" data-id="${i}">
+                <div class="images"><img src="" alt="假装有图片!"></div>
+                <h2>商品标题${i}</h2>
+                <p>${(i+1)*1000}</p>
+                <p><button>加入购物车</button></p>
+            </div>`
+            }
+
+            document.querySelector(".container").innerHTML = html;
+        }
+        render();
+        // localStorage
+        // console.log( localStorage );
+        // localStorage.setItem("cart" , "hello world");
+
+        // localStorage 的使用主要是放入json格式，取出json格式转换成对象操作对象之后再转换成json再放入localStorage 这样的顺序完成; 
+
+        let btns = document.querySelectorAll(".container button");
+
+        function addCart(){
+            // 存储id值和数量(自己计算的);
+            let item = this.parentNode.parentNode;
+            cart.add( item.dataset.id , item.children[2].innerHTML ) 
+        }
+
+        for(let i = 0 ; i < btns.length ; i ++){
+            btns[i].addEventListener("click" , addCart )
+        }
+
+        let cart = {
+            // data : {},
+            add : function( id ,  price ){
+                // 判定当前的data之中是否存在用户id，如果存在我们就让这条属性对应的数值自增(这个数值是商品购买数量);
+                // 如果不存在就新增一条属性给这条数据赋值为数字1; 
+                // in : 判定对象之中是否存在属性，如果存在这个属性那么返回true，如果不存在这个属性就返回false; 
+
+                if( id in cart.data ) {
+                    cart.data[id].count ++;
+                }else{
+                    cart.data[id] = {
+                        count : 1 , 
+                        price : price
+                    };
+                }
+                cart.save();
+            },
+            save: function(){
+                localStorage.setItem("cart" , JSON.stringify(cart.data) )
+            },
+            init : function(){
+                // 初始化函数; 
+                // - 读取localStorage 里面的数据， 是否存在购物车对象, 如果存在那么把对象信息赋值给data,如果不存在那么就创建一个空的对象信息; 
+                let cart_data = localStorage.getItem("cart");
+                try{
+                    cart.data  = JSON.parse( cart_data ) === null ? {} : JSON.parse( cart_data );
+                }catch( e ){
+                    cart.data = {};
+                }
+            },
+            render(){
+
+            }
+        }
+
+        cart.init();
+
+        document.querySelector("#sum").addEventListener("click" , function(){
+            let res = 0;
+            for(let attr in cart.data){
+                res += cart.data[attr].price * cart.data[attr].count 
+            }
+            alert(res);
+        })
+
+        document.querySelector("#clear").addEventListener("click" , function(){
+            cart.data = {};
+            cart.save();
+        })
+
+    </script>
+</body>
+
+</html>

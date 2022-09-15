@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JavaScript是天生多态的语言;
+        // - 鸭子类型; 
+
+        // JavaScript面向对象编程的核心目标还是创建对象; 
+        // - JavaScript会把数据分成两层进行存储; 
+        // 1. 数据类 : (除函数之外的所有数据);
+        // 2. 工具层 : 函数; 
+
+        // 面向对象工具 : 
+        // 1. 构造函数 
+        // 2. 实例对象
+        // 3. 原型对象
+
+        //  构造函数  
+        // - 构造函数和普通函数在函数体上是一模一样的; 
+        // function foo(){}
+        // - 我们在调用的时候才能确定这个函数的类别; 
+        //  - 构造函数调用时前面需要加 new关键字; 
+        //  - 普通函数不需要 
+
+        // - 我们通常会把构造函数的首字母大写用以区分普通函数;
+        // function Foo(){}
+        // // 构造函数的核心目的就是创建一个实例对象( 空对象 );
+        // let f = new Foo();
+        // 构造函数在创建对象的时候需要给函数内部添加数据; 
+        // - 构造函数内部的this关键字指向实例对象，所以我们对this的所有操作其实就是操作实例对象; 
+
+        // function Foo(){
+        //     this.a = 10;
+        // }
+        // // 构造函数的核心目的就是创建一个实例对象( 空对象 );
+        // let f = new Foo();
+        // console.log( f );
+
+        // function CreatePreson( name , height ){
+        //     this.name = name;
+        //     this.height = height;
+
+        //     if( this.height > 1 ){
+        //         this.tag = "很高";
+        //     }else{
+        //         this.tag = "一般高";
+        //     }
+        // }
+        // let p1 = new CreatePreson( "吴彦祖" , 175 );
+        // console.log( p1 );
+
+        // - 我希望对象上有方法 ; 
+        function CreatePerson( name , height ){
+            this.name = name;
+            this.height = height;
+
+            if( this.height > 1 ){
+                this.tag = "很高";
+            }else{
+                this.tag = "一般高";
+            }
+        }
+        // let p1 = new CreatePerson( "吴彦祖" , 175 );
+        // let p2 = new CreatePerson( "吴彦祖" , 175 );
+        // console.log( p1 );
+
+        // 原型对象 : 
+        // 每个构造函数都会有一个对应的原型对象; 
+        // 这个原型对象就是专门为了给实例对象提供方法而存在的; 
+        // 构造函数.prototype 去进行访问; 
+        // console.log( CreatePerson.prototype );
+
+        // 向原型之中添加方法的语法  原型对象.方法名 = 函数; 
+        CreatePerson.prototype.talkMe = function(){
+            console.log("talkme功能执行");
+        }
+
+        // - 工具函数的调用需要使用到实例对象 ： 实例对象.原型函数名();
+        //  - 原型链! 
+        let p1 = new CreatePerson( "吴彦祖" , 175 );
+        let p2 = new CreatePerson( "吴彦祖" , 175 );
+        console.log( p1 );
+        p1.talkMe();
+
+
+    </script>
+</body>
+</html>

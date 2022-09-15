@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <a href="#hello">hello</a>
+    <a href="#world">world</a>
+    <h2 id="h2"></h2>
+    <script>
+        // SPA : 单页面应用! 
+        // - 路由 : 改变浏览器的地址栏，按需加载地址栏之中的请求信息，然后把请求结果放在页面之中; 
+
+        // - 核心事件 : hashchange 
+
+        // 路由需要配置路由表 : 
+        // - 主要描述的就是哈希值对应的信息是什么; 
+
+        let router_list = {
+            "#hello" : "你好世界,这是hello 路由显示的内容",
+            "#world" : "你好世界,这是world 路由显示的内容"
+        }
+
+        let h2 = document.querySelector("#h2");
+        window.addEventListener("hashchange" , function(){
+            // console.log("事件触发!")
+            // console.log( location.hash );
+            let hash = location.hash;
+            hash = hash || "#hello";
+            h2.innerHTML = router_list[hash];
+        })
+        window.dispatchEvent( new Event("hashchange") )
+
+    </script>
+</body>
+</html>

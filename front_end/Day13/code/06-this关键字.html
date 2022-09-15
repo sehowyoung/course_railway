@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+    </ul>
+    <script>
+        //  this 关键字是函数之中的关键字，this关键字指向函数的调用者! 
+        // console.log( this );
+        // 指向window的this全都没有意义! 
+
+        // 什么叫做函数的调用者 ? 
+        // 1. 函数内部的this指向是在函数调用时确定的; 
+        // 2. this就指向了函数的调用者; 
+        // 3. 函数的调用者指的是函数在哪里取出的; 
+
+        // function foo(){
+        //     console.log( this );
+        // }
+        // foo(); // 相当于 : window.foo();
+
+        // let obj = {
+        //     foo : foo 
+        // }
+        // obj.foo(); // this 指向obj;
+
+
+        // 随意一个函数调用 : 
+        // a.b();
+        // p1.talkMe();
+        // 概念 : 原型对象之中的this指向指向实例对象; 
+
+        let lis = document.querySelectorAll("li");
+
+        function handlerClick(){
+            console.log( this );
+        }
+        // 为啥this指向触发事件的dom对象 ? 
+        // - 事件触发的时候是由浏览器帮忙进行事件处理函数调用的; 
+        // 浏览器调用事件处理函数的语法是 : dom.click();
+        
+        // dom0.click()
+        // dom1.click()
+        // dom2.click()
+        // dom3.click()
+        // ...
+
+        // for(let i = 0 ; i < lis.length ; i ++){
+        //     lis[i].addEventListener( "click" , handlerClick )
+        // }
+
+        // - 我们在绝大多数的函数式编程场景遇不到的问题 : 
+        // this 指向冲突了 , 应该怎么办 ; 
+        // - 不是构造函数this冲突，而是原型方法里面的this冲突; 
+
+        function Foo(){
+            console.log( this );
+        }
+        Foo.prototype.bindEvent = function(){
+            // 原型方法里面的this指向通常指向实例对象; 
+            document.addEventListener("click" , this.handlerClick )
+        }
+        Foo.prototype.handlerClick = function(){
+            console.log( this );
+            // 在面向对象编程之中所有的数据全部都放在实例对象里; 
+            // - 目标 : 在事件处理函数之中访问到实例对象! 
+        }
+        let f = new Foo();
+        f.bindEvent();
+
+
+    </script>
+</body>
+</html>

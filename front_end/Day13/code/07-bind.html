@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+    </ul>
+    <script>
+        // bind 是函数的api 
+        // 语法 : fn.bind();
+
+        // - 作用 : 创建一个函数调用代理函数! 
+
+        /*
+            bind 创建了一个新函数 : 
+            function (){
+                // 这个函数负责调用原函数 
+                // 想要改变原函数的this指向 ; 
+                obj.fn();
+            }
+        */
+
+        // function foo(){
+        //     console.log( this );
+        // }
+
+        // let obj = {name : "my this"};
+        
+        // let fooCaller = foo.bind( obj );
+
+        // - 1. 得到了一个新函数 fooCaller 
+        // - 2. 我们在调用 fooCaller 的时候相当于调用了 foo 函数; 
+        // - 3. 在使用fooCaller 调用foo函数的时候 foo函数里面的this指向永远我们bind里面的第一个参数; 
+
+        // foo(); // this 指向window; 
+        // fooCaller(); // obj; 
+        
+        // document.onclick = fooCaller;
+
+
+        // bind 的参数固定机制 : 
+
+
+        // function foo( a , b ){
+        //     console.log( this , a , b );
+        // }
+
+        // let obj = {name : "my this"};
+        
+        // let fooCaller = foo.bind( obj , "bind调用时传入的实参");
+
+        // fooCaller( "这是调用函数时传入的实参" );
+
+        // let lis = document.querySelectorAll("li");
+
+        // function handlerClick(index ){
+        //     console.log( index );
+        // }
+
+        // for(let i = 0 ; i < lis.length ; i ++){
+        //     lis[i].addEventListener("click" , handlerClick.bind( lis[i] , i ))
+        // }
+        function Foo(){
+            this.lis = document.querySelectorAll("li");
+        }
+        Foo.prototype.bindEvent = function(){
+            for(let i = 0 ; i < this.lis.length ; i ++){
+                this.lis[i].addEventListener("click" , this.handlerEvent.bind( this , this.lis[i]) )
+            }
+        }
+        Foo.prototype.handlerEvent = function( dom ){
+            console.log( this , dom );
+        }
+        new Foo().bindEvent();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <button id="btn-delete">删除cookie按钮</button>
+    <script src="./xhr.js"></script>
+    <script>
+        // "cookie名=cookie值;expires=拼接日期对象;path=/"
+        // path 后面的值是cookie可访问路径 : 协议域名端口号+ 路径拼接之后的路径，是可以访问路径; 
+        //  设置 / 就是全站可访问路径; 
+
+
+        document.getElementById("btn").addEventListener("click" , function(){
+            let d = new Date();
+            d.setDate( d.getDate() + 10 )
+            document.cookie = `vipL=1899;expires=${ d }`;
+
+        })
+        document.getElementById("btn-delete").addEventListener("click" , function(){
+            let d = new Date();
+            d.setDate( d.getDate() - 1 )
+            document.cookie = `vipL=1899;expires=${ d }`;
+        })
+
+        // 1. 删除cookie , 同名cookie可以覆盖，我们需要把cookie的过期时间给设置为昨天就可以了; 
+        // 2. cookie进行拆分， 分三段进行拼接 ; name=value 一段 , expires一段 , path 一段
+        
+
+        // 传递cookie名, cookie值是设置cookie; 
+        // 传递cookie名是获取cookie
+        function cookie( name , value , options ){
+            options = options || {};
+            // 我们使用数组的形式对这个字符串进行封装; 
+
+            // - 如果传入了三个参数我们就设置cookie; 
+            // - arguments 关键字表示所有参数放在一个数组之中; 
+            if( arguments.length >= 2 ){
+                // 执行设置cookie功能; 
+
+                let d = null;
+                if( typeof options.expires === "number"){
+                    d = new Date();
+                    d.setDate( d.getDate() + options.expires );
+                }
+
+                return document.cookie = [
+                    name ,"=",value,
+                    typeof options.path === "string" ? ";path=" + options.path : "",
+                    d ? ";expires=" + d : ""
+                ].join("");
+            }
+            
+            // - 如果传递了一个参数，那么我们就要取值; 
+            // - document.cookie 是可以取值的， 得到的结果是一个字符串; 
+            // - 如果存在多条cookie 是使用 ; (分号空格)进行间隔的
+
+            if( arguments.length === 1 ){
+                // console.log( document.cookie );
+                let cookie = document.cookie.split("; ");
+                
+                let res = cookie.filter( function( item ){
+                    // console.log( item );
+                    item = item.split("=");
+                    return item[0] === name 
+                })
+
+                return res[0].split("=")[1]
+            }
+        }
+
+        // let res1 = cookie( "vipppp" , "11111" , { expires : 10 });
+        // let res2 = cookie( "vippppp" , "22222" , { expires : 10 });
+
+        // console.log(res1 , res2 );
+        let res = cookie("vippppp")
+        console.log( res );
+
+    </script>
+</body>
+</html>
