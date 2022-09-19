@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">获取信息</button>
+</body>
+<script>
+    // let date_array = [12,10,2022]
+    // // 以数组的顺序声明变量，右侧的数组项为左侧的数组赋值
+    // let [month, date, year] = date_array
+
+    // let [a, ...b] = [1,2,4,6,7,8,3]
+    // console.log(a, b);
+
+    // let obj = {a : 10}
+    // let {a} = obj
+    // console.log(a);
+// location.
+    document.getElementById('btn').addEventListener('click', ()=>{
+        let {hash} = location
+        let {host} = location
+        let {pathname} = location
+        let {href} = location
+        console.log(href);
+        let t = setInterval(() => {
+            location.href = 'https://www.baidu.com'
+            clearInterval(t)
+        }, 3000);
+    })
+
+    // function setInterval() {
+    //     location.host = 'www.baidu.com'
+    // }
+</script>
+</html>

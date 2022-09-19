@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="#hello">hello</a>
+    <a href="#world">world</a>
+    <h2 id="h2"></h2>
+</body>
+<script>
+    let router_list = {
+        "#hello" : "你好世界,这是hello 路由显示的内容",
+        "#world" : "你好世界,这是world 路由显示的内容"
+    }
+
+    let h2 = document.querySelector('#h2')
+    window.addEventListener("hashchange", function(){
+        let hash = location.hash
+        hash = hash || "#hello"
+        h2.innerHTML = router_list[hash]
+    })
+    window.dispatchEvent(new Event("hashchange"))
+</script>
+</html>

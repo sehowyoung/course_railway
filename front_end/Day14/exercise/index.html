@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="#main">main</a>
+    <a href="#about">about</a>
+    <a href="#detail">detail</a>
+    <div class="container"></div>
+</body>
+<script src="./js/xhr.js"></script>
+<script>
+    let router_list = {
+        "main" : {
+            src : "./pages/main.html"
+        },
+        "about" : {
+            src : "./pages/about.html"
+        },
+        "detail" : {
+            component : `<h2>detail</h2>`
+        }
+    }
+
+    function router(selector, router_list) {
+        let dom = document.querySelector(selector)
+        window.addEventListener('hashchange', async function(){
+            let hash = location.hash
+            hash = hash.slice(1)
+
+            let item = router_list[hash]
+
+            for (let attr in item) {
+                switch (attr) {
+                    case "src":
+                        if (item.data) {
+                            dom.innerHTML = item.data
+                            return false
+                        }
+                        let data = await loadRouterData(item[attr])
+                        item["data"] = data
+                        dom.innerHTML = data
+                        break;
+                    case "component":
+                        dom.innerHTML = item["component"]
+                        break
+                    default:
+                        break;
+                }
+            }
+        })
+    }
+    router(".container", router_list)
+
+    async function loadRouterData(src) {
+        let data = await xhr(src)
+        return data
+    }
+</script>
+</html>
