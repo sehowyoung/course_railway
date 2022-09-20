@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            line-height: 800px;
+            color: #fff;
+            font-size: 100px;
+            text-align: center;
+        }
+        .stairs{
+            width: 80px;
+            height: 260px;
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            margin-top: -130px;
+            cursor: pointer;
+        }
+        .stairs-btn.active{
+            background-color: orange;
+            color: #fff;
+        }
+        .stairs-btn,.go-back{
+            width: 80px;
+            height: 40px;
+            border-bottom: 2px solid #ddd;
+            line-height: 40px;
+            text-align: center;
+            background-color: darkorange;
+        }
+        .go-back{
+            background-color: #b6b6b6;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content" style="background-color: deepskyblue;height:1000px ;">一层</div>
+        <div class="content" style="background-color: antiquewhite;height: 1200px;">二层</div>
+        <div class="content" style="background-color: blueviolet;height: 800px;">三层</div>
+        <div class="content" style="background-color: cadetblue;height: 1500px;">四层</div>
+        <div class="content" style="background-color: darkolivegreen;height: 1400px;">五层</div>
+    </div>
+
+    <div class="stairs">
+        <div class="stairs-btn active">一层</div>
+        <div class="stairs-btn">二层</div>
+        <div class="stairs-btn">三层</div>
+        <div class="stairs-btn">四层</div>
+        <div class="stairs-btn">五层</div>
+        <div class="go-back">回到顶部</div>
+    </div>
+
+    <script src="./js/jquery-1.11.0.js"></script>
+    <script>
+        // 实现楼梯功能 : 
+        // 点击跳转到对应楼层功能 : 
+        // 点击 stairs-btn 的时候，获取对应的下标，把页面的scrollTop 设置到当前楼层所在的高度; 
+        // - starits-btn 和 content的对应关系是下标; 
+        $( function(){
+            $(".stairs-btn").click( function(){
+                // 获取到当前元素的下标; 
+                // jQuery API : 可以获取当前元素在该选择符中选择元素的位置; 
+                // index;
+                // 当前元素 .index(选择符)
+                // 比对当前元素在选择结果之中的下标; 
+                var index = $(this).index(".stairs-btn");
+                // 获取对应的楼层 : 
+                var $content = $(".content").eq( index );
+                // 我得到了这个楼层信息又能咋的?
+                // 获取到楼层的位置信息;
+                // 楼层的高度信息有了; 
+                // console.log($content.offset()); 
+                // 设置页面的scrollTop到对应的高度; 
+                // $("body,html").scrollTop($content.offset().top);
+                // 设置成动画形式
+                $("body,html").animate({
+                    scrollTop : $content.offset().top
+                })
+            })
+            $(".go-back").click( function(){
+                $("body,html").animate({
+                    scrollTop : 0
+                })
+            })
+        });
+
+    </script>
+</body>
+</html>

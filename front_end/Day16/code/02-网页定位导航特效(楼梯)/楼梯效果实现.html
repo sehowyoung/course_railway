@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            line-height: 800px;
+            color: #fff;
+            font-size: 100px;
+            text-align: center;
+        }
+        .stairs{
+            width: 80px;
+            height: 260px;
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            margin-top: -130px;
+            cursor: pointer;
+        }
+        .stairs-btn.active{
+            background-color: orange;
+            color: #fff;
+        }
+        .stairs-btn,.go-back{
+            width: 80px;
+            height: 40px;
+            border-bottom: 2px solid #ddd;
+            line-height: 40px;
+            text-align: center;
+            background-color: darkorange;
+        }
+        .go-back{
+            background-color: #b6b6b6;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content" style="background-color: deepskyblue;height:1000px ;">一层</div>
+        <div class="content" style="background-color: antiquewhite;height: 1200px;">二层</div>
+        <div class="content" style="background-color: blueviolet;height: 800px;">三层</div>
+        <div class="content" style="background-color: cadetblue;height: 1500px;">四层</div>
+        <div class="content" style="background-color: darkolivegreen;height: 1400px;">五层</div>
+    </div>
+
+    <div class="stairs">
+        <div class="stairs-btn active">一层</div>
+        <div class="stairs-btn">二层</div>
+        <div class="stairs-btn">三层</div>
+        <div class="stairs-btn">四层</div>
+        <div class="stairs-btn">五层</div>
+        <div class="go-back">回到顶部</div>
+    </div>
+
+    <script>
+        // 楼梯就是点击按钮时，让window的scrollTop值设置为对应楼层的offsetTop值; 
+
+        let stairs_btns = document.querySelectorAll(".stairs-btn");
+        let contents = document.querySelectorAll(".content");
+        function changeFloor(){
+            // 目标 : 改变window对象的scrollTop值! 
+            // - 获取 scrollTop document.body.scrollTop || document.documentElement.scrollTop 
+            // document.body.scrollTop = 0;
+            // document.documentElement.scrollTop = 0;
+
+            // 找到对应楼层的offsetTop 值;
+            // 找到对应的楼层需要下标信息, 下标信息需要我们自己去设置和获取;  
+            let t = contents[ this.dataset.index ].offsetTop;
+            // console.log( t );
+            // 给scrollTop 赋值; 
+            // document.body.scrollTop = t;
+            // document.documentElement.scrollTop = t;
+
+            // 专门控制页面卷动的API; 
+            scrollTo({
+                top : t , 
+                // 动画效果
+                behavior: 'smooth'
+            });
+        }
+
+        for(let i = 0 ; i < stairs_btns.length ; i ++){
+            stairs_btns[i].addEventListener("click" , changeFloor )
+            stairs_btns[i].dataset.index = i;
+        }
+        // 楼梯切换 : 
+        // - 页面卷动事件触发， 楼层就进行切换; 
+        //  - 做范围判断就是先获取最小值和最大值; 
+
+        let content_array = [];
+        // 把最小值最大值放入到数组之中; 
+        for(let i = 0 ; i < contents.length ; i ++){
+            content_array.push( {
+                min : contents[i].offsetTop,
+                max : contents[i].offsetTop + contents[i].offsetHeight
+            })
+        }
+        function changeBtn(){
+            // 判定当前应该显示的楼梯按钮; 
+            // 卷动隐藏的高度和 范围作比对， 看符合那个范围; 
+            let scrollTop = document.body.scrollTop || document.documentElement.scrollTop; 
+            let i
+            for(i = 0 ; i < content_array.length ; i ++){
+                // 范围判断 : 大于等于最小值, 小于最大值; 
+                if( scrollTop >= content_array[i].min  && scrollTop < content_array[i].max ){
+                    break;
+                }   
+            }
+            // 添加样式改变; 
+            stairs_btns[i].classList.add( "active" );
+        }
+
+        window.addEventListener( "scroll" ,  changeBtn )
+
+    </script>
+</body>
+</html>

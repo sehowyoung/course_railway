@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 530px;
+            height: 530px;
+            margin: 100px auto;
+            background-image: url(./images/turntable-bg2.png);
+            background-size:contain;
+            background-repeat: no-repeat;
+            position:relative;
+        }
+        .rotate{
+            width: 450px;
+            height: 450px;
+            position: absolute;
+            left: 40px;
+            top: 38px;
+            transition: transform 2s;
+        }
+        .pointer{
+            width: 174px;
+            height: 228px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -94px;
+            margin-top: -130px;
+            z-index: 8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pointer"><img src="./images/pointer.png" alt=""></div>
+        <div class="rotate"><img src="./images/turntable2.png" alt=""></div>
+    </div>
+    <script>
+        let container = document.querySelector(".container");
+        let rotate = document.querySelector(".rotate");
+        let pointer = document.querySelector(".pointer")
+
+        let rotate_total = 0;
+
+        function luckDraw(){
+            let random_rotate = parseInt( Math.random() * 361 ) + (parseInt(Math.random() * 3) + 1) * 360  
+            rotate_total += random_rotate;
+            rotate.style.transform = `rotate(${rotate_total}deg)`;
+            // 随机抽奖结果计算: 
+        }
+        pointer.addEventListener("click" , luckDraw )
+        
+    </script>
+</body>
+</html>

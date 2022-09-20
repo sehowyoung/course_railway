@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#acc {
+				width: 640px;
+				height: 140px;					
+				margin: 0 auto;
+			}
+			#acc ul  {
+				border-left:1px solid #ddd ;
+				height: 140px;
+				position: relative;
+			}
+			#acc ul li {
+				width:50px;
+				height: 138px;
+				border: 1px solid #ddd;
+				float: left;
+				list-style: none;
+				border-left: 0;
+				position: relative;
+				overflow: hidden;
+			}
+			#acc ul li.active {
+				width: 434px;				
+			}
+			#acc ul li h3 {
+				font-size: 14px;
+				color: #000;
+				font-weight:100;
+				width: 14px;
+				height: 98px;
+				padding: 40px 18px 0;
+				
+			}
+			#acc ul li h3.hover {
+				background: #f42760;
+				color: #fff;
+			}
+			#acc ul li  div {
+				width: 383px;
+				height: 138px;
+				background: blue;
+				position: absolute;
+				top: 0;
+				left: 50px;
+				border-left:1px solid #ddd ;
+				z-index: 0;
+			}
+			#acc ul li.last {
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="acc">
+
+			<ul>
+				<li class="active">
+					<h3 class="hover">白玫瑰</h3>
+					<div></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div></div>
+				</li>
+				<li class="last">
+					<h3>白玫瑰</h3>
+					<div></div>
+				</li>
+			</ul>
+
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript">
+			// 1. 事件 : 鼠标移入事件; 
+			// 2. 改变的属性 : 当前触发事件元素宽度 : 434 , 其他的元素宽度变成 50 ; 
+
+			// javascript 事件是 : dom.addEventListener("事件名" , 事件处理函数 ) 
+			// jQuery     事件是 : jquery实例.on("事件名" , 事件处理函数 )
+			
+			// jQuery选择器只有一个 : $();
+			// - jQuery所有的dom操作都是批量操作; 
+
+			function slide(){
+				// 找到当前触发事件的元素 : this ; 
+				// console.log( this );
+				// dom对象没办法使用jQuery的API ; 
+				// 我们应该用 $() 包裹dom对象来吧dom对象外面包裹一层jQuery实例; 
+				$( this )
+				.stop()
+				.animate( {
+					width : 434 
+				})
+				// 让其他的元素宽度变成50; 
+				// 其他兄弟级别的元素可以使用 siblings() 来进行选择; 
+				.siblings()
+				.stop()
+				.animate({
+					width : 50 
+				})
+				// 在jQuery之中的动画只需要把css属性改为animate属性即可! 
+				// 动画队列在我们进行操作的时候可能会变得非常多余，我们可以在jquery的实例对象上调用 stop() API来终止动画和动画队列的执行.
+				// 我们要先清空之前的动画队列，再执行当前的动画; 
+				// 因为动画队列是放在jQuery的实例对象上的, 我们需要在实例对象上进行情况然后再调用动画效果; 
+			}
+
+			$("#acc li").on("mouseover" , slide );
+		</script>
+	</body>
+
+</html>

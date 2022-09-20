@@ -1,0 +1,114 @@
+// part1 : 变量 ! 
+// 背景颜色色值; 
+$bg : #ddd;
+// $box_bg : darken( #f10 , 25);
+// darken : 色值变暗;
+// lighten : 色值变暗;  
+// $box_bg : lighten( #f10 , 20 );
+$box_bg :  #f10 ;
+
+body{
+    background-color: $bg;
+}
+// sass支持变量 : 
+// - 变量的存在可以提取公用的数值 : 颜色， 宽高 ... 
+.box,.pox{
+    width: 100px + 100px;
+    height: 100px;
+    margin: 50px;
+    float: left;
+    background-color: $box_bg;
+}
+// part2 : 包裹结构 
+// - sass 支持css选择符通过包裹来描述层级关系; 
+.box {
+    background-color: darken( $box_bg, 10 );
+    display: flex;
+    flex-direction: column;
+    // 给span加上白颜色的字体 
+
+    // &::after{
+    //     content:"";
+    //     display: block;
+    //     clear: both;
+    // }
+    span{
+        color: #fff;
+    }
+    strong{
+        color: yellowgreen;
+        // strong:hover{}
+        // & => 代表当前大括号的选择符! 
+        &:hover{
+            font-size: 30px;
+        }
+
+        &:nth-child(1){
+            color: blueviolet;
+        }
+    }
+    // 伪类怎么办 ? 
+}
+
+// 那我这个嵌套结构从body开始写行不 ? 
+// - 不行! 
+// 我们要合理限制结构的嵌套深度 , 不要让结构层级变得过大!;
+
+// part3 : 混合 mixin 
+
+// - 复用性比较高的代码可以用 混功能进行封装; 
+
+// 1. 定义混合; 
+/*
+    @mixin 混合名( $参数 ){
+        css代码 : 代码之中可以应用参数;  
+    }
+*/ 
+// 2. 调用混合; 
+/*
+    @include 混合名称( $参数 );
+*/ 
+
+// @mixin center(){
+//     // position: absolute;
+//     // left: 0;
+//     // top: 0;
+//     // bottom: 0;
+//     // right: 0;
+//     // margin:auto;
+
+//     // margin-left: auto;
+//     // margin-right: auto;
+// }
+
+// .pox{
+//     background-color: skyblue;
+
+//     @include center();
+// }
+
+/*
+    mixin 之中可以传递参数; 
+
+    - 在sass之中三大结构都存在，只不过我们需要使用@+关键字使用特殊的逻辑结构; 
+
+*/
+@mixin center( $type : "default" ){
+    @if( $type == "absolute"){
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin:auto;
+    }@else{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.pox{
+    background-color: skyblue;
+
+    @include center;
+}

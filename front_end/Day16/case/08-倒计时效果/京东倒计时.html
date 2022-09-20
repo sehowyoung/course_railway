@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .container {
+      width: 190px;
+      height: 260px;
+      background: #ce3e2e;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -130px;
+      margin-left: -95px;
+    }
+
+    h1 {
+      text-align: center;
+      /* padding: 24px 24px;
+         */
+      padding: 24px 24px 0 24px;
+      color: white;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+      color: white;
+      padding: 16px;
+    }
+
+    .box {
+      line-height: 30px;
+    }
+
+    span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: black;
+      line-height: 30px;
+      margin-right: 10px;
+      color: white;
+    }
+
+    b {
+      width: 20px;
+      height: 30px;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .box {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>京东秒杀</h1>
+    <p>
+      <img src="./img/j.png" alt="" />
+    </p>
+    <h3>08:00点场 距结束</h3>
+    <div class="box">
+      <span></span><b>:</b><span></span><b>:</b><span></span>
+    </div>
+  </div>
+  <script>
+    var showTime = function () {
+      var nowTime = new Date(),
+        endTime = new Date("09 28,2022 24:0:0");
+      var leftTime = endTime.getTime() - nowTime.getTime(), // 距离结束的毫秒数
+        hour = Math.floor((leftTime / (1000 * 60 * 60)) % 24), // 计算小时数字；
+        minutes = Math.floor((leftTime / (1000 * 60)) % 60), // 计算分钟；
+        second = Math.floor((leftTime / 1000) % 60); // 计算秒
+      var spans = document.querySelectorAll("span");
+      spans[0].innerHTML = `0${hour}`;
+      spans[1].innerHTML = minutes;
+      spans[2].innerHTML = second;
+    };
+    setInterval(() => {
+      showTime();
+    }, 1000);
+  </script>
+</body>
+
+</html>

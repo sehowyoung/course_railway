@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./libs/jd.css">
+</head>
+<body>
+    <div class="center-container">
+        <div class="left-bar">
+            <ul>
+                <li class="active">家用电器</li>
+                <li>手机/运营商/数码</li>
+                <li>电脑/办公</li>
+                <li>家装/家具</li>
+            </ul>
+        </div>
+        <div class="right-bar">
+            <ul>
+                <li class="active">家用电器</li>
+                <li>手机/运营商/数码</li>
+                <li>电脑/办公</li>
+                <li>家装/家具</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let btns = document.querySelectorAll(".left-bar li");
+        let contents = document.querySelectorAll(".right-bar li");
+        let content = document.querySelector(".right-bar");
+
+
+
+        function change(){
+            let i = this.dataset.index;
+            reset();
+            btns[i].classList.add("active");
+            contents[i].classList.add("active");
+        }
+
+        function reset(){
+            for(let i = 0 ; i < btns.length ; i ++){
+
+                btns[i].classList.remove("active");
+                contents[i].classList.remove("active");
+            }
+        }
+
+        let t
+        function hide(){
+            // 控制reset调用时机 ; 
+            // - 如果我们在100ms之内移入到了content区域,那么我们就不执行reset; 
+            clearInterval( t );
+            let i = this.dataset.index;
+            t = setTimeout( function(){
+                contents[i].classList.remove("active");
+            } , 100 )
+        }
+
+        function stop(){
+            clearTimeout( t );
+        }
+
+        for(let i = 0 ; i < btns.length ; i ++){
+            btns[i].addEventListener("mouseenter" , change );
+            btns[i].addEventListener("mouseleave" , hide );
+            btns[i].dataset.index = i;
+            contents[i].dataset.index = i;
+        }
+        
+        content.addEventListener("mouseenter" , stop )
+        content.addEventListener("mouseleave" , reset )
+    </script>
+</body>
+</html>

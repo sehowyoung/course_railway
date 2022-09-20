@@ -1,0 +1,107 @@
+option = {
+  title: {
+    text: 'Referer of a Website',
+    subtext: 'Fake Data',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left'
+  },
+  series: [
+    {
+      name: 'Access From',
+      type: 'pie',
+      radius: '50%',
+      data: [
+        { value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' }
+      ],
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+
+
+const data = [];
+for (let i = 0; i <= 360; i++) {
+  let t = (i / 180) * Math.PI;
+  let r = Math.sin(2 * t) * Math.cos(2 * t);
+  data.push([r, i]);
+}
+option = {
+  title: {
+    text: 'Two Value-Axes in Polar'
+  },
+  legend: {
+    data: ['line']
+  },
+  polar: {
+    center: ['50%', '54%']
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+  angleAxis: {
+    type: 'value',
+    startAngle: 0
+  },
+  radiusAxis: {
+    min: 0
+  },
+  series: [
+    {
+      coordinateSystem: 'polar',
+      name: 'line',
+      type: 'line',
+      showSymbol: false,
+      data: data
+    }
+  ],
+  animationDuration: 2000
+};
+
+option = {
+  title: [
+    {
+      text: 'Tangential Polar Bar Label Position (middle)'
+    }
+  ],
+  polar: {
+    radius: [30, '80%']
+  },
+  angleAxis: {
+    max: 4,
+    startAngle: 75
+  },
+  radiusAxis: {
+    type: 'category',
+    data: ['a', 'b', 'c', 'd']
+  },
+  tooltip: {},
+  series: {
+    type: 'bar',
+    data: [2, 1.2, 2.4, 3.6],
+    coordinateSystem: 'polar',
+    label: {
+      show: true,
+      position: 'middle',
+      formatter: '{b}: {c}'
+    }
+  }
+};

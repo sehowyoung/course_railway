@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            font-family: 'Microsoft YaHei', '微软雅黑', SimHei, '黑体';
+        }
+        .tab{
+            width: 360px;
+            height: 277px;
+            margin: 100px auto;
+        }
+        .btn-container{
+            display: flex;
+            background: url(https://i2.sinaimg.cn/dy/deco/2013/0321/bg1px.png) 0 -33px repeat-x;
+            margin-bottom: 20px;
+        }
+        .btn{
+            height: 35px;
+            width: 58px;
+            box-sizing: border-box;
+            line-height: 35px;
+            text-align: center;
+        }
+        .btn.active{
+            height: 33px;
+            line-height: 29px;
+            border-top: 3px solid #ff8400;
+            border-left: 1px solid #dbdee1;
+            border-right: 1px solid #dbdee1;
+            background-color: #fff;
+            padding: 0 12px;
+        }
+        .content-container{
+            width: 360px;
+            height: 241px;
+            position: relative;
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+            line-height: 241px;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        .content:first-child{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="btn-container">
+            <div data-index="0" class="btn active">抗疫</div>
+            <div data-index="1" class="btn">专栏</div>
+            <div data-index="2" class="btn">热点</div>
+        </div>
+        <div class="content-container">
+            <div class="content" style="background-color: aqua;">这是抗疫内容</div>
+            <div class="content" style="background-color: blue;">这是专栏内容</div>
+            <div class="content" style="background-color: coral;">这是热点内容</div>
+        </div>
+    </div>
+</body>
+<script>
+    let btns = document.querySelectorAll('.btn')
+    let contents = document.querySelectorAll('.content')
+    function clear() {
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].classList.remove('active')
+            contents[i].style.display = 'none'
+        }
+    }
+
+    function handlerMouse(btn) {
+        clear()
+        this.classList.add('active')
+        // console.log(this.dataset.index);
+        contents[this.dataset.index].style.display = 'block'
+    }
+
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].dataset.index = i
+        btns[i].addEventListener("mouseover", handlerMouse)
+    }
+</script>
+</html>

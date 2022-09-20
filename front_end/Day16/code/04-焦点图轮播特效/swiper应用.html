@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./swiper/swiper-bundle.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .my-container {
+            width: 1100px;
+            height: 220px;
+            margin: 100px auto;
+            position: relative;
+            box-shadow: 2px 2px 5px #000;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .my-container .swiper-slide {
+            background-color: #fff;
+            line-height: 220px;
+        }
+
+        .my-container .swiper-pagination{
+
+            position: absolute;
+            bottom: -100px;
+        }
+        .bullet{
+            display: inline-block;
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+            opacity: 0.3;
+            text-align: center;
+            font-size: 20px;
+            line-height: 100px;
+            background-color: yellowgreen;
+        }
+        .active{
+            color: hotpink;
+            opacity:1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- swiper需要结构配合 -->
+
+    <!-- swiper-container容器 : 负责轮播图的位置,尺寸,缩放 -->
+    <div class="my-container">
+        <!-- 图片的整体容器 -->
+        <div class="swiper-wrapper">
+            <!-- 单个图片的容器 -->
+            <div class="swiper-slide"> slide1 </div>
+            <div class="swiper-slide"> slide2 </div>
+            <div class="swiper-slide"> slide3 </div>
+            <div class="swiper-slide"> slide4 </div>
+            <div class="swiper-slide"> slide5 </div>
+        </div>
+        <!-- 按钮 -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <!-- 分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="./swiper/swiper-bundle.js"></script>
+    <script>
+        // 额外增加配置 : 
+        // navigation: 配置核心目标 : 让Swiper知道左右按钮时哪个元素; 
+        let options = {
+            // 配置左右按钮 
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            // 无限循环播放
+            loop: true,
+            // 动画效果 
+            // effect : "fade"
+            // effect : "cards"
+            effect: 'creative',
+            creativeEffect: {
+                prev: {
+                    shadow: true,
+                    origin: "left center",
+                    translate: ["-5%", 0, -200],
+                    rotate: [0, 100, 0],
+                },
+                next: {
+                    origin: "right center",
+                    translate: ["5%", 0, -200],
+                    rotate: [0, -100, 0],
+                },
+            },
+            // 分页器
+            pagination : {
+                el : ".swiper-pagination",
+                // 点击效果实现 : 
+                clickable : true ,
+                // 渲染结构处理 : 
+                renderBullet: function (index, className) {
+                    return `<strong class="${className}">${ index }</strong>`;
+                },
+                bulletActiveClass: 'active',
+                bulletClass : 'bullet'
+            },
+            // 自动播放 
+            autoplay : true 
+        }
+        let swiper = new Swiper(".my-container", options);
+        // console.log( swiper );
+
+        let { bullets } = swiper.pagination
+        for(let i = 0 ; i < bullets.length ; i ++){
+            bullets[i].addEventListener( "mouseover" , function(){
+                this.click();
+            }) ; 
+        }
+    </script>
+</body>
+
+</html>

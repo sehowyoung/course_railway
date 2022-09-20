@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body {
+  background-color: #ddd;
+}
+
+.box, .pox {
+  width: 200px;
+  height: 100px;
+  margin: 50px;
+  float: left;
+  background-color: #f10;
+}
+
+.box {
+  background-color: #cc0e00;
+  display: flex;
+  flex-direction: column;
+}
+.box span {
+  color: #fff;
+}
+.box strong {
+  color: yellowgreen;
+}
+.box strong:hover {
+  font-size: 30px;
+}
+.box strong:nth-child(1) {
+  color: blueviolet;
+}
+
+/*
+    @mixin 混合名( $参数 ){
+        css代码 : 代码之中可以应用参数;  
+    }
+*/
+/*
+    @include 混合名称( $参数 );
+*/
+/*
+    mixin 之中可以传递参数; 
+
+    - 在sass之中三大结构都存在，只不过我们需要使用@+关键字使用特殊的逻辑结构; 
+
+*/
+.pox {
+  background-color: skyblue;
+  margin-left: auto;
+  margin-right: auto;
+}/*# sourceMappingURL=01-test.css.map */

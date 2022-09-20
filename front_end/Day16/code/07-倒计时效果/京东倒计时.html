@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .container {
+      width: 190px;
+      height: 260px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -130px;
+      margin-left: -95px;
+      background-image: url(./images/j.png);
+    }
+
+    h1 {
+      text-align: center;
+      /* padding: 24px 24px;
+         */
+      padding: 24px 24px 0 24px;
+      color: white;
+      margin-bottom: 80px;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+      color: white;
+      padding: 16px;
+    }
+
+    .box {
+      line-height: 30px;
+    }
+
+    span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: black;
+      line-height: 30px;
+      margin-right: 10px;
+      color: white;
+    }
+
+    b {
+      width: 20px;
+      height: 30px;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .box {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>京东秒杀</h1>
+   
+    <h3>08:00点场 距结束</h3>
+    <div class="box">
+      <span></span><b>:</b><span></span><b>:</b><span></span>
+    </div>
+  </div>
+  <script src="./countdown.js"></script>
+  <script>
+     
+     function jdCountDown(){
+        let count_down = countDown("2022-9-19 16:00:00");
+        let spans = document.querySelectorAll(".box span");
+
+        for(let attr in count_down ){
+          count_down[attr] = count_down[attr ] < 10 ? "0" + count_down[attr] : count_down[attr];
+        }
+
+        spans[0].innerHTML = count_down.hour ;
+        spans[1].innerHTML = count_down.minute;
+        spans[2].innerHTML = count_down.second ;
+     }
+
+     setInterval( jdCountDown, 1000);
+     jdCountDown();
+
+  </script>
+</body>
+</html>
