@@ -1,0 +1,12 @@
+$bg : hotpink;
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: $bg;
+}
+
+.pox{
+    @extend .box;
+    margin-top: 20px;
+}

@@ -1,0 +1,9 @@
+.box, .pox {
+  width: 100px;
+  height: 100px;
+  background-color: hotpink;
+}
+
+.pox {
+  margin-top: 20px;
+}
