@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">发起跨域请求</button>
+    <div id="container"></div>
+    <script>
+
+        // async function sendRequest(){
+        //     let response = await fetch("https://www.baidu.com");
+        //     let data = await response.text();
+        // }
+
+        // document.getElementById("btn").addEventListener("click" ,sendRequest  )
+
+        // CORS 跨域 : 
+        // - 纯后端的跨域 ;
+        // - 给响应头添加 Access-Control-Allow-Origin 这条属性就可以了; 
+
+        // let container = document.getElementById("container");
+
+        // async function sendRequest(){
+        //     let response = await fetch("http://127.0.0.1:3000");
+        //     let data = await response.text();
+        //     container.innerHTML = data;
+        // }
+        // document.getElementById("btn").addEventListener("click" ,sendRequest  )
+
+        // 服务器代理跨域 
+        
+        // async function sendRequest(){
+
+        //     let url = "https://www.duitang.com/napi/blog/list/by_filter_id/?include_fields=top_comments%2Cis_root%2Csource_link%2Citem%2Cbuyable%2Croot_id%2Cstatus%2Clike_count%2Csender%2Calbum%2Creply_count&filter_id=%E6%A4%8D%E7%89%A9%E5%A4%9A%E8%82%89&start=24&_=1663719881511"
+
+        //     let response = await fetch(url);
+        //     let data = await response.text();
+        //     container.innerHTML = data;
+        // }
+        // document.getElementById("btn").addEventListener("click" ,sendRequest  )
+
+        // jsonp 跨域 : 
+        // 机制 : 使用script标签的src发起一个请求，请求回来的数据当成JavaScript执行; 这种数据请求方式需要服务端配合返回正确的数据; 
+        
+        // 跨域的本质就是服务器给浏览器传递数据 ; 
+
+        // function callback( data ){
+        //     console.log( data );
+        // }
+
+        // 需求 : 把回调函数的命名权交给前端; 
+        // - 发送请求的时候把全局函数名传递过去; 
+        // ?cb=quanjuhanshu
+
+        function quanjuhanshu( data ){
+            console.log( data );
+        }
+
+        // 因为JavaScript 是事件驱动语言; 
+        // - 我们要把创建标签的行为放在事件处理函数之中; 
+
+        function sendRequest(){
+            // 创建一个script标签 : 
+            let script = document.createElement("script");
+            // 设置请求路径 : 
+            script.src = "http://10.108.30.140:3000/jsonp/test?cb=quanjuhanshu";
+            // 我们需要把标签放入到页面之中; 
+            document.body.appendChild( script );
+            // 发送玩请求之后就立马删除掉这个script; 
+            script.remove();
+        }
+        document.getElementById("btn").addEventListener("click" ,sendRequest  )
+
+    </script>
+    <!-- <script src="./test.txt"></script> -->
+    <!-- <script src="http://127.0.0.1:5501/01_%E4%BB%A3%E7%A0%81/test.txt"></script> -->
+    
+    <!-- <script src="http://localhost:5501/01_%E4%BB%A3%E7%A0%81/test.js"></script> -->
+    <!-- <script src="http://10.108.30.140:3000/jsonp/test?cb=quanjuhanshu"></script> -->
+</body>
+</html>

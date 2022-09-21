@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- esModule在前端运行时的特殊条件 
+        1. 必须服务器目录下打开前端页面 ； 
+        2. scrirpt 标签必须开始module模式;  
+    -->
+    <script type="module">
+        // 模块语法就是为了拆分js的; 
+        // 模块引入 : import 
+        // 模块定义 : export 
+        // import 变量名 from 模块路径; 
+        // - 这个语法要求 模块内部必须 export default 语法返回一个对象， 这个对象会被赋值给 import定义的变量; 
+        import module1 from "./module1.js";
+        module1.foo();
+
+        // import {} from 模块路径 ; 
+        // 表示我们在模块之中直接取出某些数据来使用; 
+        // 定义模块的时候也不用export defaulut 定义一个对象了,而是每次export一个数据出来; 
+        // import { a , Foo , b } from "./module2.js";
+
+        // console.log( a , Foo , b );
+        // console.log( a );
+
+        // 更名语法和解构赋值语法有区别; 
+        // import { a as A }
+        // import { a as A, Foo , b } from "./module2.js";
+
+        // 注意 : import定义的变量是不能重新赋值的; 
+        // import * as module2 from "./module2.js";
+        // // 这个语法表示把所有的模块内容都取出放在 module2对象之中
+        // console.log( module2 );
+
+    </script>   
+</body>
+</html>
