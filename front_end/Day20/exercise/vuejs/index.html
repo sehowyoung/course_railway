@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-random>{{msg}}</div>
+    </div>
+</body>
+<script src="./vue.min.js"></script>
+<script>
+    Vue.directive('random', {
+        bind(el){
+
+        },
+        inserted(el){
+            el.style.backgroundColor = randomColor()
+
+        },
+        update(el){
+            console.log(update执行);
+            el.style.backgroundColor = randomColor()
+        }
+    })
+
+    function randomColor() {
+        let r = parseInt(Math.random() * 256)
+        let g = parseInt(Math.random() * 256)
+        let b = parseInt(Math.random() * 256)
+        return `rgb(${r}, ${g}, ${b})`
+    }
+
+    new Vue({
+        el: '#app',
+        data: {
+            msg: "hello world"
+        }
+    })
+</script>
+</html>

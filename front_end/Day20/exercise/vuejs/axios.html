@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">send</button>
+</body>
+<script src="./lib/axios.min.js"></script>
+<script>
+    async function send() {
+        options= {
+            // params: {
+            //     name: 'ccl',
+            //     age: 11
+            // }
+            method: 'POST',
+            data: {
+                name: 'ccl',
+                age: 11
+            },
+            transformRequest: [
+                function (data) {
+                    let res = ''
+                    for (const attr in data) {
+                        res += `&${attr}=${data[attr]}`
+                    }
+                    return res.slice(0)
+                }
+            ]
+        }
+        // let {data} = await axios("http://localhost:8888/test/third", options)
+        let {data} = await axios("http://localhost:8888/test/fourth", options)
+        console.log(data);
+    }
+    document.getElementById('btn').addEventListener('click', send)
+</script>
+</html>
