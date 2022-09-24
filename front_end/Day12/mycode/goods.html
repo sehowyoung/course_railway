@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/XHR.js"></script>
+<script>
+    function test1() {
+        let data = xhr('http://localhost:8888/goods/list',{
+            dataType: 'json',
+            callback(data){
+                console.log(data);
+            }
+        })
+    }
+    test1()
+    function test2() {
+        let data = xhr('http://localhost:8888/goods/item',{
+            dataType: 'json',
+            params: {
+                id: 2
+            },
+            callback(data){
+                console.log(data);
+            }
+        })
+    }
+    test2()
+    function test3() {
+        let data = xhr('http://localhost:8888/goods/category',{
+            dataType: 'json',
+            callback(data){
+                console.log(data);
+            }
+        })
+    }
+    test3()
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="javascript:void(0)">
+        <input type="text" id="username" placeholder="username"/>
+        <input type="password" id="password" placeholder="password"/>
+        <input type="password" id="rpassword" placeholder="repeat password"/>
+        <input type="text" id="nickname" placeholder="nickname"/>
+        <button id="btn">提交</button>
+    </form>
+</body>
+<script>
+
+    document.getElementById('btn').addEventListener('click', ()=>{
+        let xhr = new XMLHttpRequest()
+        let url = `http://localhost:8888/users/register`
+        xhr.open('POST', url)
+        xhr.setRequestHeader("content-type" , "application/x-www-form-urlencoded");
+        let username = document.getElementById('username').value
+        let password = document.getElementById('password').value
+        let rpassword = document.getElementById('rpassword').value
+        let nickname = document.getElementById('nickname').value
+        xhr.send(`username=${username}&password=${password}&rpassword=${rpassword}&nickname=${nickname}`)
+        xhr.onload = ()=>{
+            let data = JSON.parse(xhr.responseText)
+            console.log(data);
+            if (data.code === 1) {
+                alert("success")
+                location.href = "file:///D:/code/vscode/course_railway/front_end/Day12/code/users/login.html"
+            }
+        }
+    })
+</script>
+</html>
