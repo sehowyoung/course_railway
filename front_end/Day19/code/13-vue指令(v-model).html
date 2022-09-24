@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <p> <input type="text" v-model.lazy="username"> {{ username }} </p>
+       <!-- 如果数据可以转换成数字，那么就把它转换成数字 -->
+       <p> <input type="text" v-model.number="num"> {{ num }} </p>
+       <!-- trim 删除字符串左右两侧空格的 -->
+       <p> <input type="text" v-model.trim="nickname"> {{ nickname }}</p>
+
+       <button @click="getValue">获取数据</button>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        new Vue({
+            el : "#app",
+            data : {
+                username : "",
+                num : 0,
+                nickname : ""
+            },
+            methods : {
+                getValue(){
+                    console.log( this.num , this.nickname);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

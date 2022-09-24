@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 
+                循环指令要循环哪个结构,就写在哪个结构上
+                指令要重复创建哪个元素就写在哪个元素上 
+            -->
+           
+            <!-- <li  v-for="item in games"> {{ item }}</li> -->
+            <!-- :key是每个元素的特殊标记, 有了这个标记在进行diff算法比对的时候会有更好的性能 -->
+            <li 
+                :key="index" 
+                v-for="(item,index) in games"> 
+                <!-- 结构内容 -->
+                <span>{{ item }} - {{ index }}</span>
+                <!-- 操作按钮 -->
+                <button @click="remove( index )">删除</button>
+            </li>
+            <!-- 渲染对象结构数据  -->
+        </ul>
+
+        <div>
+            <!-- 在遍历对象的时候 for=( value , key , index) in 对象 -->
+            <p :key="attr" v-for="( item , attr , index ) in gamer"> {{ attr === "name" ? "姓名" : "游戏类型"}} - {{item}} - {{index}}</p>
+        </div>
+
+        <!-- 
+            需求 : 
+                你拥有的汽车 : [ "rs6" , "819" , "保时捷" ]
+
+                你的信息 : {
+                    name : "姓名",
+                    age  : 24,
+                    getAge : 26
+                }
+
+                把这些结构渲染到你的页面之中; 
+         -->
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        // 核心思路 : 操作dom不操作dom对象， 操作dom对象对应的数据; 
+        new Vue( {
+            el : "#app",
+            data : {
+                games : [
+                    "老头环",
+                    "英雄联盟",
+                    "APEX",
+                    "守望先锋2"
+                ] ,
+                gamer : {
+                    name : "xiaohu",
+                    type : "moba"
+                }
+            },
+            methods : {
+                remove( index ){
+                    this.games.splice( index , 1 )
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

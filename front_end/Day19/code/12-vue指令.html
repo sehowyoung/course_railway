@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: brown;
+        }
+        .boxx{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: relative;
+        }
+        .poxx{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #000;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- 类名 -->
+    <div id="app">
+        <div :class="isActive?'active':'' ">hello Vue!</div>
+        <!-- 对象语法 { 类名 : 布尔值 }  布尔值决定该类名是否添加 -->
+        <div :class="{ active : isActive , box : true }">hello Vue!</div>
+        <!-- [ 类名对象的变量 ] -->
+        <div :class="[ box , pox ]">hello Vue!</div>
+
+        <ul>
+            <li 
+                :key="index" 
+                v-for="(item , attr , index) in games"
+                :class="{active: item.isActive}"
+                @mouseover="item.isActive = true"
+            > 
+            {{ item.name }}</li>
+        </ul>
+        <!-- 行内样式的添加 : 
+            { 行内样式属性名(必须驼峰命名) : data之中的数据值 }
+        -->
+        <div :style="{ backgroundColor : color }">行内样式</div>
+        <div :style="[ bgColor ]">行内样式</div>
+
+        <!-- 元素位移特效 -->
+        <div class="boxx" @click="changePosition">
+            <div class="poxx" :style="{ left : x , top : y }"></div>
+        </div>
+    </div>
+    
+    <script src="./lib/vue.js"></script>
+    <script>
+        let v = new Vue({
+            el : "#app",
+            data : {
+                isActive : true ,
+                box : "active",
+                pox : "pox",
+                games : [
+                    { name : "老头环" , isActive : false},
+                    { name : "英雄联盟" , isActive : false},
+                    { name : "APEX" , isActive : true},
+                    { name : "守望先锋2" , isActive : false}
+                ],
+                color : "skyblue",
+                bgColor : {
+                    "background-color" : "yellowgreen",
+                    fontSize : "30px"
+                },
+                x : 0 , 
+                y : 0 
+            },
+            methods : {
+                changePosition( $event ){
+                    this.x = $event.offsetX + "px"; 
+                    this.y = $event.offsetY + "px";
+                }   
+            }
+        })
+    </script>
+</body>
+</html>

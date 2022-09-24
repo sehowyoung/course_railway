@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="iValue" @keydown.enter="handlerKeyDown"> 
+        <p>{{ inputValue }}</p>
+        <!-- 键盘的键盘码也可以作为修饰符!-->
+        <input type="text" @keydown.13="handlerKeyDown">
+        <!-- 组合修饰符 -->
+        <p>
+            <input type="text" @keydown.alt.67="handlerKeyDown">
+        </p>
+
+        <!-- 
+            需求 : 当我在输入框里敲击 ctrl + 回车的时候, 我们要把输入框里的内容显示在页面的p标签里;
+         -->
+
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        // 需求 : 敲击回撤让 P 标签之中显示完整的输入内容; 
+        new Vue( {
+            el : "#app",
+            data : {
+                inputValue : "",
+                iValue : ""
+            },
+            methods : {
+                handlerKeyDown ( $event ){
+                    console.log("事件触发" , $event);
+                    this.inputValue = this.iValue;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

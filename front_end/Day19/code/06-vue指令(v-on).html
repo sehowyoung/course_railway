@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <div :class='active?"active":""'>box</div>
+            <button v-on:click="handlerChange">点击切换box的active类名</button>
+            <button v-on:click="active=!active">点击切换box的active类名</button>
+            <!-- v-on可以简写为@ -->
+            <!-- 事件之中可以直接操作到data之中的数据的! -->
+            <!-- 如果事件处理函数代码只有一行我们可以直接简写 -->
+            <button @click="num++">点击事件触发!</button>
+            {{num}}
+            <button @click="handlerClick">点击事件触发!调用事件处理函数</button>
+            <button @click="handlerClick('哈哈哈哈')">点击事件触发!调用事件处理函数</button>
+            <!-- 事件有非常重要的数据对象 : 事件对象 -->
+            <p>
+                <button @click="handlerGetEvent">获取事件对象</button>
+                <button @click="handlerGetEventAndArg('哈哈哈哈' , $event )">传入参数的同时获取事件对象</button>
+            </p>
+
+            <!-- 事件修饰符  -->
+            <!-- 语法 : 事件名.修饰符 -->
+            <p> 
+                <div @click="alert('父级执行')">
+                    父级div
+                    <div @click.stop="alert('子集执行')">
+                        子集div
+                    </div>
+                </div>
+
+                <form action="https://www.baidu.com">
+                    <button @click.prevent="alert('提交')">提交</button>
+                </form>
+            </p>
+
+            <p> 
+                <!-- 需求: -->
+                <!-- 获取按钮被点击时的信息 , 这些按钮公用一个事件处理函数! -->
+                <button @click="sayHi('大娃', 0 )">大娃</button>
+                <button @click="sayHi('二娃', 1 )">二娃</button>
+                <button @click="sayHi('三娃', 2 )">三娃</button>
+            </p>
+        </div>  
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        // JavaScript是事件驱动的本质永远不会改变; 
+        // - 我们之前的事件驱动主要是操作DOM修改DOM内容 ;
+        // - 有了Vue之后我们事件操作的主要就是data之中的数据! 
+
+        // 完成按钮需求的核心方式 : 使用事件修改 data之中的active数据; 
+        new Vue({
+            el : "#app",
+            data : {
+                active : false,
+                num : 0 
+            },
+            methods : {
+                handlerChange : function(){
+                    this.active = !this.active;
+                },
+                handlerClick : function( arg ){
+                    console.log("hello Vue" , arg );
+                },
+                handlerGetEvent : function( $event ){
+                    console.log( $event );
+                },
+                handlerGetEventAndArg:function( arg , $event ){
+                    console.log( arg , $event );
+                },
+                alert( arg ){
+                    alert(arg)
+                },
+                sayHi( arg , index ){
+                    console.log( arg , index )
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

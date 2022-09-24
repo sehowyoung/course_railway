@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+        #app p span{
+            width: 100px;
+            text-align: center;
+            display: inline-block;
+        }
+        #app button{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <span>用户名:</span><input type="text" v-model="username">
+        </p>
+        <p>
+            <span>密  码:</span><input type="password" v-model="password">
+        </p>
+        <p>
+            <span>确认密码:</span><input type="password" v-model="rpassword">
+        </p>
+        <p>
+            <span>昵  称:</span><input type="text" v-model="nickname">
+        </p>
+        <button type="submit" @click="register">注册</button>
+        <button type="submit" @click="login">去登录</button>
+    </div>
+</body>
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            username: '',
+            password: '',
+            rpassword: '',
+            nickname: '',
+        },
+        methods: {
+            register(){
+                if (!this.username || !this.password || !this.rpassword || !this.nickname) {
+                    alert('注册失败')
+                } else if (this.username === 'test' && this.password === this.rpassword && this.nickname === 'test') {
+                    alert('注册成功')
+                }
+            },
+            login(){
+                location.href='./login.html'
+            }
+        }
+    })
+</script>
+</html>

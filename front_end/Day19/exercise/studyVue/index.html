@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+
+        <form action="javascript:void(0)">
+            <p>
+                <input type="text" placeholder="username" v-model="username" />
+                {{username}}
+            </p>
+            <p>
+                <input type="password" placeholder="password" v-model="password" />
+                {{password}}
+            </p>
+        </form>
+
+        <div :class="active?'active':''">box</div>
+        <button v-on:click="change">切换</button>
+        <p>
+            <input type="text" @keydown.ctrl.enter="handler" v-model="text" />{{temp}}
+        </p>
+    </div>
+</body>
+<script src="./js/Vue.js"></script>
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data: {
+            message: "hello vue",
+            username: "",
+            password: "",
+            active: true,
+            temp: "",
+            text: "",
+        },
+        methods: {
+            change() {
+                this.active = !this.active;
+            },
+            handler() {
+                this.temp = this.text;
+            },
+        },
+    });
+</script>
+
+</html>

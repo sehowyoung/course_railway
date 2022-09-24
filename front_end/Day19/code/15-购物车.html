@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      {{ checkarr }}
+      总价 : {{ total() }}
+      <table border="1">
+        <tr>
+          <th>
+            <input type="checkbox" v-model="checked" @change="checkAll">
+          </th>
+          <th>商品id</th>
+          <th>商品名称</th>
+          <th>商品价格</th>
+          <th>操作</th>
+          <th>小计</th>
+        </tr>
+        <tr v-for="(item, index) of cartData" :key="item.id">
+          <td>
+            <input type="checkbox" :value="item.id" v-model="checkarr">
+          </td>
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}</td>
+          <td>
+            <button :disabled="item.num<=1" @click="item.num-=1">-</button>
+            {{ item.num }}
+            <button @click="item.num+=1">+</button>
+            <button @click="deleteItem(index)">X</button>
+          </td>
+          <td>
+            {{ item.num * item.price }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <script src="lib/vue.js"></script>
+  <script>
+    const cartData = [
+      {id:1,name:'苹果',num:1,price:100}, 
+      {id:2,name:'小米',num:1,price:200}, 
+      {id:3,name:'华为',num:1,price:300}
+    ]
+    const app = new Vue({
+      el: '#app',
+      data: {
+        cartData,
+        checkarr : [],
+        checked : false
+      },
+      methods: {
+        checkAll(){
+            if( this.checked ){
+                // 把所有的id值放入数组之中;
+                this.checkarr = this.cartData.map( item => item.id ) 
+            }else{
+                this.checkarr.length = 0;
+            }
+        },
+        total(){
+            // filter API;  条件过滤, 符合条件的数据会被返回到新数组之中; 
+            // reduce API;  总价计算, 所有数组内容都会参与计算得到总的结果; 
+            // map    API;  修改内容 ,把数组之中所有的内容都进行修改放入新数组
+            let arr = this.cartData.filter( item => {
+                return this.checkarr.indexOf( item.id ) !== -1
+            })
+            return arr.reduce( (prev , item ) => prev + item.price * item.num , 0 )
+        }
+      }
+    })
+  </script>
+</html>

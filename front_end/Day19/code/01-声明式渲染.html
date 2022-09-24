@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <span> {{ message }}</span>
+       <strong> {{ message }}</strong>
+       <em> {{ message }}</em>
+       <h2> {{ message }}</h2>
+       <h3> {{ message }}</h3>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        // 引入vue之后可以创建vue实例对象; 
+
+        // 我们需要传入一个配置对象 : 
+        new Vue( {
+            // 我们vue控制的结构是哪里; 
+            el : "#app",
+            // vue 的数据放在data属性之中以对象的形式存在; 
+            data : {
+                // 差值运算符之中的message就是data对象之中的属性值; 
+                message : "Hello Vue!",
+                aaa : ""
+            }
+        })
+
+    </script>
+</body>
+</html>

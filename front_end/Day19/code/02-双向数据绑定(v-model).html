@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <input type="text" v-model="message">
+        <input type="text" v-model="aaa">
+
+       <span> {{ message }}</span>
+       <strong> {{ message }}</strong>
+       <em> {{ message }}</em>
+       <h2> {{ message }}</h2>
+       <h3> {{ message }}</h3>
+       <p>这是aaa数据: {{ aaa }}</p>
+       <p>这是aaa数据: {{ aaa }}</p>
+       <p>这是aaa数据: {{ aaa }}</p>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        // 引入vue之后可以创建vue实例对象; 
+
+        // 我们需要传入一个配置对象 : 
+        new Vue( {
+            // 我们vue控制的结构是哪里; 
+            el : "#app",
+            // vue 的数据放在data属性之中以对象的形式存在; 
+            data : {
+                // 差值运算符之中的message就是data对象之中的属性值; 
+                message : "Hello Vue!",
+                aaa : "随意默认值"
+            }
+        });
+
+        let obj = { a : 10 }
+
+        // 对象属性的访问和赋值监听，这个就是我们实现双向数据绑定的基石;
+        Object.defineProperty(obj, "a",  {
+            get : function(){
+                console.log( "属性a被访问了" );
+                return "hello world"; 
+            },
+            set : function(){
+                console.log("属性值被设置了")
+            }
+        })
+
+    </script>
+</body>
+</html>

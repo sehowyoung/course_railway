@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <div id="app">
+            <table border="1">
+                <tr>
+                    <th>商品id</th>
+                    <th>商品名称</th>
+                    <th>商品价格</th>
+                    <th>操作</th>
+                    <th>小计</th>
+                </tr>
+                <tr :key="index" v-for="(item,index) in cartData">
+                    <td> {{item.id}} </td>
+                    <td> {{item.name}} </td>
+                    <td> {{item.price}} </td>
+                    <td>
+                        <!-- 根据 item.num 去给-按钮增加 disabled属性 -->
+                        <!-- 
+                            disabled 属性后面的值可以直接进行属性是否渲染判断， 如果值为true则渲染disabled 属性如果值为false则不渲染disabled属性
+                         -->
+                        <button :disabled="item.num<=1" @click="item.num--">-</button>
+                        {{ item.num }}
+                        <button @click="item.num++">+</button>
+                        <!-- 实现删除功能 -->
+                        <button>X</button>
+                    </td>
+                    <td>{{ item.num * item.price }}</td>
+                </tr>
+               
+            </table>
+        </div>
+      </body>
+      <script src="lib/vue.js"></script>
+      <script>
+        const cartData = [
+          {id:1,name:'苹果',num:1,price:100}, 
+          {id:2,name:'小米',num:1,price:200}, 
+          {id:3,name:'华为',num:1,price:300}
+        ]
+        const app = new Vue({
+          el: '#app',
+          data: {
+            cartData
+          }
+        })
+      </script>
+</body>
+</html>

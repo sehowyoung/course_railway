@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ message1 }}-{{ message2 }}
+        <!-- 使用其他方式将数据放入结构 -->
+        <div v-html="tag"></div>
+        <div v-text="tag"></div>
+        <div> {{ tag }} </div>
+        <!-- 差值表达式可以进行各种计算 -->
+        {{ num + 2 }}
+        <!-- inputcheckbox -->
+        <input type="checkbox" v-bind:checked="bool">
+        <!-- v-bind控制的html属性的数据 -->
+        <input type="checkbox" v-bind:data="message1">
+        <input type="checkbox" v-bind:class="message1">
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+
+        new Vue( {
+            el : "#app",
+            data : {
+                message1 : "hello" ,
+                message2 : "world" ,
+                tag : "<strong>hello Vue!</strong>",
+                num : 10,
+                bool : true
+            }
+        })
+
+    </script>
+</body>
+</html>

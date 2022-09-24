@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            /* display: none; */
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+       <p v-cloak>{{hello}}</p>
+
+       <p>
+            <span>v-model指令的使用</span>
+            <input type="text" v-model="hello">
+       </p>
+
+       <form action="javascript:void(0)">
+            <p> 
+                <input 
+                    type="text" 
+                    placeholder="请输入用户名" 
+                    v-model="username"
+                > 
+                <span v-cloak>输入内容为 : {{username}}</span>
+            </p>
+            <p> 
+                <input 
+                    type="password"
+                    placeholder="请输入密码"
+                    v-model="password">
+                <span v-cloak>输入内容为 : {{password}}</span>
+            </p>
+
+            <p> 
+                <span>男:<input name="gender" type="radio" value="0" v-model="gender"></span>
+                <span>女:<input name="gender" type="radio" value="1" v-model="gender"></span>
+
+                {{gender}}
+            </p>
+            <p>
+                <select v-model="hobby">
+                    <option value="0">足球</option>
+                    <option value="1">篮球</option>
+                    <option value="2">羽毛球</option>
+                    <option value="3">乒乓球</option>
+                </select>   
+                {{hobby}}
+            </p>
+            <p>
+                <input type="checkbox" v-model="flag"> 已阅读****协议 --- {{ flag }}
+            </p>
+
+            <button v-on:click="submit">提交数据</button>
+       </form>
+
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        let v = new Vue({
+            el : "#app",
+            data : {
+                hello : "hello Vue!",
+                username : "",
+                password : "",
+                gender : "0",
+                hobby : "1",
+                flag : true
+            },
+            // 所有的函数都必须定义在methods里面; 
+            methods : {
+                submit : function(){
+                    // 在methdos里面定义的函数之中访问data数据只需要使用 this就可以之间访问了; 
+                    // console.log( this.hello );
+                    if( !this.flag ){ alert("请先同意用户协议!")};
+
+                    console.log({
+                        username : this.username ,
+                        password : this.password ,
+                        gender : this.gender === "0" ? "男" : "女" 
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
