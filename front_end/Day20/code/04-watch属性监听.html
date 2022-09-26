@@ -1,0 +1,50 @@
+<body>
+    <div id="app">
+      <input type="text" v-model="firstName"> + 
+      <input type="text" v-model="lastName"> =
+      {{ fullName }}
+    </div>
+  </body>
+  <script src="lib/vue.js"></script>
+  <script>
+    //  watch 现在做的事情其实用 computed 也行; 
+    let v = new Vue({
+      el: '#app',
+      data: {
+        firstName : "",
+        lastName : "",
+        fullName : "",
+        list : [
+            {
+                a : 20
+            }   
+        ]
+      },
+      // 查看哪个数据改变; 
+      // 数据改变的时候调用我的自定义函数; 
+      watch: {
+        // 对象的key值就是属性名; 
+        firstName(){
+            // firstname发生改变那么这个函数就会被调用; 
+            // this可以访问到任意数据; 
+            console.log("firstname发生改变了!" , this.firstName );
+            this.fullName = this.firstName + "." +  this.lastName ; 
+        },
+        lastName( newVal , oldVal ){
+            // console.log( newVal , oldVal );
+            this.fullName = this.firstName + "." + newVal;
+        },
+        list : {
+            // handler是一个固定单词, 表示监听时触发的函数; 
+            // 其他的监听也可以这样写，但是如果不配置其他监听属性的话可以简写; 
+            handler(){
+                // 如果监听的数据是一个复杂的类型,数组套对象对象套数组的这种结构，我们在访问第一级别的对象的时候watch行为还可以触发，但是如果我们访问更深级别的属性， 则watch监听行为不能触发! 
+                // 如果我们依据需要监听这样的深度属性改变我们可以开启深度监听模式; 
+                console.log("list值改变");
+            },
+            // 表示深度监听; 
+            deep : true
+        }
+      }
+    })
+  </script>

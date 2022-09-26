@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ msg }}
+    </div>
+
+    <div id="app2">
+
+    </div>
+</body>
+</html>
+<script src="lib/vue.js"></script> 
+<script type="text/javascript"> 
+    // 混入功能 : 
+    // - 其实所谓的混入功能就是把各种各样的配置信息进行拆分,拆分之后放入到vue配置之中， 这样可以实现不同通用配置的复用!
+
+    // 定义一个混入对象（局部混入） 
+    var myMixin = { 
+        created: function () { 
+            this.hello()
+        },
+        methods: { 
+            hello: function () { 
+                console.log("hello from mixin!")
+            }
+        },
+    };
+
+    let appOptions = {
+        data : {
+            msg : "hello app1"
+        }
+    }
+    // Vue实例 
+    const vm = new Vue({ 
+        el : "#app",
+        created(){
+            console.log("app created");
+        },
+        data : {
+            msg : "Hello Vue"
+        },
+        methods : {
+            world (){
+                console.log("你好世界");
+            }
+        },
+        mixins: [ myMixin , appOptions ]
+    }); 
+
+    const vm2 = new Vue({
+        el : "#app2",
+        mixins : [ myMixin ]
+    })
+    
+
+</script>

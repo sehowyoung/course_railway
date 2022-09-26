@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 过滤器模板语法 : 变量 | 过滤器 -->
+        {{ msg | uppercase }}
+        {{ num | max( 10 ) }}
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+
+        // 全局过滤器 : 
+        Vue.filter("uppercase" , function( val ){
+            console.log( val );
+            // 如果使用了过滤器，那么过滤器函数返回值的结果将作为这个运算最终结果; 
+            // return val.toUpperCase();
+
+            return val.replace(/(^([a-z]))/ig, ( $1 )=>{
+                //$1 就是我们匹配到的结果;
+                return $1.toUpperCase();
+            });
+        }) 
+
+        Vue.filter("max" , function(val , max){
+            return val > max ? max : val 
+        })
+        new Vue({
+            el : "#app",
+            data : {
+                msg : "hello world",
+                num : 44 
+            },
+            // 局部过滤器 , vue永远都是局部优先原则! 
+            filters : {
+                uppercase : function( val ){
+                    return val.toUpperCase();
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<body>
+    <div id="app">
+      <form action="#javascript">
+          <h2>登录</h2>
+          <p><input type="text" v-mobile v-model="phone"></p>
+          <p><input type="text" v-email  v-model="phone"></p>
+      </form>
+    </div>
+  </body>
+  <script src="lib/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        phone: ''
+      },
+      // 使用局部自定义指令实现 v-mobile（不传参） 验证用户输入的是否是合法的手机号
+      directives: {
+        mobile: {
+          update (el) {
+            // 在使用指令钩子函数的时候不能使用this; 
+            // this 指向window; 
+            // console.log( el );
+            let { value } = el;
+            // 验证数据的合法性 : 正则表达式; 
+            if( /^1[2-9]\d{9}$/.test( value ) ){
+                // 字符串验证之后我们要让结构有提示; 
+                el.style.background = "yellowgreen"
+            }else{
+                el.style.background = "orangered"
+            }
+          }
+        },
+        email : {
+            update( el ){
+                // 邮箱验证 : /^\w{6,20}@\w{2,15}\.(com|net)$/
+            }
+        }
+      }
+    })
+  </script>

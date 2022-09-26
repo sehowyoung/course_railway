@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="( item , index ) in list">
+                <p>商品名称: {{ item.title}}</p>
+                <p>商品价格: {{ item.price }}</p>
+            </li>
+        </ul>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        new Vue({
+            el : "#app",
+            // 使用created发起请求; 
+            created(){
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET" , "http://localhost:8888/goods/list");
+                xhr.send();
+                xhr.onload = ()=>{
+                    // 把json字符串转换成 data对象; 
+                    let { list } = JSON.parse(xhr.responseText);
+
+                    this.list = list;
+                }
+            },
+            data : {
+                list : []
+            }
+        })
+    </script>
+</body>
+</html>

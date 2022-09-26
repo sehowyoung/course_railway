@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btn">发送axios-get请求</button>
+    <button id="btn2">发送axios-post请求</button>
+    <script src="lib/axios.js"></script>
+    <script>
+        // axios实例可以统一配置很多信息 ; 
+
+        // 先给axios取个别名; 
+        let xhr = axios.create({
+            // 配置参数 : 
+            // baseURL : 所有的路径之前都添加上baseUrl里面的路径; 
+            baseURL : "http://localhost:8888/"
+            // 可以统一配置请求头; 
+        });
+        // axios的实例对象和axios使用语法完全一致! 
+        async function sendRequest(){
+           
+            let options = {
+                params : {
+                    name : "yanzu",
+                    age : 18
+                }
+            }
+            let {data} = await xhr("test/third" , options )
+
+            console.log( data );
+        }
+        document.getElementById("btn").addEventListener("click" , sendRequest)
+
+
+
+        async function sendRequest2(){  
+           
+            let options = {
+                // 请求方式设置 : method 
+                method : "POST",
+                // 如果直接以formData的格式传递数据我们是不需要设置请求头的，但是我们不想这么做; 
+                data : {
+                    name : "yuyan",
+                    age : 18 
+                },
+                // 请求头配置 : 具体怎么配置要根据后端的要求来进行配置;
+                // headers : {
+                //     "content-type":"application/json"
+                // },
+                // transformRequest : [ 数据处理函数 ] 
+                transformRequest : [
+                    function( data ){
+                        // 具体携带的数据是这个函数的返回值; 
+                        let res = "";
+                        for(let attr in data){
+                            res += `&${attr}=${data[attr]}`;
+                        }
+                        return res.slice(1);
+                    }
+                ]
+            
+            }   
+
+            let { data } = await xhr("test/fourth" , options ) 
+            console.log( data );
+        }
+        document.getElementById("btn2").addEventListener("click" , sendRequest2)
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            {{ sum() }}
+            {{ foo() }}
+        </p>
+        <p>
+            <!-- 计算属性的使用和正常的变量使用是一致的! -->
+            {{ c1 }}
+        </p>
+        <p> num值 : {{num}}</p>
+        <p> aaa值 : {{aaa}}</p>
+        <button @click="num++">num++</button>
+        <button @click="aaa++">aaa++</button>
+    </div>
+
+    <script src="lib/vue.js"></script>
+    <script>
+        // 页面更新的时候，所有的函数都会被重新调用; 
+        // 计算属性 : 我们在所有计算情况下都应该使用计算属性! 
+        // 因为计算属性函数只会在关联数据发生改变的时候进行调用，其他场景下不会调用返回缓存数据; 
+        new Vue({
+            el : "#app",
+            data : {
+                num : 0 ,
+                aaa : 0
+            },
+            methods : {
+                sum(){
+                    console.log("sum函数执行!");
+                    return this.num + 100;
+                },
+                foo(){
+                    console.log("foo函数执行");
+                    return "foo函数的返回值"
+                }
+            },
+            // 计算属性不是在data之中调用的是需要独立定义的; 
+            computed : {
+                // computed对象的属性名就是计算属性的名字; 
+                c1(){
+                    console.log("计算属性c1执行");
+                    return this.num + 200;
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

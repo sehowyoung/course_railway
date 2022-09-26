@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btn">发送axios-get请求</button>
+    <button id="btn2">发送axios-post请求</button>
+    <script src="lib/axios.js"></script>
+    <script>
+        //axios就是专用的请求发送插件 : 
+        // - 1. 浏览器端可以用; 
+        // - 2. 在nodejs上也能用; 
+
+        //axios发送请求有两个形态 : 语法95%相同; 
+        //- 直接使用形态; 
+        //- 实例使用形态;   
+        async function sendRequest(){
+            // 请求接口 1 : test/third  get 携带数据
+            //         2 : test/fourth post 携带数据; 
+
+            // axios( url , 配置对象 )
+            // axios的返回值时promise对象,这个对象里面的数据就是请求响应数据; 
+            // let {data} = await axios("http://localhost:8888/test/third")
+            // axios 响应数据之中响应体的数据是放在 data 属性之中
+            // 我们可以使用解构赋值直接获取data;
+            // console.log( data.data );
+            // console.log( data );
+
+            // axios携带请求数据 : 
+            // 配置axios请求对象 : options 
+            // - axios对get携带数据的格式进行了优化，不要传递 query字符串格式的数据 : key=value&key2=value ,我们只需要传递一个对象就可以了; { key : value , key2 : value2 }
+            // 向url路径上拼接数据的配置属性是 params 
+            let options = {
+                params : {
+                    name : "yanzu",
+                    age : 18
+                }
+            }
+            let {data} = await axios("http://localhost:8888/test/third" , options )
+
+            console.log( data );
+        }
+        document.getElementById("btn").addEventListener("click" , sendRequest)
+
+
+
+        async function sendRequest2(){  
+            // 如果我们要限定axios的请求发送格式可以使用 : 
+            // axios.post(url , options);
+            // axios.get(url , options)
+            // 我建议的使用方式 ： 
+            // post 请求我们需要 : 
+            // 1. 把数据放到请求体之中; 
+            // let options = {
+            //     // 请求方式设置 : method 
+            //     method : "POST",
+            //     // 如果直接以formData的格式传递数据我们是不需要设置请求头的，但是我们不想这么做; 
+            //     data : "name=xxx&age=18"
+            // }   
+
+            let options = {
+                // 请求方式设置 : method 
+                method : "POST",
+                // 如果直接以formData的格式传递数据我们是不需要设置请求头的，但是我们不想这么做; 
+                data : {
+                    name : "yuyan",
+                    age : 18 
+                },
+                // 请求头配置 : 具体怎么配置要根据后端的要求来进行配置;
+                // headers : {
+                //     "content-type":"application/json"
+                // },
+                // transformRequest : [ 数据处理函数 ] 
+                transformRequest : [
+                    function( data ){
+                        // 具体携带的数据是这个函数的返回值; 
+                        let res = "";
+                        for(let attr in data){
+                            res += `&${attr}=${data[attr]}`;
+                        }
+                        return res.slice(1);
+                    }
+                ]
+            
+            }   
+
+            let { data } = await axios("http://localhost:8888/test/fourth" , options ) 
+            console.log( data );
+            
+        }
+        document.getElementById("btn2").addEventListener("click" , sendRequest2)
+    </script>
+</body>
+</html>

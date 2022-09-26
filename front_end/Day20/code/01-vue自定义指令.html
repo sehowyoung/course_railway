@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-random> {{msg}} </div>
+        <div v-arg="msg"> {{msg}} </div>
+    </div>
+    <div id="app2">
+        <div> {{msg}} </div>
+        <span v-random>你好世界</span>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        // 全局就是所有使用Vue构造函数的地方都可以用! 
+        // 局部，就是只有注册的实例对象可以用;
+        
+        // 指令名 : 指令名是不带 v- 的; 
+        Vue.directive('random',{ 
+            // 这个对象里面配置钩子函数;
+            bind( el ){
+                // 不要用! 
+                console.log( "bind执行" , el);
+            },
+            inserted( el ){
+                // 操作DOM对象使用!
+                // console.log( "inserted执行" , el );
+                el.style.backgroundColor = randomColor()
+            },
+            update( el ){   
+                // 数据更新使用; 
+                console.log( "update执行" , el);
+                el.style.backgroundColor = randomColor()
+            }
+        })
+
+        Vue.directive("arg" , {
+            inserted ( el , arg ){
+                // 钩子之中获取的第二个参数是一个描述指令的完整对象; 
+                // arg.value 才能获取指令对应的变量值!
+                console.log( el , arg.value , arg.expression);
+            }
+        })
+
+        function randomColor(){
+            let r = parseInt(Math.random() * 256) 
+            let g = parseInt(Math.random() * 256) 
+            let b = parseInt(Math.random() * 256) 
+            return `rgb(${r},${g},${b})`;
+        }
+
+
+        // 局部优先原则， 如果局部有指令，那么优先执行局部指令! 
+        let v = new Vue({
+            el : "#app",
+            data : {
+                msg : "hello world"
+            },
+            directives : {
+                // key : 指令名
+                // value : 指令的钩子函数存放位置; 
+                "random" : {
+                    inserted (){
+                        console.log("vue 局部指令 random!");
+                    }
+                }
+            }
+        });
+
+        new Vue({
+            el : "#app2",
+            data : {
+                msg : "你好世界"
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loading{
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 999;
+            background-image: url(./images/1.gif);
+            background-size: 100%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <p>{{msg}}</p>
+        <div class="loading" ></div>
+    </div>
+    
+    <script src="lib/vue.js"></script>
+    <script>
+        let v = new Vue( {
+            el : "#app",
+            data : {
+                msg : "hello Vue",
+                loading : false
+            },
+            beforeCreate(){
+                console.log("创建实例对象并挂载数据之前,此时是访问不到实例对象里面数据的" , this.msg );
+            },
+            created(){
+                console.log("创建实例对象并挂载数据之后,此时是访问不到实例对象里面数据的" , this.msg );
+            },
+            beforeMount(){
+                console.log("dom对象挂载之前，我们此时访问不到任何dom对象" , this.msg );
+            },
+            // 常用钩子 : 
+            mounted(){
+                // console.log("dom对象挂载成功,data数据也可以访问的时候会执行这个钩子")
+                // 发送ajax请求 : 
+                console.log("发送请求");
+
+                setTimeout(()=>{  this.msg = "这是异步数据" } , 1000)
+            },
+            // 常用钩子 : ( 重复执行的钩子 )
+            // 页面更新时会触发的钩子函数; 
+            // 如果数据不影响页面渲染则不执行,如果页面结构发生改变则会执行; 
+            beforeUpdate(){
+                console.log("数据更新之前会调用的钩子函数");
+                document.querySelector(".loading").style.display = "block";
+            },
+            updated(){
+                console.log("数据更新之后会调用的钩子函数");
+                document.querySelector(".loading").style.display = "none";
+            },
+            // 组件销毁 : 
+            beforeDestroy(){
+                console.log("组件销毁前");
+            },
+            destroyed(){
+                console.log("组件销毁后");
+            }
+
+        })
+        // 加载goods/list接口数据，放入data之中，选择哪一个钩子函数; 
+        // - 请实现上面的功能; 
+
+    </script>
+</body>
+</html>

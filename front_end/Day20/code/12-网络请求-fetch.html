@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="( item , index ) in list">
+                <p>商品名称: {{ item.title }}</p>
+                <p>商品价格: {{ item.price }}</p>
+            </li>
+        </ul>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        new Vue({
+            el : "#app",
+            // 使用created发起请求; 
+            // 必须让函数变成async函数; 
+            async created(){
+                // fetch的返回值是promise对象; 
+                // - fetch有两次返回结构; 
+                // - 1. 第一次返回的结果是未解析的数据对象; 
+                let response = await fetch("http://localhost:8888/goods/list");
+                // - 2. 如果想要到响应数据，那么我们必须再次处理response数据，调用response.json()数据进行二次处理才能得到我们想要的数据; 
+                let { list } = await response.json();
+
+                this.list = list;
+            },
+            data : {
+                list : []
+            }
+        })
+    </script>
+</body>
+</html>
