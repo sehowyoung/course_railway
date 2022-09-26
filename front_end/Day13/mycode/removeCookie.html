@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">添加Cookie</button>
+    <button id="btn-delete">删除cookie</button>
+</body>
+<script src="./js/xhr.js"></script>
+<script>
+    function setCookie(name, value, options) {
+        options = options || {}
+
+        if (arguments.length >= 2) {
+            let date = null
+            if (typeof options.expires === 'number') {
+                date = new Date()
+                date.setDate(date.getDate() + options.expires)
+            }
+
+            return document.cookie = [
+                name, '=', value,
+                typeof options.path === 'string' ? ';path=' + options.path : '',
+                date ? ';expires=' + date : ''
+            ].join('')
+        }
+    }
+
+    function removeCookie(name) {
+        let cookie = document.cookie.split("; ")
+        let i
+        for (i = 0; i < cookie.length; i++) {
+            let tmp = cookie[i].split('=')[0]
+            if (tmp === name){
+                break
+            }
+        }
+        console.log(name, cookie[i].split('=')[1])
+        setCookie(name, cookie[i].split('=')[1], {expires: -1})
+    }
+
+    document.getElementById('btn').addEventListener('click', function () {
+        setCookie("test1", "123", {expires: 10})
+        setCookie("test2", "456", {expires: 10})
+    })
+    document.getElementById('btn-delete').addEventListener('click', function(){
+        removeCookie('test1')
+    })
+</script>
+
+</html>
