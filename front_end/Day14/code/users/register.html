@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="javascript:void(0)">
+
+        <p><input id="username" type="text" placeholder="请输入用户名"></p>
+        <p><input id="password" type="text" placeholder="请输入密码"></p>
+        <p><input id="rpassword" type="text" placeholder="重复输入密码"></p>
+        <p><input id="nickname" type="text" placeholder="请输入昵称"></p>
+
+        <button id="btn">提交注册信息</button>
+    </form>
+
+    <script>
+
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        let rpassword = document.getElementById("rpassword");
+        let nickname = document.getElementById("nickname");
+        function sendRegisterRequest(){
+            let xhr = new XMLHttpRequest();
+            let url = `http://localhost:8888/users/register`;
+
+            xhr.open("POST" , url );
+            // 请求头信息: 请求头主要的作用是说明请求来源,告知请求的格式...
+            xhr.setRequestHeader("content-type" , "application/x-www-form-urlencoded");
+            xhr.send(`username=${username.value}&password=${password.value}&rpassword=${rpassword.value}&nickname=${nickname.value}`);
+            xhr.onload = function(){
+                let data = JSON.parse(xhr.responseText)
+                if( data.code === 1 ){
+                    location.href = "./login.html"
+                }
+                if( data.code === 0 ){
+                    alert( data.message )
+                }
+            }
+        }
+        document.getElementById("btn").addEventListener("click" , sendRegisterRequest )
+
+
+    </script>
+</body>
+</html>

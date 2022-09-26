@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JavaScript给我们提供了类这个东西了? 
+        // - 语法糖! 
+
+        // 这个语法糖替代的是 : 
+        // 构造函数, 原型对象! 
+
+        // function CreatePerson( name ){
+        //     this.name = name;
+        // }
+        // CreatePerson.prototype.talkMe = function(){
+        //     console.log("hello world i'm" + this.name );
+        // }
+        // let p1 = new CreatePerson( "吴彦祖" );
+        // console.log( p1 );
+        // p1.talkMe();    
+
+        // 全新的语法用class构造了一个区域 : 
+        // 编写构造函数和原型方法集合的区域 
+
+        // class 类名 
+        // 类名 : 构造函数名 ； 
+
+        class CreatePerson{
+            // 这个constructor 是固定单词; 
+            constructor( name ){
+                this.name = name;
+            }
+            // 原型方法 
+            // 方法名(){}
+            talkMe (){
+                console.log("hello world i'm" + this.name );
+            }
+        }
+
+        let p1 = new CreatePerson("彭于晏");
+        console.log( p1 );
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>hello 西铁的帅哥美女们你们好</h2>
+    <h3>不要执行定时器发请求的代码! 栓Q </h3>
+    <h3>不要执行定时器发请求的代码! 栓Q </h3>
+    <h3>不要执行定时器发请求的代码! 栓Q </h3>
+    <h3>不要执行定时器发请求的代码! 栓Q </h3>
+    <h3>不要执行定时器发请求的代码! 栓Q </h3>
+
+    <button id="btn">发送请求</button>
+    <script>
+        // AJAX : 
+        // http://127.0.0.1:5501/01_代码/16-再说ajax.html
+
+
+        // 1. xhr 
+        function sendRequest(){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET" , "http://localhost:8888/test/first");
+            xhr.send();
+
+            xhr.onload = function(){
+                console.log( xhr.responseText );
+            }
+        }
+        document.getElementById("btn").addEventListener( "click" , sendRequest)
+
+
+        // 2. fetch 
+
+
+    </script>
+</body>
+</html>

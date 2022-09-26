@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(){}
+        function singleton(){
+            let instance ;
+            return function(){
+                if( !instance ){
+                    instance = new Person();
+                }
+                return instance;
+            }
+        }
+
+        let s_p = singleton();
+
+        let p1 = s_p();
+        let p2 = s_p();
+        console.log( p1 === p2 );
+
+        // function CreateDiv() {
+        //     this.div = document.createElement('div')
+        //     document.body.appendChild(this.div)
+        // }
+
+        // CreateDiv.prototype.init = function (text) {
+        //     this.div.innerHTML = text
+        // }
+        // new CreateDiv().init("hello world")
+        // new CreateDiv().init("你好世界")
+
+        // 组合模式 ： 
+
+        // function init(){
+        //     part1();
+        //     part2();
+        //     part3();
+        // }
+
+        function Compose(){
+            // 功能列表; 
+            this.list = [];
+        }
+        // 把函数放入到列表之中; 
+        Compose.prototype.add = function( fn ){
+            this.list.push( fn );
+        }
+        // 调用列表之中的所有函数; 
+        Compose.prototype.fire = function(){
+            this.list.forEach( function( fn ){
+                fn();
+            })
+        }
+
+        let vip = new Compose();
+        let normal = new Compose();
+
+        function vipWelcome(){
+            console.log("欢迎尊贵的VIP用户");
+            console.log("浮夸的特效!");
+        }
+
+        function tip1(){
+            console.log("全局提示")
+        }
+
+        function tip2(){
+            console.log("上线提示")
+        }
+
+        vip.add( vipWelcome );
+        vip.add( tip1 );
+        vip.add( tip2 );
+
+        normal.add( tip1 )
+        normal.add( tip2 )
+
+        let type = confirm("您是否为VIP用户");
+
+        if( type ){
+            vip.fire();
+        }else{
+            normal.fire();
+        }
+      
+    </script>
+</body>
+</html>

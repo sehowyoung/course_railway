@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">取出哈希值</button>
+    <script>
+        // 取出数组/ 对象解构之中的某条数据，放在新声明的变量之中的简便语法!; 
+        // 对象解构赋值 : 
+        // 1. 声明变量 , 变量名是函数属性名, 变量值是属性对应的数据; 
+        // let obj1 = { a : 10 };
+        // let obj2 = { a : 20 };
+        // let { a } = obj1;
+        // // console.log( a );
+        // // 2. 声明变量，变量是自定义变量名, 变量值是特定的属性值; 
+        // // 更名语法是 { 属性名 : 新的变量名 }
+        // let { a : a2 } = obj2;
+        // console.log( a2 );
+
+        // - 以后我们应用工具之中可能存在非常庞大的对象， 对象之中很多的工具需要我们多次使用; 
+        // - 每次都写 obj.utils(); 这样的写法过于麻烦，我们可以使用解构赋值进行属性的取出 let { utils } = obj; 以后就可以直接使用 utils() 完成obj.utils 功能了; 
+
+        function handlerClick(){
+            let { hash } = location;
+
+            // console.log( hash );
+            // document.write( hash );
+
+            // 注意 : 我们不能使用hash这个变量进行hash赋值; 
+            hash = "world";
+            // - 上面的语法是对变量的赋值，不会对location地址栏产生影响! 
+            // location.hash = "world"
+            // - 上面的语法才是正确的哈希赋值语法; 
+        }
+        document.getElementById("btn").addEventListener("click" , handlerClick)
+
+        // 小任务 : 
+        // 点击按钮， 获取地址栏链接的全部的信息, 并在三秒钟之后改变地址栏的地址信息为 : https://www.baidu.com (使用解构赋值完成!);
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // 取出数组/ 对象解构之中的某条数据，放在新声明的变量之中的简便语法!; 
+
+        let date_array  = [ 12,10,2022 ];
+
+        // 以数组的顺序声明变量， 右侧的数组项为左侧的数组赋值! 
+        let [ month , date , year ] = date_array ; 
+
+        // 1. 声明了三个变量 : month , date , year 
+        // 2. 给变量赋值的数据为 数组的第0项 第1项 第2项
+        // console.log( month , date , year  );
+
+        // - 实战应用 : 可以进行变量换位; 
+
+        [ month , date ] = [ date , month ];
+        console.log( month , date );
+
+        // - 运算符 : ...运算; 剩余运算; 
+        // - 剩余运算只能在最后一个变量之中使用; 
+        // let [ a, ...b ]  = [ 1,2,3,4,5,67,7,8,8,9];
+        // console.log( a , b );
+
+        // 函数参数 : 
+        // function foo( [ month , date , year ] ){
+        //     console.log( month , date , year );
+        // }
+        // foo( [  12 , 10 , 2022 ] );
+
+        // 剩余运算可以直接放在形参之中; 
+        // function foo(  ...arg  ){
+        //     // 把所有的实参，以数组的形式赋值给arg实参; 
+        //     console.log(  arg );
+        // }
+        // foo( 12 , 10 , 2022 );
+
+        // 小任务 : 
+        // 创建一个函数， 要求传入实参个数不限，返回这些实参总和; 
+        // - 求和使用 reduce + 箭头函数实现; 
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 变量快速放入对象之中， 变量名作为属性名， 变量值作为属性值; 
+
+        let a = 10;
+        // ES5 语法 : 
+        // let obj = {
+        //     a : a 
+        // };
+
+        // ES6 语法 : 
+        // let obj = { 
+        //     a 
+        // }
+        // console.log( obj );
+
+        // ES6 的 函数添加语法 : 
+
+        //  ES5 语法 : 
+        // let obj = { 
+        //     fn : function(){
+
+        //     }
+        // }
+
+        // ES6 语法 : 
+        let obj = {
+            fn(){
+                console.log("hello wrold");
+            }
+        }
+        obj.fn();
+        console.log( obj );
+
+        // 上面的语法全局被称之为语法糖 , 语法改变了，但是本质没有改变; 
+
+        // 对象展开运算 : ... 
+
+        let obj1 = { 
+            a : 10 , 
+            b : 20 , 
+            c : 30 
+        };
+
+        let obj3 = {
+            a : 20 
+        }
+
+        // obj2 要求有所有obj1的属性， 然后自己还要有自己的属性; 
+        let obj2 = {
+            ...obj1 ,
+            d : 40,
+            c : 15 ,
+            ...obj3 
+        }
+        console.log( obj2 );
+
+        // - 默认参数; 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES6 给我们提供的一个新的函数语法 , 这个函数语法可以替代function完成部分功能;
+
+        // - 1. 箭头函数; 
+        // - 2. funtion传统函数; 
+        // - 3. class 类
+
+        // 箭头函数 : 
+        // => 这个箭头运算符中间不能放空格; 
+        // 语法 : () => {}; 
+        // 箭头函数必须使用赋值式声明; 
+        // let foo = ( a ) => { alert( a + 20 ) };
+
+        // () 里面放形参; 
+        // {} 里面放代码; 
+
+        // 箭头函数的调用和普通函数完全一致; 
+        // foo( 10 );
+
+        // 箭头函数存在简写功能 : 
+        // - 参数只有一个那么可以简写小括号; 
+        // - 代码只有一行可以简写大括号; 
+        // let foo =  a  => alert( a + 20 );
+        // foo( 30 );
+
+        // 注意 : 代码部分如果省略了大括号，这行表达式的计算结果会默认返回; 
+
+        // 箭头函数的潇洒语法 : 
+        // - array.map()  ; 修改;  
+        // - array.filter() ; 过滤; 
+        // - array.redcue() ; 归并; 
+
+        let array = [ 2,3,4,1,2,3];
+        // 让array之中的所有数据数值翻倍 : 使用mapAPI ; 
+        let res = array.map( item =>  item * 2  );
+        console.log( res );
+        // 获取数组之中的所有偶数; (用箭头函数简写)
+        // filter( 函数 )
+        
+        // 注意 : 
+        // - 箭头函数里面的this指向固定，不建议使用! 
+        // - 箭头函数不支持 arguments 关键字; 
+        // - 箭头函数不能被new调用; 
+
+        
+    </script>
+</body>
+</html> 
