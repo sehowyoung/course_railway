@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            搜索框 : <input @input="search" type="text" v-model="search_val">
+        </p>
+        <ul>
+            <li :key="index" v-for="( item , index ) in search_list ">
+                {{ item.q }}
+            </li>
+        </ul>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        // 我们在进行页面内容输入的时候，通过百度接口查询数据，把查询结果渲染成页面; 
+        // https://www.baidu.com/sugrec?prod=pc&from=pc_web&wd=nihao&cb=quanjuhanshu
+
+        function jsonp( keywords = "" ){
+            let script = document.createElement("script");
+            script.src = `https://www.baidu.com/sugrec?prod=pc&from=pc_web&wd=${ keywords}&cb=quanjuhanshu`
+            document.body.appendChild( script );
+            script.remove();
+        }
+        function quanjuhanshu(data){
+            v.$data.search_list = data.g;
+        }
+        let v = new Vue({
+            el : "#app",
+            data : {
+                search_list : [],
+                // 输入框输入的字符串; 
+                search_val : ""
+            },
+            methods : {
+                search(){
+                    jsonp( this.search_val );
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

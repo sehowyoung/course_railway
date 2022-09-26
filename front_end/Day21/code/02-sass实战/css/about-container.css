@@ -1,0 +1,279 @@
+@charset "UTF-8";
+.container {
+  background-color: rgb(247, 248, 249);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .word1 {
+  height: 40px;
+  margin-top: 0px;
+  font-size: 30px;
+  color: rgb(102, 102, 102);
+}
+.container .word2 {
+  height: 25px;
+  font-size: 18px;
+  color: rgb(102, 102, 102);
+}
+.container line1 {
+  height: 4px;
+  margin-top: 0;
+}
+
+.part1 {
+  width: 1100px;
+  height: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.part1 .roles {
+  width: 430px;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+.part1 p {
+  color: rgb(102, 102, 102);
+  font-size: 19px;
+  text-align: center;
+}
+.part1 .advans {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  margin-top: 40px;
+}
+.part1 .advans img {
+  margin-top: -20px;
+}
+.part1 .advan {
+  width: 364.6px;
+  height: 130px;
+  border: 1px solid rgb(225, 225, 225);
+  text-align: center;
+}
+
+.head {
+  width: 1072px;
+  height: 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.advans h3 {
+  font-weight: normal;
+  color: rgb(102, 102, 102);
+  font-size: 19px;
+}
+.advans p {
+  font-weight: normal;
+  color: rgb(102, 102, 102);
+  font-size: 15px;
+}
+
+.part2 {
+  height: 500px;
+  width: 100%;
+  background-image: url(../images/团队背景_02.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.part2 .word1 {
+  height: 40px;
+  margin-top: 0px;
+  font-size: 30px;
+  color: rgb(213, 213, 213);
+  font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "STHeitiSC-Light", "Microsoft Yahei UI", "Microsoft Yahei", "Arial", sans-serif;
+}
+
+.part2 .word2 {
+  height: 25px;
+  font-size: 18px;
+  color: rgb(213, 213, 213);
+}
+
+.part2 .line1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.part2 .line11 {
+  width: 250px;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+}
+
+.part2 .line12 {
+  width: 60px;
+  height: 4px;
+  background-color: rgb(255, 255, 255);
+  margin-top: -3px;
+}
+
+.part2 .bgds {
+  display: flex;
+  justify-content: center;
+}
+
+.part2 .bgd {
+  height: 320px;
+  width: 355px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.part2 .bgd p {
+  font-size: 14px;
+  line-height: 28px;
+}
+
+.part2 .bgd h3 {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 10px;
+}
+
+.part3 {
+  height: 470px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.peitu {
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+.part3 .why {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.why .head {
+  width: 330px;
+  height: 115px;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.part3 .aim {
+  margin-top: -10px;
+}
+
+.part3 .aim p {
+  padding-top: 15px;
+  font-size: 14px;
+  line-height: 25px;
+  color: rgb(163, 163, 163);
+}
+
+.part4 {
+  height: 660px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.part4 .gridm {
+  width: 1010px;
+  height: 414px;
+  display: grid;
+  justify-content: center;
+  grid-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.part4 .itemm {
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.itemm .head2 {
+  width: 450px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.itemm .left1 {
+  width: 162px;
+}
+
+.itemm .right1 {
+  width: 270px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.itemm p {
+  color: rgb(102, 102, 102);
+}
+
+.part5 {
+  width: 100%;
+  height: 466px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.pt5 {
+  width: 1072px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.part5 .righttext {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.part5 .r1 {
+  font-size: 24px;
+  color: rgb(102, 102, 102);
+  padding-top: 60px;
+}
+
+.part5 .r1 span {
+  font-size: 44px;
+  color: rgb(252, 104, 8);
+}
+
+.part5 .r2 {
+  font-size: 30px;
+  color: rgb(252, 104, 8);
+  padding: 10px 0 30px 0;
+}
+
+.part5 .r3 {
+  font-size: 18px;
+  color: rgb(102, 102, 102);
+  line-height: 30px;
+  padding-bottom: 20px;
+}
+
+/*# sourceMappingURL=about-container.css.map */

@@ -1,0 +1,91 @@
+@mixin head {
+    position: relative;
+    line-height: 60px;
+    text-align: center;
+}
+
+header {
+    background-image: url(../images/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 460px;
+    width: 100%;
+    min-width: 1072px;
+    background-color: blue;
+
+    .container {
+        width: 1072px;
+        height: 460px;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin: auto;
+
+        .head {
+            display: flex;
+            border-bottom: 1px solid transparent;
+            border-image: linear-gradient(to right, transparent, #b2b5d3, #a1a4cd, #acb2db) 1;
+
+            img {
+                height: 30px;
+                width: 85px;
+                margin: 15px 0;
+            }
+
+            .left {
+                @include head;
+                left: 25px;
+
+                ul li {
+                    margin: 0 20px;
+                }
+            }
+
+            a {
+                color: #a7a8be;
+            }
+
+            .right {
+                @include head;
+                left: 500px;
+
+                ul li {
+                    margin: 0 10px;
+                }
+            }
+        }
+
+        div.intr {
+            position: absolute;
+            top: 210px;
+            display: block;
+            height: 130px;
+            width: 400px;
+            color: #fff;
+            padding: 22px 15px;
+
+            span:first-child {
+                display: block;
+                font-size: 30px;
+                padding-bottom: 10px;
+                font-weight: 400;
+            }
+
+            span:nth-child(3) {
+                display: block;
+                font-weight: 600;
+                padding-top: 10px;
+            }
+
+            span:last-child {
+                display: block;
+            }
+
+            hr {
+                width: 308px;
+                border-color: #5eab1f;
+            }
+        }
+        
+    }
+}

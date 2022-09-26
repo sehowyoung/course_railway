@@ -1,0 +1,110 @@
+footer {
+  height: 270px;
+  background-color: rgb(21, 38, 47);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.uppe {
+  height: 150px;
+  width: 1100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.uppe .u1 {
+  width: 200px;
+  height: 110px;
+  border-right: 2px solid rgb(137, 145, 149);
+}
+
+.uppe .u2 {
+  width: 243px;
+  height: 110px;
+  font-size: 15px;
+  color: rgb(240, 240, 240);
+  text-align: center;
+  border-right: 2px solid rgb(137, 145, 149);
+  padding-right: 20px;
+}
+
+.u2 span {
+  display: inline-block;
+  text-align: left;
+}
+
+.uppe p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.uppe .u3 {
+  width: 110px;
+  height: 110px;
+  font-size: 15px;
+  color: rgb(240, 240, 240);
+  text-align: center;
+  line-height: 22px;
+  border-right: 2px solid rgb(137, 145, 149);
+}
+
+.ab {
+  color: rgb(153, 153, 153);
+  font-size: 13px;
+}
+
+.uppe .u4 {
+  width: 110px;
+  height: 110px;
+  font-size: 15px;
+  color: rgb(240, 240, 240);
+  text-align: center;
+  line-height: 22px;
+  border-right: 2px solid rgb(137, 145, 149);
+}
+
+.uppe .u5 {
+  width: 410px;
+  height: 110px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.u51 {
+  width: 100px;
+  height: 80px;
+  color: rgb(240, 240, 240);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.u52 {
+  width: 177px;
+  height: 124px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: no wrap;
+  text-align: center;
+}
+
+.u52 p {
+  color: rgb(153, 153, 153);
+  font-size: 13px;
+}
+
+.copyr {
+  height: 120px;
+  width: 1072px;
+  border-top: 2px solid rgb(137, 145, 149);
+  color: rgb(153, 153, 153);
+  font-size: 15px;
+  text-align: center;
+  line-height: 40px;
+}
+
+/*# sourceMappingURL=about-footer.css.map */

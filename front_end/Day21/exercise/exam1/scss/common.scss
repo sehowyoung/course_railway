@@ -1,0 +1,30 @@
+html,
+body,
+div,
+header,
+nav,
+section,
+footer,
+img,
+ul,
+li,
+hr,
+a,
+p,
+span {
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}

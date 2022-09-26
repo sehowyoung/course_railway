@@ -1,0 +1,112 @@
+@charset "UTF-8";
+header {
+  height: 460px;
+  background-image: url(../images/关于我们-01_01.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  width: 1100px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lnav {
+  width: 460px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.maj {
+  width: 85px;
+  line-height: 75px;
+}
+
+.maj0 {
+  width: 330px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lnav .navl {
+  width: 65px;
+  color: rgb(160, 160, 190);
+  text-align: center;
+  line-height: 60px;
+  font-size: 15px;
+}
+
+.rnav {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rnav .navr {
+  width: 40px;
+  color: rgb(200, 200, 220);
+  text-align: center;
+  line-height: 60px;
+  font-size: 15px;
+}
+
+.bord {
+  width: 1100px;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.bo1 {
+  height: 2px;
+  width: 100px;
+  background: linear-gradient(to right, rgb(23, 53, 76), rgb(121, 138, 156));
+}
+
+.bo2 {
+  height: 2px;
+  width: 900px;
+  background-color: rgb(121, 138, 156);
+}
+
+.bo3 {
+  height: 2px;
+  width: 100px;
+  background: linear-gradient(to left, rgb(31, 64, 91), rgb(121, 138, 156));
+}
+
+.intro {
+  width: 685px;
+  height: 147px;
+  text-align: center;
+}
+
+.intro h1 {
+  font-size: 45px;
+  color: rgb(255, 255, 255);
+  font-family: "黑体";
+}
+
+.intro p {
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+}
+
+.zhuce {
+  width: 240px;
+  height: 55px;
+  border-radius: 30px;
+  background-color: rgb(253, 103, 6);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  line-height: 55px;
+  margin-bottom: 100px;
+}
+
+/*# sourceMappingURL=about-header.css.map */
