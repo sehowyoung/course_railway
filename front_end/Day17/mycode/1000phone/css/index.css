@@ -10,24 +10,20 @@
   height: 62px;
   background-color: #232323;
 }
-
 .nav .content {
   width: 1000px;
   margin: 0 auto;
 }
-
 .nav img {
   float: left;
   margin-top: 10px;
 }
-
 .nav .nav-list {
   float: left;
   margin-left: 178px;
   line-height: 62px;
   color: white;
 }
-
 .nav .nav-list div {
   float: left;
   padding: 0 7px;
@@ -37,7 +33,6 @@
   margin-top: 23px;
   line-height: 17px;
 }
-
 .nav .nav-list div.last {
   border-right: none;
 }
@@ -48,27 +43,23 @@
   height: 350px;
   background-color: whitesmoke;
 }
-
-.center {
+.main .center {
   width: 1000px;
   position: relative;
   margin: 0 auto;
   top: 25px;
 }
-
-.item {
+.main .center .item {
   width: 250px;
   height: 300px;
   margin-top: 15px;
   float: left;
   text-align: center;
 }
-
-.item div {
+.main .center .item div {
   color: grey;
 }
-
-.item img {
+.main .center .item img {
   height: 100px;
 }
 
@@ -77,35 +68,29 @@
   width: 1000px;
   margin: 0 auto;
 }
-
-.tupian {
+.middle .tupian {
   width: 300px;
   height: 300px;
   float: left;
 }
-
-.zhongjian {
+.middle .zhongjian {
   width: 350px;
   margin-left: 20px;
   float: left;
   border-right: 1px dashed #999999;
 }
-
-.zhongjian span {
+.middle .zhongjian span {
   font-size: 15px;
   color: #999999;
 }
-
-.continer {
+.middle .zhongjian .continer {
   border-bottom: 1px dashed #999999;
   margin-right: 25px;
 }
-
-.zhongjian .ad {
+.middle .zhongjian .ad {
   margin-top: 20px;
 }
-
-ul li {
+.middle .zhongjian .ad ul li {
   list-style: none;
 }
 
@@ -114,20 +99,17 @@ ul li {
   margin-left: 20px;
   float: left;
 }
-
 .number p {
   color: #666666;
   font-size: 30px;
   margin-top: 10px;
 }
-
-.number span {
-  display: block;
-  color: #666666;
-}
-
 .number .dianhua {
   margin-top: 25px;
+}
+.number .dianhua span {
+  display: block;
+  color: #666666;
 }
 
 /* 中间渐进样式 */
