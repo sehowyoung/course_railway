@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <home v-if="type==='home'"></home>
+        <kind v-else-if="type==='kind'"></kind>
+        <cart v-else-if="type==='cart'"></cart>
+        <user v-else></user> -->
+        <!-- component 是组件的容器 : 
+            :is=组件名称 
+        -->
+        
+        <keep-alive :include="/home|kind|cart/">
+            <!-- :include后面的参数是正则表达式，正则表达式会验证type字符串的规则是否符合正则规则符合就缓存不符合就不缓存 -->
+            <component :is="type"></component>
+        </keep-alive>
+        <ul>
+            <li @click="goPage('home')">首页</li>
+            <li @click="goPage('kind')">分类</li>
+            <li @click="goPage('cart')">购物车</li>
+            <li @click="goPage('user')">我的</li>
+        </ul>
+    </div>
+
+    <script src="lib/vue.js"></script>
+    <script>
+        const Home = { 
+            activated(){
+                console.log("组件显示的时候会触发的钩子函数!");
+            },
+            deactivated(){
+                console.log("当首页组件被隐藏时触发的钩子函数!");
+            },
+            template : "<h2><input type='text'>首页</h2>"
+        }
+        const Kind = { 
+            template : "<h2><input type='text'>分类</h2>"
+        }
+        const Cart = { template : "<h2><input type='text'>购物车</h2>"}
+        const User = { template : "<h2><input type='text'>我的</h2>"}
+
+        new Vue({
+            el : "#app",
+            data : {
+                type : "home"
+            },
+            methods : {
+                goPage( type ){
+                    this.type = type;
+                }
+            },
+            components : {
+                Home,
+                Kind,
+                Cart,
+                User 
+            }
+        })
+
+    </script>
+
+</body>
+</html>

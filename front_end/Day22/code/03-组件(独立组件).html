@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- vue渲染页面的部分  -->
+    <div id="app">
+        你好世界
+        <hello-world></hello-world>
+    </div>
+
+    <!-- 组件模板结构 -->
+    <template id="test">
+        <div>
+            <span>{{ msg }}</span>
+        </div>
+    </template>
+    <script src="lib/vue.js"></script>
+    <script>
+        // Vue.component("hello-world" , {
+        //     // 选择结构之中的模板，来进行结构注册; 因为字符串没有代码提示，写在这里很丑陋! 
+        //     template : "#test",
+        //     data (){
+        //         return {
+        //             msg : "hello Component"
+        //         }
+        //     },
+        //     mounted(){
+        //         console.log("组件hello-world创建结构之后执行!");
+        //     }
+        // });
+
+        let c1 = {
+            "hello-world" : {
+                template : "#test",
+                data (){
+                    return {
+                        msg : "hello Component"
+                    }
+                },
+                mounted(){
+                    console.log("组件hello-world创建结构之后执行!");
+                }
+            }
+        }
+
+        new Vue({
+            el : "#app",
+            components : c1
+        })
+
+    </script>
+</body>
+</html>

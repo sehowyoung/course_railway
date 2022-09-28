@@ -1,0 +1,30 @@
+<body>
+    <div id="app"> 
+      <!-- 使用局部组件component_two --> 
+      <component_two></component_two> 
+    </div> 
+  </body> 
+  <script src="lib/vue.js"></script>
+  <script type="text/javascript"> 
+
+    // 我们在局部组件之中应用了全局组件; 
+
+
+    // 注册全局组件component_one 
+    Vue.component('component-one',{ 
+      template: '<div>我是组件component_one</div>' 
+    })
+    var component_two = { 
+      template: `<div>
+                    <div>我是组件component_two</div> 
+                    <component-one></component-one>
+                </div>` 
+    }
+    new Vue({ 
+      el: '#app', 
+      components: { 
+        // 注册局部组件component_two 
+        component_two 
+      } 
+    }) 
+  </script>

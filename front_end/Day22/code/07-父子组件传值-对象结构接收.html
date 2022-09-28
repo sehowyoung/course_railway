@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <Parent></Parent>
+    </div>
+
+    <template id="Parent">
+        <div>
+            <h2>这是父组件</h2>
+            <!-- 父组件给子组件进行传值
+                传值的属性名 : msg 是我们自己定义的,需要在子组件之中使用的名称!
+                传值的变量名 : msg 是父组件之中的数据!我们需要在父组件模板的data之中定义的! 
+            -->
+            <Child :msg="msg" :width="300" ></Child>
+            <Child :msg="msg" ></Child>
+        </div>
+    </template>
+    <template id="Child">
+        <div>
+            <h2 :style="{ width : width+'px'}">这是子组件</h2>
+            <span>这是父组件里面的数据 --- {{msg}} </span>
+            <p>父组件传入的宽度值 : {{ width }}</p>
+        </div>
+    </template>
+
+    <script src="lib/vue.js"></script>
+    <script>
+        // 问题 : 在哪里使用就在哪里注册否则就注册全局组件; 
+
+        // 我们的目标是 : 把父组件之中的msg拿过来在子组件之中使用! 
+
+        let child = {
+            "child" : {
+                template : "#Child",
+                data(){
+                    return {
+                        // msg : "子组件之中的msg变量"
+                    }
+                },
+                // 如果父组件通过属性进行了传值，我们必须在子组件之中进行props定义，这个属性才能使用，否则这个属性无效! 
+                // 如果在data之中有同名的属性值，会报错! , 以props属性为准; 
+                // props : ["msg","width"]
+                props : {
+                    // 属性名 : 属性配置对象
+                    "msg" : {
+                        type : String,
+                        required : true , 
+                    } ,
+                    width : {
+                        type : Number,
+                        default : 100
+                    }
+                }
+            }   
+        }
+        let parent = {
+            "parent" : {
+                template : "#Parent",
+                data(){
+                    return {
+                        msg : "这是父组件之中更换之后的变量!"
+                    }
+                },
+                components : child
+            }   
+        }
+
+        new Vue({
+            el : "#app",
+            components : parent
+        })
+
+        
+
+    </script>
+
+</body>
+</html>

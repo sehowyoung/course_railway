@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <component :is="type"></component>
+        <ul>
+            <li @click="type='home'">首页</li>
+            <li @click="type='kind'">分类</li>
+            <li @click="type='cart'">购物车</li>
+            <li @click="type='user'">我的</li>
+        </ul>
+    </div>
+</body>
+<script src="./libs/vue.min.js"></script>
+<script>
+    const home = {template: `<div>首页</div>`}
+    const kind = { template: '<div>分类</div>' }
+    const cart = { template: '<div>购物车</div>' }
+    const user = { template: '<div>我的</div>' }
+
+    new Vue({
+        el: '#app',
+        data: {
+            type: 'home'
+        },
+        components: {
+            home: home,
+            kind: kind,
+            cart: cart,
+            user: user
+        }
+    })
+</script>
+</html>

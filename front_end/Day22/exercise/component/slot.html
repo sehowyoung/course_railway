@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <body>
+    <div id="app">
+        <com>
+            <h3>hello</h3>
+        </com>
+    </div>
+    <template id="com">
+        <div>
+            <h2>这是com组件</h2>
+            <slot></slot>
+            <h4>hhhhhhh</h4>
+        </div>
+    </template>
+</body>
+<script src="./libs/vue.min.js"></script>
+<script>
+    let com = {template: '#com'}
+
+    new Vue({
+        el: '#app',
+        components: {
+            com
+        }
+    })
+</script> -->
+
+<!-- <body>
+    <div id="app"> -->
+<!-- 
+        具名插槽
+        子组件的模版中 添加多个 slot 标签。每个slot都可以起一个名字
+        复用时，通过 slot 属性 赋值为 之前定义的名字，就可以对号入座
+       -->
+<!-- <app-layout>
+            <header slot="header">首页头部</header>
+            <p>首页内容</p>
+            <p>首页内容</p>
+            <p>首页内容</p>
+            <p>首页内容</p>
+            <footer slot="footer">首页底部</footer>
+        </app-layout>
+    </div>
+</body>
+<template id="layout">
+    <div>
+        <header style="background-color: #f66;">
+            <slot name="header"></slot>
+        </header>
+        <div style="background-color: #00f;">
+            <slot></slot>
+        </div>
+        <footer style="background-color: #0f0;">
+            <slot name="footer"></slot>
+        </footer>
+    </div>
+</template>
+<script src="./libs/vue.min.js"></script>
+<script>
+    const Com = {
+        template: '#layout'
+    }
+    new Vue({
+        el: '#app',
+        components: {
+            AppLayout: Com
+        }
+    })
+</script> -->
+
+<body>
+    <div id="app">
+        <com>
+            <template v-slot="test">
+                <div>
+                    123142435654
+                </div>
+            </template>
+        </com>
+        <com></com>
+    </div>
+</body>
+<template id="com">
+    <div>
+        <slot name="test">啦啦</slot>
+        <h1>com</h1>
+    </div>
+</template>
+<script src="./libs/vue.min.js"></script>
+<script>
+    const Com = {
+        template: '#com'
+    }
+    new Vue({
+        el: '#app',
+        components: {
+            com: Com
+        }
+    })
+</script>
+
+</html>

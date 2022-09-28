@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <com></com>
+    </div>
+
+    <template id="com">
+        <div>
+          <h1>provide + inject的使用</h1>
+          {{ aaa }}
+        </div>
+    </template>
+
+
+    <script src="lib/vue.js"></script>
+    <script>
+
+        let Com = {
+            "com" : {
+                template : "#com",
+                inject : ["aaa"]
+            }
+        }
+
+
+        new Vue({
+            el : "#app",
+            data : {
+                msg : "根组件之中的msg数据!"
+            },
+            // provide 定义需要函数方式返回对象定义; 
+            // - this指向是当前实例对象; 
+            // 让后代可以使用的数据; 
+            provide(){
+                return {
+                    aaa : this.msg 
+                }
+            },
+            components : Com 
+        })
+
+    </script>
+
+</body>
+</html>

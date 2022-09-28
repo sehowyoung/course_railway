@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/8.4.2/swiper-bundle.css">
+    <style>
+        .container{
+            height: 300px;
+            width: 1000px;
+            position: relative;
+            margin: 0 auto;
+            opacity: .8;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <banner>
+
+        </banner>
+    </div>
+
+    <template id="banner">
+        <div class="container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" :key="index" v-for="(item, index) in list">
+                    {{item}} - {{index}}
+                </div>
+            </div>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/Swiper/8.4.2/swiper-bundle.js"></script>
+<script src="./libs/vue.min.js"></script>
+<script>
+    let banner = {
+        'banner': {
+            template: '#banner',
+            data(){
+                return {
+                    list: ['slide1', 'slide2', 'slide3']
+                }
+            },
+            mounted(){
+                new Swiper('.container', {
+                    autoplay: true,
+                    loop: true,
+                    effect: 'cube'
+                })
+            }
+        }
+    }
+
+    new Vue({
+        el: '#app',
+        components: banner
+    })
+</script>
+</html>

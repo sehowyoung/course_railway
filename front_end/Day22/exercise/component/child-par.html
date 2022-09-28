@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <template id="parent">
+        <div>
+            <h2>parent</h2>
+            <child @my-test-event="getData"></child>
+        </div>
+    </template>
+    <template id="child">
+        <div>
+            <h2>child</h2>
+            <button @click="sendData('hello')">send to parent</button>
+        </div>
+    </template>
+</body>
+<script src="./libs/vue.min.js"></script>
+<script>
+    // let vue = new Vue()
+    // vue.$on("myEvent", (args)=>{
+    //     console.log("MyEent 触发", args);
+    // })
+    // vue.$emit('myEvent', '4454545')
+    let child = {
+        'child' : {
+            template: '#child',
+            methods: {
+                sendData(arg){
+                    this.$emit('my-test-event', arg)
+                }
+            }
+        }
+    }
+
+    let parent = {
+        'parent': {
+            template: '#parent',
+            methods: {
+                getData(arg){
+                    console.log(arg);
+                }
+            },
+            components: child
+        }
+    }
+
+    new Vue({
+        el: '#app',
+        components: parent
+    })
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/swiper.css">
+    <style>
+        .my-container{
+            width: 1130px;
+            height: 300px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+        .my-container .swiper-slide{
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <banner></banner>
+
+        <banner></banner>
+    </div>
+    <template id="banner">
+        <!-- swiper结构 -->
+        <div class="my-container">
+            <div class="swiper-wrapper">
+                <!-- 内容部分应用数据进行渲染 -->
+                <div class="swiper-slide" :key="index" v-for="(item,index) in list">
+                    {{ item }}
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="lib/swiper.js"></script>
+    <script src="lib/vue.js"></script>
+    <script>
+        let banner = {
+            "banner" : {
+                template : "#banner",
+                data(){
+                    return {
+                        list : ["slide1" , "slide2" , "slide3"]
+                    }
+                },
+                //  在mounted 里面调用swiper; 
+                mounted(){
+                    // 使用swiper配置swiper;
+                    new Swiper(".my-container" , { 
+                        autoplay : true ,
+                        effect : "cube",
+                        loop : true 
+                    });
+                }
+            }
+        }
+
+        new Vue({
+            el : "#app",
+            // 局部组件注册; 
+            components : banner
+        })
+
+    </script>
+</body>
+</html>

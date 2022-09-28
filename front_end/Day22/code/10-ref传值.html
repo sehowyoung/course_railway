@@ -1,0 +1,60 @@
+<body>
+    <div id="app">
+      <div ref="oDiv">ref作用在标签上</div>
+      <com ref="test"></com>
+    </div>
+  </body>
+  <template id="com">
+    <div>
+      <h1>ref的使用</h1>
+
+      --- 这是子组件的msg数据  {{msg}}; 
+
+      --- 这是父组件之中的msg数据 {{ $parent.msg }}
+    </div>
+  </template>
+  <script src="lib/vue.js"></script>
+  <script>
+    const Com = {
+      template: '#com',
+      mounted(){
+        // console.log( this.$parent.msg );
+        this.msg = this.$parent.msg;
+      },
+      data () {
+        return {
+          msg: ''
+        }
+      },
+      methods: {
+        fn () {
+          console.log('dsajhkdggdshjg')
+        }
+      }
+    }
+    new Vue({
+      el: '#app',
+      components: {
+        com: Com
+      },
+      data : {
+        msg : "这是根组件的msg数据!"
+      },
+      mounted () {
+        // console.log( this.$refs.test.msg );
+        // console.log( this.$refs.test.fn );
+        // console.log( this.$refs.oDiv );
+
+        // refs可以赋值!; 
+        // this.$refs.test.msg = "1233333";
+        
+        // console.log( this.$refs.test );
+
+        // DOM操作都可以正常进行: 
+        this.$refs.oDiv.style.color = "hotpink";
+      }
+    })
+    // 父级组件想要访问子集组件数据，可以使用$refs来访问; 
+    // 子集组件想要使用父级组件的数据 ，可以使用 $parent 来进行访问; 
+    
+  </script>

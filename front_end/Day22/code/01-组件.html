@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <hello-world></hello-world>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+
+        // data(){
+        //     return {
+        //         list : []
+        //     }
+        // }
+        Vue.component("HelloWorld" , {
+            // 在组件之中使用任意钩子测试钩子是否能正常执行! 
+            data(){
+                return {
+                    msg : "hello Vue"
+                }
+            }, 
+            // html模板 
+            template: '<h1>{{msg}}</h1>' 
+        })
+
+        new Vue({
+            el : "#app",
+            data : {
+                msg : "vue模板"
+            },
+            components:{
+                "hello-world" :  {
+                    data(){
+                        return {
+                            msg : "hello 局部组件"
+                        }
+                    }, 
+                    // html模板 
+                    template: '<h1>{{msg}}</h1>' 
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

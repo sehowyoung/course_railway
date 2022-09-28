@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="change('step1')">第一步</button>
+        <button @click="change('step2')">第二步</button>
+        <button @click="change('step3')">第三步</button>
+        <keep-alive>
+            <component :is="name"></component>
+        </keep-alive>
+    </div>
+</body>
+<script src="./libs/vue.min.js"></script>
+<script>
+    let step1 = {template: `<img src='https://tse1-mm.cn.bing.net/th/id/OIP-C.ImwmInwRtouXRipD4TuuwAHaEK?w=322&h=180&c=7&r=0&o=5&pid=1.7'>`}
+    let step2 = {template: `<img src='https://tse1-mm.cn.bing.net/th/id/OIP-C.Kpt96xUkQMpI71HrKbfvWAHaEN?w=321&h=182&c=7&r=0&o=5&pid=1.7'>`}
+    let step3 = {template: `<img src='https://tse3-mm.cn.bing.net/th/id/OIP-C.aaZPFfjykWkLTzydPfMxJQHaEK?w=325&h=182&c=7&r=0&o=5&pid=1.7'>`}
+
+    new Vue({
+        el: "#app",
+        data: {
+            name: 'step1'
+        },
+        components: {
+            step1, step2, step3
+        },
+        methods:{
+            change(arg){
+                this.name = arg
+            }
+        }
+    })
+</script>
+</html>

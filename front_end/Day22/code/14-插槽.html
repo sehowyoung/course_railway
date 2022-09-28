@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <com> 
+            <h3>放入插槽之中的数据</h3>
+        </com>
+    </div>
+
+    <template id="Com">
+       <div>
+            <h2>这是Com组件</h2>
+            <!-- 这就是插槽! -->
+            <slot></slot>
+            <h4>这是com里面一个标题</h4>
+       </div>
+    </template>
+
+    <script src="lib/vue.js"></script>
+    <script>
+        let Com = {
+            template : "#Com"
+        } 
+        
+        new Vue({
+            el : "#app",
+            components : {
+                Com
+            }
+        })
+        
+
+    </script>
+</body>
+</html>

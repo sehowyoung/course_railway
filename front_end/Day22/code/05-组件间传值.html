@@ -1,0 +1,34 @@
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+</body>
+<template id="parent">
+    <div>
+        <h1>这里是父组件</h1>
+        <child></child>
+    </div>
+</template>
+<template id="child">
+    <div>
+        <h3>这里是子组件</h3>
+    </div>
+</template>
+<script src="lib/vue.js"></script>
+<script>
+    const Child = {
+        template: '#child'
+    }
+    const Parent = {
+        template: '#parent',
+        components: { // 谁用谁注册
+            child: Child
+        }
+    }
+    new Vue({
+        el: '#app',
+        components: {
+            parent: Parent
+        }
+    })
+</script>

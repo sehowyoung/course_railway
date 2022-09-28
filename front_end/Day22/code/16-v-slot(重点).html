@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-layout>
+            <!-- 带有slot属性名的内容会放入具体的插槽结构  -->
+            <!-- 把v-solt简写为 # -->
+            <!-- 瞄准具名插槽进行插入的语法 -->
+            <!-- v-solt 需要在外部是template标签才可以正常使用  -->
+            <!-- template标签不会在页面上创建对应的结构 -->
+            <!-- 基本语法 : v-slot:header  -->
+            <!-- 简写语法 : #header  -->
+            <template v-slot:header="{ hmsg }" >
+                <p>
+                    头部部分  
+                    {{ hmsg }}
+                </p>
+            </template>
+            <!-- 没有slot命名的结构表示直接放入到 匿名slot之中 -->
+            <template>
+                <p>内容部分</p>
+                <p>内容部分</p>
+                <p>内容部分</p>
+                <p>内容部分</p>
+                <p>内容部分</p>
+            </template>
+            <!-- 取出组件之中数据 , 我们可以直接使用v-solt语法  -->
+            <!-- 我们在确定了组件的数据之后，我们可以在组件之后用=取出插槽定义的数据  -->
+            <template #footer="{ msg }" >
+                页面脚部 {{ msg }}
+            </template>
+        </app-layout>
+    </div>
+
+    <template id="app-layout">
+        <div>
+            <header style="background-color: #ddd;">
+                <!-- 命名插槽的属性是 name  -->
+                <slot name="header" :hmsg="hmsg"></slot>
+            </header>
+            <div class="content">
+                <slot></slot>
+            </div>
+            <footer style="background-color: #ddd;">
+                <slot name="footer" :msg="msg"></slot>
+            </footer>
+        </div>
+    </template>
+
+    <script src="lib/vue.js"></script>
+    <script>
+
+    let AppLayout = {
+        template : "#app-layout",
+        data (){
+            return {
+                msg : "这是app-layout组件之中的数据",
+                hmsg : "这是header插槽之中定义的数据!"
+            }
+        }
+    }
+    new Vue({
+        el : "#app",
+        components : {
+            AppLayout
+        }
+    })
+
+    // 插槽定义数据(数据来源于组件) , 在向插槽之中传入结构的时候，可以使用到这个数据; 
+    // 语法 : 想要让结构放入到对应的插槽之中 : 
+    //  - 外部用 <template></template> 包裹; 
+    //  - template 用 v-slot:插槽名 标记 
+    //     - <template v-slot:插槽名 > 结构 </template> 
+
+    // 想要取出组件之中插槽内部的数据 : 
+    //  - 外部使用 v-slot:插槽名="插槽数据的容器对象" 
+    //   - 插槽数据的容器对象 : 所有插槽数据的集合! 
+    //  - 可以直接使用 ES6 的解构语法，取出我们需要的数据 ，如果我们需要 msg 数据语法  v-slot:插槽名="{ msg }" , 取出之后这条数据就可以在结构之中随意应用了; 
+
+    </script>
+</body>
+</html>

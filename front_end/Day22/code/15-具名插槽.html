@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-layout>
+            <!-- 带有slot属性名的内容会放入具体的插槽结构  -->
+            <header slot="header" slot-scope="props">
+                头部部分 
+                {{ props.text }}
+            </header>
+            <!-- 没有slot命名的结构表示直接放入到 匿名slot之中 -->
+            <p>内容部分</p>
+            <p>内容部分</p>
+            <p>内容部分</p>
+            <p>内容部分</p>
+            <p>内容部分</p>
+            <footer slot="footer">
+                页面脚部
+            </footer>
+        </app-layout>
+    </div>
+
+    <template id="app-layout">
+        <div>
+            <header style="background-color: #ddd;">
+                <!-- 命名插槽的属性是 name  -->
+                <slot name="header"></slot>
+            </header>
+            <div class="content">
+                <slot></slot>
+            </div>
+            <footer style="background-color: #ddd;">
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+    </template>
+
+    <script src="lib/vue.js"></script>
+    <script>
+
+    let AppLayout = {
+        template : "#app-layout"
+    }
+
+    new Vue({
+        el : "#app",
+        components : {
+            AppLayout
+        },
+        data : {
+            props : "hello props"
+        }
+    })
+
+    </script>
+</body>
+</html>

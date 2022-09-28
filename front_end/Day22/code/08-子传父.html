@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <Parent></Parent>
+    </div>
+
+    <template id="parent">
+        <!-- 我们在子组件上定义事件，事件处理函数是卸载父组件之中 -->
+        <div>
+            <h2>这是父组件内容</h2>
+            <p>这是父组件之中的msg变量 --- {{ msg }}</p>
+            <Child @my-test-event="getData"></Child>
+        </div>
+    </template>
+    <template id="child">
+         <div>
+            <h2>子组件内容</h2>
+            <button @click="sendData('hello world')">发送数据给父级</button>
+         </div>
+    </template>
+    <script src="lib/vue.js"></script>
+    <script>
+        // let v = new Vue();
+        // // 自定义事件: 
+        // v.$on("myEvent" , ( arg )=>{
+        //     console.log("myEvent 事件触发" , arg );
+        // });
+        // // 调用事件 : 
+        // // - 只能我们自己调用 ; 
+        // v.$emit("myEvent" , "hello world") ;
+        
+        let Child = {
+            "child" : {
+                template : "#child",
+                methods : {
+                    sendData ( arg ){
+                        this.$emit("my-test-event" , arg);
+                    }
+                },
+                // 向直接给父级发送数据，我们可以使用钩子函数进行事件触发; 
+                mounted(){
+                    this.$emit("my-test-event" , "这是mounted传递的数据");
+                }
+            }
+        }
+
+        let Parent = {
+            "parent" : {
+                template : "#parent",
+                data (){
+                    return {
+                        msg : "你好世界"
+                    }
+                },
+                methods : {
+                    getData ( arg ){
+                       // 把子组件的数据赋值给父组件; 
+                       this.msg = arg;
+                    }
+                },
+                components : Child
+            }
+        }
+
+        new Vue({
+            el : "#app",
+            components : Parent
+        })
+
+
+    </script>
+</body>
+</html>

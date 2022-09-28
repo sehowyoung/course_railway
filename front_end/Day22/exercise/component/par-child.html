@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+
+    <template id="parent">
+        <div>
+            <h2>parent</h2>
+            <child :msg="msg" :width="width"></child>
+        </div>
+    </template>
+    <template id="child">
+        <div>
+            <h2>child</h2>
+            <span>数据: {{msg}} - {{width}}</span>
+        </div>
+    </template>
+</body>
+<script src="./libs/vue.min.js"></script>
+<script>
+    let child = {
+        "child": {
+            template: '#child',
+            // data(){
+            //     return {
+            //         msg: 'hello',
+            //         width: '100px'
+            //     }
+            // },
+            props: {
+                msg: {
+                    type: String,
+                    default: 'default'
+                },
+                width: {
+                    type: String
+                }
+            }
+            
+        }
+    }
+    let parent = {
+        "parent": {
+            template: '#parent',
+            data() {
+                return {
+                    msg: 'parent',
+                    width: '500px'
+                }
+            },
+            components: child
+        }
+    }
+
+    new Vue({
+        el: '#app',
+        components: parent
+    })
+</script>
+
+</html>

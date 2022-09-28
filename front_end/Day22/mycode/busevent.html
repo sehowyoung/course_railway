@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" com="IE=edge">
+    <meta name="viewport" com="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <com></com>
+        <foot></foot>
+    </div>
+    <template id="com">
+        <div>
+            {{content}}
+        </div>
+    </template>
+    <template id="foot">
+        <ul>
+            <li @click="goPage('home')">首页</li>
+            <li @click="goPage('kind')">种类</li>
+            <li @click="goPage('cart')">购物车</li>
+            <li @click="goPage('user')">我的</li>
+        </ul>
+    </template>
+</body>
+<script src="./vue.min.js"></script>
+<script>
+    const vue = new Vue()
+    const com = {
+        template: '#com',
+        data() {
+            return {
+                content: ''
+            }
+        },
+        mounted(){
+            vue.$on('my-event', data => {
+                this.content = data
+                console.log(data);
+            })
+        }
+    }
+
+    const foot = {
+        template: '#foot',
+        methods: {
+            goPage(type){
+                vue.$emit('my-event', type)
+            }
+        }
+    }
+
+    new Vue({
+        el: '#app',
+        components:{
+            com: com,
+            foot: foot
+        }
+    })
+</script>
+</html>

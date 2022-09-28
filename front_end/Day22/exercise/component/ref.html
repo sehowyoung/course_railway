@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <com ref="test"></com>
+    </div>
+    <template id="com">
+        <div>
+            <h1>ref!!!</h1>
+        </div>
+    </template>
+</body>
+<script src="./libs/vue.min.js"></script>
+<script>
+    const com = {
+        template: '#com',
+        data(){
+            return {
+                msg: 'hello world'
+            }
+        },
+        methods: {
+            fn(){
+                console.log('dasdasd');
+            }
+        }
+    }
+
+    new Vue({
+        el: '#app',
+        components: {
+            com: com
+        },
+        mounted(){
+            console.log(this.$refs.test);
+        }
+    })
+</script>
+</html>

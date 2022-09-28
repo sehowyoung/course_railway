@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <hello-world></hello-world> 
+    </div>
+    <template id="test">
+        <div>
+            <div>hello world</div>
+        <span>{{msg}}</span>        
+        </div>
+    </template>
+</body>
+<script src="./libs/vue.min.js"></script>
+<script>
+    Vue.component("hello-world", {
+        template: '#test',
+        data(){
+            return {
+                msg : 'hhhhhh'
+            }
+        },
+        mounted(){
+            console.log('hhhhhhhhhhh');
+        }
+    })
+
+    new Vue({
+        el: '#app',
+        // component: 'hello-world'
+    })
+</script>
+</html>
